@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root{
+  --bg: white;
+  --fg: black;
+  --primary: rgb(59, 130, 246);
+  --hover: rgb(66, 137, 252);
+  --secondary: #fdfdfd;
+  --accent: rgb(241, 245, 249);
+  --border: #e2e2e2;
+  --paragraph: #7a7a7a;
+ 
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark{
+  --bg: #1b1b1b;
+  --fg: rgb(247, 244, 244);
+  --border: rgb(58, 59, 61);
+  --primary: rgb(96, 165, 250); 
+  --hover: rgb(66, 137, 252);
+  --secondary: rgb(31, 30, 30);
+  --accent: rgb(30, 41, 59);
+  --paragraph: #a0a0a0,
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+body{
+  background: var(--bg);
+  color: var(--fg);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+p{
+  color: var(--paragraph);
 }
+
+
+.flex-center{
+  @apply flex flex-row items-center gap-2
+}
+.flex-col-center{
+  @apply flex items-center gap-2 flex-col
+}
+
+.welcome{
+  @apply text-3xl md:text-5xl text-center 
+}
+
+.paragraph{
+  @apply text-xl md:text-xl text-center 
+}
+
+.border-col{
+  @apply border-[var(--border)]
+}
+
+.link{
+  @apply p-[6px] rounded-md px-4 w-full md:w-40 flex items-center justify-center bg-[var(--primary)] text-white
+}
+
+.link2{
+  @apply p-[6px] rounded-md px-4 w-full md:w-40 bg-[var(--fg)] flex items-center justify-center
+}
+
