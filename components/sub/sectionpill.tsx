@@ -4,13 +4,19 @@ import { Blocks } from "lucide-react"
 import Image from 'next/image'
 import { motion as m } from 'framer-motion'
 
-export const SectionPill = () => {
+
+interface props {
+  text?: string,
+  icon?: React.ReactNode
+}
+
+export const SectionPill = ({text = "Premium Blocks", icon=<Blocks size={18}/>}:props) => {
   return (
     <div className="flex-center mx-auto overflow-hidden justify-center rounded-full w-fit md:w-80 p-[1px] mb-8 relative">
       <div className='h-full w-full  bg-linear-90 from-transparent via-[var(--primary)] to-transparent -z-10 absolute '/>
       <div className='flex-center bg-[var(--secondary)] justify-center w-full p-1 px-6 rounded-full text-[14px]'>
-        <Blocks size={18}/>
-        Premium Blocks
+        {icon}
+        {text}
       </div>
     </div>
   )

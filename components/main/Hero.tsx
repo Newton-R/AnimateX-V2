@@ -38,7 +38,7 @@ export const Hero = () => {
                         <m.span initial={{scale: 0, y: 7}} animate={{scale: 1, y: 0}}
                          className='font-bold text-transparent bg-clip-text blue-gradient'>AnimateX</m.span>
                         <m.span initial={{scale: 0, y: 7}} animate={{scale: 1, y: 0}} transition={{delay: 0.25}}
-                         className='px-1 py-0 border border-dashed border-col mx-2'>Pro</m.span>
+                         className='px-1 py-0 border-2 border-dashed border-col mx-2'>Pro</m.span>
                         {
                             ("Motion Components. Elevate Your Web Experience.").split(" ").map((word, i) => 
                             <m.span initial={{scale: 0, y: 7}} animate={{scale: 1, y: 0}} transition={{delay: i * 0.25 + 0.25}} key={i}>{word}</m.span>
@@ -56,7 +56,7 @@ export const Hero = () => {
                     <BuiltPill/>
 
                 </div>
-                <m.div style={{y}} className='w-full h-[400px] -z-10 md:h-[1300px] bg-radial from-transparent via-[var(--primary)] via-40% 
+                <m.div style={{y}} className='w-full h-[400px] -z-10 md:h-[1300px] bg-radial from-transparent via-blue-400/40 via-40% 
                 absolute to-transparent top-[88%] blur-[14px] rounded-full '/>
             
             

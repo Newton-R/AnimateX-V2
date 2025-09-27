@@ -14,6 +14,7 @@
   --color-start:#8daaf8ea;
   --color-mid: #6e94fd; 
   --gradient-border: #5757570a;
+  --secondary-hover: #f0f0f0;
  
 }
 
@@ -31,6 +32,7 @@
   --color-start:#7096ffea;
   --color-mid: #4677ff; 
   --gradient-border: #8080800a;
+  --secondary-hover: rgb(19, 19, 19);
 }
 
 
@@ -53,7 +55,7 @@ p{
 }
 
 .center-container{
-  @apply w-full max-w-7xl mx-auto
+  @apply w-full max-w-7xl mx-auto flex flex-col items-center
 }
 
 .flex-center{
@@ -79,6 +81,9 @@ p{
   @apply bg-linear-0 cursor-pointer from-blue-400 to-blue-500;
 }
 
+.section-head{
+  @apply text-2xl md:text-3xl w-full text-center mx-auto md:w-[70%]
+}
 
 .link{
   @apply p-[6px] rounded-md px-4 w-full md:w-40 flex items-center justify-center bg-[var(--primary)] text-white
