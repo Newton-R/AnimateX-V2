@@ -5,40 +5,64 @@
   --fg: black;
   --primary: rgb(59, 130, 246);
   --hover: rgb(66, 137, 252);
-  --secondary: #fdfdfd;
+  --secondary: #fcfcfc;
   --accent: rgb(241, 245, 249);
   --border: #e2e2e2;
   --paragraph: #7a7a7a;
+  --premium: black;
+  --premium-text: white;
+  --color-start:#8daaf8ea;
+  --color-mid: #6e94fd; 
+  --gradient-border: #5757570a;
+  --secondary-hover: #f0f0f0;
  
 }
 
 .dark{
-  --bg: #1b1b1b;
+  --bg: #0b0b0f;
   --fg: rgb(247, 244, 244);
   --border: rgb(58, 59, 61);
   --primary: rgb(96, 165, 250); 
   --hover: rgb(66, 137, 252);
   --secondary: rgb(31, 30, 30);
   --accent: rgb(30, 41, 59);
-  --paragraph: #a0a0a0,
+  --paragraph: #a0a0a0;
+  --premium: white;
+  --premium-text: black;
+  --color-start:#7096ffea;
+  --color-mid: #4677ff; 
+  --gradient-border: #8080800a;
+  --secondary-hover: rgb(19, 19, 19);
 }
 
 
 body{
   background: var(--bg);
   color: var(--fg);
+  overflow-x: hidden;
 }
 
 p{
   color: var(--paragraph);
 }
 
+.bg-center-gradient{
+  background-image: radial-gradient(circle 400px at top center, var(--color-start), var(--color-mid) , var(--bg))
+}
+
+.gradient{
+  @apply bg-[linear-gradient(to_right,var(--gradient-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--gradient-border)_1px,transparent_1px)] bg-[size:14px_24px]
+}
+
+.center-container{
+  @apply w-full max-w-7xl mx-auto flex flex-col items-center
+}
 
 .flex-center{
   @apply flex flex-row items-center gap-2
 }
 .flex-col-center{
-  @apply flex items-center gap-2 flex-col
+  @apply flex items-center gap-4 flex-col
 }
 
 .welcome{
@@ -46,11 +70,19 @@ p{
 }
 
 .paragraph{
-  @apply text-xl md:text-xl text-center 
+  @apply md:text-xl text-center 
 }
 
 .border-col{
   @apply border-[var(--border)]
+}
+
+.blue-gradient{
+  @apply bg-linear-0 cursor-pointer from-blue-400 to-blue-500;
+}
+
+.section-head{
+  @apply text-2xl md:text-3xl w-full text-center mx-auto md:w-[70%]
 }
 
 .link{
@@ -58,6 +90,6 @@ p{
 }
 
 .link2{
-  @apply p-[6px] rounded-md px-4 w-full md:w-40 bg-[var(--fg)] flex items-center justify-center
+  @apply p-[6px] rounded-md px-4 w-full md:w-40 bg-[var(--premium)] text-[var(--premium-text)] flex items-center justify-center
 }
 
