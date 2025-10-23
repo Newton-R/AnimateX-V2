@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { AnimatePresence, motion as m, Variants } from 'framer-motion'
 import { X } from 'lucide-react'
-import clsx from 'clsx'
+import { cn } from '@/app/lib/utils'
 
 type DialogProps = React.HTMLAttributes<HTMLDivElement> & {
     children?: React.ReactNode,
@@ -62,7 +62,7 @@ export const Dailog: React.FC<DialogProps> = ({children, className, buttonStyle,
                     initial="hidden"
                     animate={isOpen && "visible"}
                     exit="hidden"
-                    className={clsx( defaultClass,
+                    className={cn( defaultClass,
                     className ? className : "")}>
                         <span onClick={() => setIsOpen(false)} className='p-1 rounded-md cursor-pointer 
                         hover:bg-gray-50 absolute top-2 right-2 dark:hover:bg-neutral-800'>
@@ -75,7 +75,7 @@ export const Dailog: React.FC<DialogProps> = ({children, className, buttonStyle,
             }
 
              <m.button whileTap={{scale: 0.97}} onClick={() => setIsOpen(true)}
-                className={clsx('bg-black p-2 rounded-md px-4 cursor-pointer',
+                className={cn('bg-black p-2 rounded-md px-4 cursor-pointer',
                     buttonStyle ? buttonStyle : ""
                 )}>
                 {buttonText}
@@ -124,7 +124,7 @@ export const CodeTS = `
 import React, { useState } from 'react'
 import { AnimatePresence, motion as m, Variants } from 'framer-motion'
 import { X } from 'lucide-react'
-import clsx from 'clsx'
+import { cn } from '@/app/lib/utils'
 
 type DialogProps = React.HTMLAttributes<HTMLDivElement> & {
     children?: React.ReactNode,
@@ -184,7 +184,7 @@ export const Dailog: React.FC<DialogProps> = ({children, className, buttonStyle,
                     initial="hidden"
                     animate={isOpen && "visible"}
                     exit="hidden"
-                    className={clsx( defaultClass,
+                    className={cn( defaultClass,
                     className ? className : "")}>
                         <span onClick={() => setIsOpen(false)} className='p-1 rounded-md cursor-pointer 
                         hover:bg-gray-50 absolute top-2 right-2 dark:hover:bg-neutral-800'>
@@ -197,7 +197,7 @@ export const Dailog: React.FC<DialogProps> = ({children, className, buttonStyle,
             }
 
              <m.button whileTap={{scale: 0.97}} onClick={() => setIsOpen(true)}
-                className={clsx('bg-black p-2 rounded-md px-4 cursor-pointer',
+                className={cn('bg-black p-2 rounded-md px-4 cursor-pointer',
                     buttonStyle ? buttonStyle : ""
                 )}>
                 {buttonText}
@@ -216,7 +216,7 @@ export const CodeJS = `
 import React, { useState } from 'react'
 import { AnimatePresence, motion as m} from 'framer-motion'
 import { X } from 'lucide-react'
-import clsx from 'clsx'
+import { cn } from '@/app/lib/utils'
 
 
 export const Dailog: React.FC = ({children, className, buttonStyle, buttonText="Open Dialog"}) => {
@@ -268,7 +268,7 @@ export const Dailog: React.FC = ({children, className, buttonStyle, buttonText="
                     initial="hidden"
                     animate={isOpen && "visible"}
                     exit="hidden"
-                    className={clsx( defaultClass,
+                    className={cn( defaultClass,
                     className ? className : "")}>
                         <span onClick={() => setIsOpen(false)} className='p-1 rounded-md cursor-pointer 
                         hover:bg-gray-50 absolute top-2 right-2 dark:hover:bg-neutral-800'>
@@ -281,7 +281,7 @@ export const Dailog: React.FC = ({children, className, buttonStyle, buttonText="
             }
 
              <m.button whileTap={{scale: 0.97}} onClick={() => setIsOpen(true)}
-                className={clsx('bg-black p-2 rounded-md px-4 cursor-pointer',
+                className={cn('bg-black p-2 rounded-md px-4 cursor-pointer',
                     buttonStyle ? buttonStyle : ""
                 )}>
                 {buttonText}

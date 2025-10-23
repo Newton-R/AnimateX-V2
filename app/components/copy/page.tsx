@@ -1,6 +1,7 @@
 import PageLayout from '@/components/dashboard/PageLayout'
 import React from 'react'
 import { CopyButton, CodeJs, CodeTs, usecase } from '@/components/ui/buttons/copy'
+import { title } from 'process'
 
 const GlimmerPage = () => {
     const component = {
@@ -32,7 +33,33 @@ const GlimmerPage = () => {
         ]
       }
 
-  return (
+    const variants = [
+      {
+        prop: "animationVaraint = 2",
+        component: <CopyButton animationVariant={2} text="Copy Page"/>
+      }
+    ]
+
+    const sections = [
+      {
+        id: 1,
+        title: "Component"
+      },
+      {
+        id: 2,
+        title: "Variant 2"
+      },
+      {
+        id:3,
+        title: "Using"
+      },
+      {
+        id:4,
+        title: "Props"
+      },
+      
+    ]
+    return (
     <PageLayout 
     title='Copy Button'
     description='Copy button with icon transition.'
@@ -40,8 +67,10 @@ const GlimmerPage = () => {
     codejs={CodeJs}
     codets={CodeTs}
     usecasecode={usecase}
+    variants={variants}
     props={component.props}
     features={component.features} 
+    sections={sections}
     component={component.block}/>
   )
 }

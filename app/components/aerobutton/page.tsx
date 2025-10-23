@@ -4,7 +4,7 @@ import { AeroButton, CodeJS,  Code, UseCase} from '@/components/ui/buttons/aerob
 
 const FeedbackPage = () => {
     const component = {
-        block: <AeroButton/>,
+        block: <AeroButton/> ,
         features: [
           "Easily customizable with props",
             "Smooth icon entrance and exit"

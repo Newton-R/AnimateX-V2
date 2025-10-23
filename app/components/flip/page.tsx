@@ -49,6 +49,24 @@ const FlipPage = () => {
       }
     ]
   }
+  const sections = [
+    {
+        id:0,
+        title: "Preview"
+    },
+    {
+        id:2,
+        title: "Installation"
+    },
+    {
+        id:3,
+        title: "Props"
+    },
+    {
+        id:4,
+        title: "Report Bug"
+    }
+  ]
   return (
     <div>
         <PageLayout 
@@ -59,6 +77,7 @@ const FlipPage = () => {
         codets={CodeTS}
         usecasecode={usecasecode}
         props={component.props}
+        sections={sections}
         features={component.features} 
         component={<Flip subImages={subImages} mainImage={mainImage} mainStyle='rounded-xs'/>}/>
     </div>

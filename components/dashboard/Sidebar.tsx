@@ -90,6 +90,11 @@ export const Sidebar = () => {
                 {
                     text: "Dailog",
                     link: "/components/dailog"
+                },
+                {
+                    text: "Report Bug",
+                    link: "/components/bug",
+                    tag: "Pro"
                 }
             ]
 

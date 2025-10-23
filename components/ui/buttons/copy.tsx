@@ -2,7 +2,7 @@
 import { motion as m, Variants, AnimatePresence } from 'framer-motion'
 import { CircleCheck, Copy } from 'lucide-react'
 import React, { HTMLAttributes, useState } from 'react'
-import clsx from 'clsx'
+import { cn } from '@/app/lib/utils'
 
 type buttonProps = HTMLAttributes<HTMLButtonElement> & {
     className?: string,
@@ -95,7 +95,7 @@ export const CopyButton: React.FC<buttonProps> = ({className, onClick, iconSize 
     Copying ?
     { pointerEvents: "none" } : {}
    }
-   className={clsx('flex gap-2 items-center p-2 px-6 rounded-full hover:bg-gray-300 hover:dark:bg-neutral-800 cursor-pointer bg-gray-200 text-black dark:bg-neutral-900 dark:text-white', 
+   className={cn('flex gap-2 items-center p-2 px-6 rounded-full hover:bg-gray-300 hover:dark:bg-neutral-800 cursor-pointer bg-gray-200 text-black dark:bg-neutral-900 dark:text-white', 
                 className && className
    )}>
        <AnimatePresence mode='popLayout'>
@@ -121,7 +121,7 @@ export const CodeTs = `
 import { motion as m, Variants, AnimatePresence } from 'framer-motion'
 import { CircleCheck, Copy } from 'lucide-react'
 import React, { HTMLAttributes, useState } from 'react'
-import clsx from 'clsx'
+import { cn } from '@/app/lib/utils'
 
 type buttonProps = HTMLAttributes<HTMLButtonElement> & {
     children?: React.ReactNode,
@@ -216,7 +216,7 @@ export const CopyButton: React.FC<buttonProps> = ({
     Copying ?
     { pointerEvents: "none" } : {}
    }
-   className={clsx('flex gap-2 items-center p-2 px-6 rounded-full hover:bg-gray-300 hover:dark:bg-neutral-800 cursor-pointer bg-gray-200 text-black dark:bg-neutral-900 dark:text-white', 
+   className={cn('flex gap-2 items-center p-2 px-6 rounded-full hover:bg-gray-300 hover:dark:bg-neutral-800 cursor-pointer bg-gray-200 text-black dark:bg-neutral-900 dark:text-white', 
                 className && className
    )}>
        <AnimatePresence mode='popLayout'>
@@ -244,7 +244,7 @@ export const CodeJs = `
 import { motion as m, Variants, AnimatePresence } from 'framer-motion'
 import { CircleCheck, Copy } from 'lucide-react'
 import React, { useState } from 'react'
-import clsx from 'clsx'
+import { cn } from '@/app/lib/utils'
 
 type buttonProps = React.ComponentPropsWithoutRef<"button"> & {
     className?: string,
@@ -337,7 +337,7 @@ export const CopyButton: React.FC<buttonProps> = ({ className, onClick, iconSize
     Copying ?
     { pointerEvents: "none" } : {}
    }
-   className={clsx('flex gap-2 items-center p-2 px-6 rounded-full hover:bg-gray-300 hover:dark:bg-neutral-800 cursor-pointer bg-gray-200 text-black dark:bg-neutral-900 dark:text-white', 
+   className={cn('flex gap-2 items-center p-2 px-6 rounded-full hover:bg-gray-300 hover:dark:bg-neutral-800 cursor-pointer bg-gray-200 text-black dark:bg-neutral-900 dark:text-white', 
                 className && className
    )}>
        <AnimatePresence mode='popLayout'>

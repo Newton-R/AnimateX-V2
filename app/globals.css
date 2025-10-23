@@ -24,7 +24,7 @@
 .dark{
   --bg: #0b0b0f;
   --fg: rgb(247, 244, 244);
-  --border: rgb(58, 59, 61);
+  --border: rgb(22, 22, 22);
   --primary: rgb(96, 165, 250); 
   --hover: rgb(66, 137, 252);
   --secondary: rgb(31, 30, 30);
