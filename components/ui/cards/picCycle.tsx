@@ -1,9 +1,10 @@
 "use client"
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion as m, Variants, useAnimation, 
     useMotionValue, useTransform, AnimationDefinition, 
-    PanInfo} from 'framer-motion'
+    useAnimationFrame} from 'motion/react'
 import { X } from 'lucide-react'
+
 
 
 export const PicCycle = () => {
@@ -13,32 +14,28 @@ export const PicCycle = () => {
     const [rotation, setRotation] = useState(0)
     const [currentRotation, setCurrentRotation] = useState(rotation)
     const [width, setWidth] = useState<number>()
+    const [isSpinning, setSpinning] = useState(true)
+    const rotate = useMotionValue(0)
 
-    const x = useMotionValue(0)
-    const rotate = useTransform(x, [-200, 200], [-360, 360])
 
-    // const spinanimation: AnimationDefinition =
-    // {
-    //     rotate: 360,
-    //     transition: {
-    //         duration: 10,
-    //         repeat: Infinity,
-    //         ease: "linear"
-    //     }
-    // } 
+    useAnimationFrame((t, delta) => {
+        if(isSpinning && current === null){
+            rotate.set(rotate.get() + delta * 0.03)
+        }
+    })
 
+    const spinanimation: AnimationDefinition =
+    {
+        rotate: 360,
+        transition: {
+            duration: 10,
+            repeat: Infinity,
+            ease: "linear"
+        }
+    } 
     // useEffect(() => {
-    //     const subscribe = rotate.on("change", (val) => {
-    //         setCurrentRotation(rotation + val)
-    //     })
-    //     return subscribe
-    // }, [rotate, rotation])
-
-    // const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info:PanInfo) => {
-    //     const rotationChange = (info.offset.x / 200) * 90;
-    //     setRotation((prev) => rotationChange + prev)
-    // }
-
+    //     controls.start(spinanimation)
+    // }, [])
 
     const closeVariant: Variants = {
         "initial" : {
@@ -51,6 +48,7 @@ export const PicCycle = () => {
         }
     }
 
+  
 
   return (
     <m.div 
@@ -59,12 +57,14 @@ export const PicCycle = () => {
     dragConstraints={{left:0, right: 0}}
     // onDragEnd={handleDragEnd}
     style={{
-        x,
         rotate,
         width: 260,
         height: 260,
        
     }}
+    animate={controls}
+    onMouseEnter={() => setSpinning(false)}
+    onMouseLeave={() => setSpinning(true)}
     className='relative bg-red-600 rounded-full flex items-center justify-center'>
         {
             Array.from({length: 10}).map((_, i) => 
@@ -78,7 +78,7 @@ export const PicCycle = () => {
                   <AnimatePresence>
                     {
                       
-                        <m.div 
+                        <m.div key={i}
                             animate={current === i ? {
                                 x: 0,
                                 y: 0,
@@ -109,7 +109,6 @@ export const PicCycle = () => {
                                         current === i &&
                                         <m.div key={i} variants={closeVariant} onClick={() => {
                                             setcurrent(null)
-                                           
                                         }} 
                                         animate="animate" initial="initial" exit="initial"
                                         className='p-1 rounded-full bg-gray-400 

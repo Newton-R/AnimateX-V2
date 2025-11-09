@@ -16,20 +16,19 @@ const ReportBugPage = () => {
     const component = {
         block: 
         <ReportBug onSubmit={onSubmit} isValid={isValid}>
-            <div className='py-2 mt-4 flex md:flex-row flex-col w-full gap-4 justify-between'>
-                    
-                    <input className='px-2 py-1 rounded-md bg-gray-50 dark:bg-black 
-                    focus:outline-2 focus:outline-blue-500 border-2 border-gray-200 dark:border-neutral-900 w-[49%]' 
-                    type='text' placeholder='Name'/>
+            <div className='py-2 mt-4 flex md:flex-row flex-col w-full gap-4 justify-between'>  
+                <input className='px-2 py-1 rounded-md bg-gray-50 dark:bg-black w-full
+                focus:outline-2 focus:outline-blue-500 border-2 border-gray-200 dark:border-neutral-900 md:w-[49%]' 
+                type='text' placeholder='Name'/>
 
-                    <input className='px-2 py-1 rounded-md bg-gray-50 dark:bg-black border-2 focus:outline-2 focus:outline-blue-500
-                     border-gray-200 dark:border-neutral-900 w-[49%]' 
-                    type='email' placeholder='Email'/>
+                <input className='px-2 py-1 rounded-md bg-gray-50 dark:bg-black border-2 focus:outline-2 focus:outline-blue-500
+                border-gray-200 dark:border-neutral-900 md:w-[49%] w-full' 
+                type='email' placeholder='Email'/>
 
-                </div>
-            <textarea style={{resize: "none"}} className='px-2 py-1 h-[50%] focus:outline-2 focus:outline-blue-500
+            </div>
+            <textarea style={{resize: "none"}} className='px-2 py-1 h-[120px] focus:outline-2 focus:outline-blue-500
             rounded-md bg-gray-50 dark:bg-black border-2 border-gray-200 dark:border-neutral-900 w-[100%]'
-                placeholder='Provide details about the issue..'></textarea>
+            placeholder='Provide details about the issue..'></textarea>
         </ReportBug> 
         ,
         features: [
@@ -106,24 +105,6 @@ const ReportBugPage = () => {
         ]
       }
 
-      const sections = [
-        {
-            id:0,
-            title: "Preview"
-        },
-        {
-            id:2,
-            title: "Installation"
-        },
-        {
-            id:3,
-            title: "Props"
-        },
-        {
-            id:4,
-            title: "Report Bug"
-        }
-      ]
 
   return (
     <PageLayout 
@@ -135,7 +116,6 @@ const ReportBugPage = () => {
     usecasecode={UseCase}
     props={component.props}
     features={component.features} 
-    sections={sections}
     component={component.block}/>
   )
 }

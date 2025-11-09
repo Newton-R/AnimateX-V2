@@ -2,9 +2,9 @@
 import React from 'react'
 import { Blocks, Drama, Flower, MousePointer, Text, Zap } from 'lucide-react'
 import Link from 'next/link'
-import { motion as m } from 'framer-motion'
 import clsx from "clsx"
 import { useNavToggle } from '@/utils/store'
+import { Variants, motion as m, AnimatePresence} from 'motion/react'
 
 interface content{
     link: string,
@@ -35,6 +35,20 @@ export const Sidebar = () => {
             link: "/components/gallery"
         }
     ]
+    const fadeInVariants: Variants = {
+    "hidden": {
+        opacity: 0,
+        transition: {
+            duration: 0.2
+        }
+    },
+    "visible": {
+        opacity: 1,
+        transition: {
+            duration: 0.4
+        }
+    }
+} 
 
     const components: components[] = [
         {
@@ -43,7 +57,7 @@ export const Sidebar = () => {
             content: [
                 {
                     text: "Copy",
-                    link: "/components/glimmercopy"
+                    link: "/components/copy"
                 },
                 {
                     text: "Aero Button",
@@ -115,15 +129,17 @@ export const Sidebar = () => {
   return (
     <>
       {/* Mobile backdrop */}
-      {isOpen && (
-        <div 
+      <AnimatePresence>
+        {isOpen && (
+        <m.div key={"bloom"} variants={fadeInVariants} initial="hidden" animate="visible" exit="hidden"
           className="fixed inset-0 bg-black/50 z-40 md:hidden" 
           onClick={setToggle}
         />
       )}
+      </AnimatePresence>
       
       {/* we are trying */}
-      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col pt-14 bg-[var(--bg)] left-0 top-0 border-r-1 border-col min-h-screen z-50', 
+      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col pt-14 bg-[var(--bg)] overflow-y-scroll left-0 top-0 border-r-1 border-col min-h-screen z-50', 
           isOpen ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"
       )}>
          
