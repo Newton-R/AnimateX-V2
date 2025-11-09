@@ -78,7 +78,7 @@ export const ReportBug = ({
 
 
   return (
-    <div className='mx-auto'>
+    <>
        {    
             !isOpen ?
              <m.button onClick={() => setOpen(true)} layoutId={`container${id}`} style={{borderRadius: borderRaduis}} 
@@ -89,7 +89,7 @@ export const ReportBug = ({
             :
 
             <m.form layoutId={`container${id}`} ref={containerRef} onSubmit={(e) => handleFormSubmitted(e)}
-            style={{borderRadius: borderRaduis}} className={cn('w-full md:w-[500px] overflow-hidden relative p-4 bg-gray-100 dark:bg-neutral-950 h-[300px]',
+            style={{borderRadius: borderRaduis}} className={cn('w-full md:w-[500px] overflow-hidden relative p-4 bg-gray-100 dark:bg-neutral-950 h-fit',
                 className && className
             )}>
 
@@ -150,7 +150,7 @@ export const ReportBug = ({
                       </AnimatePresence>
             </m.form>
        }
-    </div>
+    </>
   )
 }
 

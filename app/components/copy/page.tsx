@@ -42,20 +42,24 @@ const GlimmerPage = () => {
 
     const sections = [
       {
-        id: 1,
-        title: "Component"
+        id: 0,
+        title: "Preview"
       },
       {
-        id: 2,
+        id: 1,
         title: "Variant 2"
       },
       {
-        id:3,
-        title: "Using"
+        id:2,
+        title: "Installation"
       },
       {
-        id:4,
+        id:3,
         title: "Props"
+      },
+       {
+        id:4,
+        title: "Report Bug"
       },
       
     ]

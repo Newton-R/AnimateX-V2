@@ -1,6 +1,6 @@
 "use client"
 import { motion as m, Variants, AnimatePresence } from 'framer-motion'
-import { CircleCheck, Copy } from 'lucide-react'
+import { Check, CircleCheck, Copy } from 'lucide-react'
 import React, { HTMLAttributes, useState } from 'react'
 import { cn } from '@/app/lib/utils'
 
@@ -95,14 +95,14 @@ export const CopyButton: React.FC<buttonProps> = ({className, onClick, iconSize 
     Copying ?
     { pointerEvents: "none" } : {}
    }
-   className={cn('flex gap-2 items-center overflow-hidden p-2 px-6 rounded-full hover:bg-gray-300 hover:dark:bg-neutral-800 cursor-pointer bg-gray-200 text-black dark:bg-neutral-900 dark:text-white', 
+   className={cn('flex gap-2 items-center overflow-hidden p-2 px-6 rounded-full hover:bg-gray-300 hover:dark:bg-neutral-800 cursor-pointer text-black dark:text-white', 
                 className && className
    )}>
        <AnimatePresence mode='popLayout'>
             {
                 Copying ?
                 <m.div key='icon1' variants={variant} initial="initial" animate="animate" exit="initial">
-                <CircleCheck size={iconSize}/> </m.div>
+                <Check size={iconSize}/> </m.div>
                 :
                 <m.div key='icon2' variants={variant} 
                 initial={animationVariant === 2 ? "initial2" : "initial"} 
