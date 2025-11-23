@@ -2,7 +2,7 @@
 import PageLayout from '@/components/dashboard/PageLayout'
 import React from 'react'
 import { DropDown, code, codejs, usecase } from '@/components/ui/inputs/dropdown'
-import { ThemeToggler } from '@/components/ui/buttons/theme'
+import { ThemeToggler } from '@/components/ui/buttons/themetoggler'
 
 const ThemeTogglerPage = () => {
     const [text, setText] = React.useState("")
