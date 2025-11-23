@@ -20,6 +20,8 @@ export default function RootLayout({
         className={`${inter.className} antialiased`}
       >
        <ThemeWrapper>
+          {/* <div id="theme-transition">
+           </div> */}
           {children}
        </ThemeWrapper>
       </body>

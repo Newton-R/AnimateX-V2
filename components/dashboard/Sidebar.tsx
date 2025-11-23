@@ -72,6 +72,11 @@ export const Sidebar = () => {
                     text: "Loading",
                     link: "/components/loadingbtn",
                     tag: ""
+                },
+                 {
+                    text: "Theme Toggler",
+                    link: "/components/themetoggler",
+                    tag: ""
                 }
             ]
         },
@@ -155,7 +160,7 @@ export const Sidebar = () => {
       </AnimatePresence>
       
       {/* we are trying */}
-      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col pt-14 bg-[var(--bg)] overflow-y-scroll left-0 top-0 border-r-1 border-col min-h-screen z-50', 
+      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col pt-14 bg-[var(--bg)] overflow-y-scroll left-0 top-0 border-r-1 border-col h-screen z-50', 
           isOpen ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"
       )}>
          

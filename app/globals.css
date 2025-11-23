@@ -39,6 +39,54 @@
 }
 
 
+  /* Smooth color transition when switching themes */
+
+#theme-transition {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: var(--bg); /* will adapt when theme class changes */
+  clip-path: circle(0% at var(--x) var(--y));
+  transition: clip-path 1s ease;
+  z-index: 9999;
+}
+
+
+::view-transition-group(root) {
+  animation-timing-function: var(--expo-out);
+}
+
+::view-transition-new(root) {
+  mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="0" cy="0" r="18" fill="white" filter="url(%23blur)"/></svg>') top left / 0 no-repeat;
+  animation: scale 1s;
+  animation-fill-mode: both;
+  transform-origin: top left;
+  mask-origin: content-box;
+}
+
+::view-transition-old(root),
+.dark::view-transition-old(root) {
+  animation: none;
+  animation-fill-mode: both;
+  transform-origin: top left;
+  z-index: -1;
+}
+/* .dark::view-transition-new(root) {
+  animation: scale 1s;
+  animation-fill-mode: both;
+} */
+
+@keyframes scale {
+  to {
+    mask-size: 350vmax;
+  }
+}
+
+
+html {
+  transition: var(--bg) 0.4s ease, color 0.4s ease;
+}
+
 body{
   background: var(--bg);
   color: var(--fg);
@@ -101,6 +149,14 @@ p{
 }
 .title{
   @apply text-xl md:text-2xl lg:text-3xl
+}
+
+
+.menu::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
 }
 
 /* Mobile responsive improvements */
