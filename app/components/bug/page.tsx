@@ -2,7 +2,6 @@
 import PageLayout from '@/components/dashboard/PageLayout'
 import React, { useState } from 'react'
 import { ReportBug, CodeJS, CodeTS, UseCase } from '@/components/sub/reportbug'
-import { Space } from '@/components/ui/heros/space'
 
 
 const ReportBugPage = () => {

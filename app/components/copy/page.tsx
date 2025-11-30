@@ -1,7 +1,5 @@
 import PageLayout from '@/components/dashboard/PageLayout'
-import React from 'react'
 import { CopyButton, CodeJs, CodeTs, usecase } from '@/components/ui/buttons/copy'
-import { title } from 'process'
 
 const GlimmerPage = () => {
     const component = {

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Dialog } from '@/components/youtube/dialog'
 
 const YoutubePage = () => {
   return (

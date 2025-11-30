@@ -66,7 +66,7 @@ export const Sidebar = () => {
                 {
                     text: "Arrow Button",
                     link: "/components/arrow",
-                    tag: "Pro"
+                    tag: ""
                 },
                  {
                     text: "Loading",
@@ -98,17 +98,17 @@ export const Sidebar = () => {
                 {
                     text: "Stagger Cards",
                     link: "/components/staggercards",
-                    tag: "Pro"
+                    tag: ""
                 },
                 {
                     text: "Highlight Cards",
                     link: "/components/rotate",
-                    tag: "Pro"
+                    tag: ""
                 },
                 {
                     text: "Canvas",
                     link: "/components/canvas",
-                    tag: "Pro"
+                    tag: ""
                 },
                 {
                     text: "Swift",
@@ -129,7 +129,7 @@ export const Sidebar = () => {
                 {
                     text: "Report Bug",
                     link: "/components/bug",
-                    tag: "Pro"
+                    tag: ""
                 }
             ]
 
@@ -141,12 +141,12 @@ export const Sidebar = () => {
                 {
                     text: "Flip",
                     link: "/components/flip",
-                    tag: "Pro"
+                    tag: ""
                 },
                 {
                     text: "Light Card",
                     link: "/components/lightcard",
-                    tag: "Pro"
+                    tag: ""
                 }
             ]
 

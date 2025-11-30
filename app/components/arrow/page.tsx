@@ -1,7 +1,7 @@
 import PageLayout from '@/components/dashboard/PageLayout'
 import React from 'react'
 import { ArrowButton, CodeJS, Code, UseCase } from '@/components/ui/buttons/arrowbtn'
-import { FilterCard } from '@/components/ui/cards/filter'
+
 
 const FeedbackPage = () => {
     const component = {
@@ -53,15 +53,14 @@ const FeedbackPage = () => {
     <PageLayout 
     title='Arrow Button'
     description='Button color trans with icon interaction'
-    type='Pro' 
+    type='' 
     codejs={CodeJS}
     codets={Code}
     usecasecode={UseCase}
     props={component.props}
     features={component.features} 
     component={
-        // component.block
-        <FilterCard/>
+        component.block
     }/>
   )
 }

@@ -245,7 +245,7 @@ export function cn(...inputs: ClassValue[]) {
                                         <div className='h-[480px] md:h-[280px] gradient overflow-x-hidden
                                         bg-[var(--bg)] border border-col relative rounded-[6px] w-full'>
                                             
-                                            <div className='p-[1px] flex-center absolute top-2 z-20 right-8 w-fit rounded-md bg-[var(--secondary)] gap-2'>
+                                            <div className='p-[1px] flex-center absolute top-2 z-60 right-8 w-fit rounded-md bg-[var(--secondary)] gap-2'>
                                                 <span onClick={() => setCode({language: "tsx", code: codets})} className='cursor-pointer px-2 py-1 rounded hover:bg-[var(--secondary-hover)]'>TS</span>
                                                 <span onClick={() => setCode({language: "jsx", code: codejs})} className='cursor-pointer px-2 py-1 rounded hover:bg-[var(--secondary-hover)]'>JS</span>
                                                 <CopyButton onClick={handleCopy} className='py-2 hover:bg-[var(--secondary-hover)] rounded-md w-fit px-2' animationVariant={2}/>

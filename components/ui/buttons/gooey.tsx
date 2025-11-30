@@ -1,5 +1,5 @@
 "use client"
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, Variants } from 'motion/react'
 import { X, Menu } from 'lucide-react'
 import React, { useState } from 'react'
 
@@ -19,7 +19,7 @@ interface props{
 export const GooeyMenu = ({direction ="right", list}:props) => {
 
     const [isOpen, setIsOpen] = useState(false)
-    const Items = {
+    const Items: Variants = {
         open: (i:number) => ({
             x: direction === "right" ? (i + 1) * 55 : direction === "left" ? (i + 1) * -55 : 0,
             y: direction === "down" ? (i + 1) * 55 : direction === "up" ? (i + 1) * -55 : 0,
