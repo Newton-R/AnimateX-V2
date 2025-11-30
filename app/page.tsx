@@ -12,12 +12,12 @@ export default function Home() {
     <div className="w-full flex flex-col gap-24">
       	<Navbar/>
         <Hero/>
-        <Features/>
+        {/* <Features/>
         <Pricing/>
         <Community/>
         <Testimonials/>
         <AboutMe/>
-        <Footer/>
+        <Footer/> */}
     </div>
   );
 }

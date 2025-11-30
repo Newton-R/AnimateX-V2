@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import { X, Check } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { Variants, motion } from 'motion/react'
 
 interface props{
     checkCommand?: () => void,
@@ -10,7 +10,7 @@ interface props{
 
 export const DeleteButton = ({checkCommand, cancleCommand}:props) => {
     const [isOpen, setIsOpen] = useState(false)
-    const DeleteVariants = {
+    const DeleteVariants: Variants = {
         close: {
             x: 0,
             scale: 0.8,
@@ -110,7 +110,7 @@ export const Code = `
 "use client"
 import React, { useState } from 'react'
 import { X, Check } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { Variants, motion } from 'motion/react'
 
 interface props{
     checkCommand?: () => void,
@@ -119,7 +119,7 @@ interface props{
 
 export const DeleteButton = ({checkCommand, cancleCommand}:props) => {
     const [isOpen, setIsOpen] = useState(false)
-    const DeleteVariants = {
+    const DeleteVariants: Variants = {
         close: {
             x: 0,
             scale: 0.8,

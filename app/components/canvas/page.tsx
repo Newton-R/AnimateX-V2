@@ -26,7 +26,7 @@ const CanvasCarouselPage = () => {
         <PageLayout 
         title='Letter Stack'
         description='Smooth letter cards interaction'
-        type='Pro' 
+        type='' 
         codejs=''
         codets=''
         usecasecode=''

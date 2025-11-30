@@ -13,14 +13,14 @@ export const Navbar = () => {
             <Logo/>
            <div className='md:flex-center hidden md:flex gap-2 '>
            
-            <TextLinks link='/components' text='Components'/>
+            <TextLinks link='/components/copy' text='Components'/>
             <TextLinks link='/learn' text='Learn'/>
             <TextLinks link='#' text='Templates'/>
            </div>
         </div>
         <div className='flex-center'>
             <ThemeToggler/>
-            <PrimaryButton text='Sign Up' type='link' className='p-2 rounded-full text-[14px] px-4'/>
+            {/* <PrimaryButton text='Sign Up' type='link' className='p-2 rounded-full text-[14px] px-4'/> */}
         </div>
        
     </div>

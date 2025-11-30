@@ -1,6 +1,6 @@
 "use client"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AnimatePresence, motion as m, Variants } from 'framer-motion'
 import Image from 'next/image'
 
@@ -14,11 +14,23 @@ interface staggerProps{
 
 export const StaggerCards = ({displacement=25, staggerDuration=0.05, CardsInView=3, items=[""]}:staggerProps) => {
     
-    const numberOfCardPerView= window.innerWidth < 480 ? 1 : CardsInView
-    const [borders, setBorders] = useState({start: 0, stop: window.innerWidth < 480 ? 1 : numberOfCardPerView})
-    const [current, setCurrent] = useState<string[]>(items.slice(borders.start, borders.stop))
-    const [direction, setDirection] = useState("")
   
+    const [direction, setDirection] = useState("")
+    const [windowWidth, setWindowWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 1200);
+    const numberOfCardPerView= windowWidth < 480 ? 1 : CardsInView
+    const [borders, setBorders] = useState({start: 0, stop: windowWidth < 480 ? 1 : numberOfCardPerView})
+    const [current, setCurrent] = useState<string[]>(items.slice(borders.start, borders.stop))
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     const handleForward = () => {
        if(current[current.length - 1] !== items[items.length - 1]){
             setCurrent(items.slice(borders.start + numberOfCardPerView, borders.stop + numberOfCardPerView))
@@ -130,7 +142,7 @@ export const page = () => {
 export const CodeTS = `
 "use client"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AnimatePresence, motion as m, Variants } from 'framer-motion'
 import Image from 'next/image'
 
@@ -144,11 +156,23 @@ interface staggerProps{
 
 export const StaggerCards = ({displacement=25, staggerDuration=0.05, CardsInView=3, items=[""]}:staggerProps) => {
     
-    const numberOfCardPerView= window.innerWidth < 480 ? 1 : CardsInView
-    const [borders, setBorders] = useState({start: 0, stop: window.innerWidth < 480 ? 1 : numberOfCardPerView})
-    const [current, setCurrent] = useState<string[]>(items.slice(borders.start, borders.stop))
-    const [direction, setDirection] = useState("")
   
+    const [direction, setDirection] = useState("")
+    const [windowWidth, setWindowWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 1200);
+    const numberOfCardPerView= windowWidth < 480 ? 1 : CardsInView
+    const [borders, setBorders] = useState({start: 0, stop: windowWidth < 480 ? 1 : numberOfCardPerView})
+    const [current, setCurrent] = useState<string[]>(items.slice(borders.start, borders.stop))
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     const handleForward = () => {
        if(current[current.length - 1] !== items[items.length - 1]){
             setCurrent(items.slice(borders.start + numberOfCardPerView, borders.stop + numberOfCardPerView))
