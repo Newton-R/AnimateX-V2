@@ -15,7 +15,7 @@ interface flipProps{
     finalSubSpread?: number
 }
 
-export const FlipCard = ({subImages=[""], mainStyle, subStyle,
+export const Flip = ({subImages=[""], mainStyle, subStyle,
     mainImage, iniSubSpread = 60, finalSubSpread = 150, flipDuration=0.5}:flipProps) => {
     const [raduis, setRaduis] = useState(iniSubSpread)
     return (

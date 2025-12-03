@@ -114,6 +114,11 @@ export const Sidebar = () => {
                     text: "Swift",
                     link: "/components/swift",
                     tag: ""
+                },
+                {
+                    text: "Steps",
+                    link: "/components/steps",
+                    tag: ""
                 }
             ]
 
