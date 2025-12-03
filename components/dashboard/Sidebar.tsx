@@ -116,8 +116,8 @@ export const Sidebar = () => {
                     tag: ""
                 },
                 {
-                    text: "Steps",
-                    link: "/components/steps",
+                    text: "Infinite",
+                    link: "/components/infinitecarousel",
                     tag: ""
                 }
             ]
