@@ -15,7 +15,7 @@ interface flipProps{
     finalSubSpread?: number
 }
 
-export const Flip = ({subImages=[""], mainStyle, subStyle,
+export const FlipCard = ({subImages=[""], mainStyle, subStyle,
     mainImage, iniSubSpread = 60, finalSubSpread = 150, flipDuration=0.5}:flipProps) => {
     const [raduis, setRaduis] = useState(iniSubSpread)
     return (
@@ -54,6 +54,7 @@ export const Flip = ({subImages=[""], mainStyle, subStyle,
                {
                     subImages.map((img, i) => 
                         <m.div
+                        key={i}
                         animate={{
                             x: raduis * Math.cos((i * 2 * Math.PI) / subImages.length),
                             y: raduis * Math.sin((i * 2 * Math.PI) / subImages.length),

@@ -1,5 +1,5 @@
 import PageLayout from '@/components/dashboard/PageLayout'
-import { Flip, CodeJS, CodeTS, usecasecode } from '@/components/ui/cards/flip'
+import { FlipCard, CodeJS, CodeTS, usecasecode } from '@/components/ui/cards/flip'
 import React from 'react'
 
 const FlipPage = () => {
@@ -72,14 +72,15 @@ const FlipPage = () => {
         <PageLayout 
         title='Flip Card'
         description='Smooth 3d card flip'
-        type='Pro' 
+        type='' 
         codejs={CodeJS}
         codets={CodeTS}
         usecasecode={usecasecode}
         props={component.props}
         sections={sections}
         features={component.features} 
-        component={<Flip subImages={subImages} mainImage={mainImage} mainStyle='rounded-xs'/>}/>
+        installCode='npx animatex-pro add flipcard'
+        component={<FlipCard subImages={subImages} mainImage={mainImage} mainStyle='rounded-xs'/>}/>
     </div>
   )
 }

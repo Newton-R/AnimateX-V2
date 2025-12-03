@@ -114,6 +114,11 @@ export const Sidebar = () => {
                     text: "Swift",
                     link: "/components/swift",
                     tag: ""
+                },
+                {
+                    text: "Infinite",
+                    link: "/components/infinitecarousel",
+                    tag: ""
                 }
             ]
 
