@@ -28,7 +28,7 @@ export const CopyButton: React.FC<buttonProps> = ({className, onClick, iconSize 
 
     const IconVariants: Variants = {
         "initial": {
-            opacity: 0,
+            opacity: 1,
             filter: "blur(3px)",
             scale: 0.8
         },

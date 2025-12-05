@@ -4,24 +4,16 @@ import Image from 'next/image'
 import { motion as m, useMotionValue, AnimatePresence } from 'motion/react'
 import { cn } from '@/lib/utils'
 
-interface LightCardProps{
-   className?: string,
-   imageUrl: string,
-   label: string,
-   lightSpacing?: number,
-   overlayStyle?: string
-}
 
-export const LightCard = ({ className, imageUrl, label, lightSpacing = 3, overlayStyle}: LightCardProps) => {
+export const LightCard = ({ className, imageUrl, label, lightSpacing = 3, overlayStyle}) => {
     const [isHovered, setIsHovered] = useState(false)
-    const parentContainer = useRef<HTMLDivElement>(null)
+    const parentContainer = useRef(null)
     const x = useMotionValue(0)
     const y = useMotionValue(0)
 
-    const handleonMouseMove = (event: React.MouseEvent) => {
+    const handleonMouseMove = (event) => {
         if(!parentContainer.current) return;
-        const target = event.target as HTMLElement
-        
+        const target = event.target
         const rect = target.getBoundingClientRect();
         const posx = (event.clientX - rect.left)
         const posy = (event.clientY - rect.top)

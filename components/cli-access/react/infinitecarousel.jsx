@@ -55,7 +55,7 @@ export const InfiniteCarousel = ({autoplay = false, playDuration = 2, ImageCards
 
 
   return (
-    <div style={{perspective: 500, transformStyle: "preserve-3d"}} className={cn('p-3 md:min-w-[300px] w-fit h-[400px] flex relative', className)}>
+    <div style={{perspective: 500, transformStyle: "preserve-3d"}} className={cn('p-3 md:max-w-80 w-[90%] h-[400px] flex relative', className)}>
         {
             ImageCards.map((card, i) => {
                 const active = i === current

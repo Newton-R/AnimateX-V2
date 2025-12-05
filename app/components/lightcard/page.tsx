@@ -1,7 +1,7 @@
 import PageLayout from '@/components/dashboard/PageLayout'
-import { Flip, CodeJS, CodeTS, usecasecode } from '@/components/ui/cards/flip'
+import {  CodeJS, CodeTS, usecasecode } from '@/components/ui/cards/flip'
 import { LightCard } from '@/components/ui/cards/lightcards'
-import React from 'react'
+
 
 const FlipPage = () => {
     const subImages = ["/demon/muza.jpeg","/demon/nezu.jpeg","/demon/pic1.jpeg", "/demon/pig.jpeg", "/demon/tanjiro.jpeg", "/demon/zenit.jpeg"]
@@ -71,9 +71,9 @@ const FlipPage = () => {
   return (
     <div>
         <PageLayout 
-        title='Flip Card'
-        description='Smooth 3d card flip'
-        type='Pro' 
+        title='Light Card'
+        description='Get a very light and interactive efffect on hover.'
+        type='Free' 
         codejs={CodeJS}
         codets={CodeTS}
         usecasecode={usecasecode}

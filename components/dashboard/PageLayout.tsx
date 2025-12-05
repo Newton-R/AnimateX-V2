@@ -10,6 +10,7 @@ import { ComponentLoader } from '../sub/componentLoader'
 import { RefreshCcw } from 'lucide-react'
 import { Footer } from '../main/Footer'
 import { PropBlock } from '../sub/propblock'
+import { CommandBlock } from '../sub/commandblock'
 
 
 interface props{
@@ -41,7 +42,8 @@ interface pageprop{
     componentType?: string
     variants?: variants[],
     sections?: sections[],
-    installCode?: string
+    installCode?: string,
+    
 }
 
 
@@ -54,7 +56,7 @@ const PageLayout = ({title, variants, installCode,
     const [using, setUsing] = useState("cli")
     const [key, setKey] = useState(0)
     
-    const dependencies = `npm i motion lucide-react tailwind-merge clsx`
+    const dependencies = `motion lucide-react tailwind-merge clsx`
 
     const utilsCode = `
             import { clsx, type ClassValue} from "clsx"
@@ -152,7 +154,7 @@ export function cn(...inputs: ClassValue[]) {
                             componentType === "block" ?
                             <div  ref={container1} className={('p-[10px] rounded-[16px] w-full bg-[var(--secondary)] transition-all duration-300 @container mx-auto border border-col')}>
                                 <div key={key}
-                                className='min-h-[490px] md:h-[480px] flex-center justify-center relative gradient p-2 bg-[var(--bg)] border border-col rounded-[6px] w-full'>
+                                className='min-h-[490px] md:h-[480px] flex-center overflow-hidden justify-center relative gradient p-2 bg-[var(--bg)] border border-col rounded-[6px] w-full'>
                                         {
                                             current === "Preview" &&
                                             <button onClick={Reload} className='p-2 cursor-pointer bg-[var(--bg)] rounded-md absolute top-2 right-2'><RefreshCcw/></button>
@@ -183,7 +185,7 @@ export function cn(...inputs: ClassValue[]) {
                                          <h2 className='flex gap-2 items-center'>With props <PropBlock prop={vari.prop}/></h2>
                                          <div className={('p-[10px] w-full bg-[var(--secondary)] transition-all duration-300 @container mx-auto border border-col rounded-[16px]')}>
                                              <div 
-                                             className='min-h-[300px] md:min-h-[480px] flex-center justify-center gradient p-2 bg-[var(--bg)] border border-col rounded-[6px] w-full'>
+                                             className='min-h-[300px] md:min-h-[480px] overflow-hidden flex-center justify-center gradient p-2 bg-[var(--bg)] border border-col rounded-[6px] w-full'>
                                                  {vari.component} 
                                              </div>
                                          </div>     
@@ -220,8 +222,7 @@ export function cn(...inputs: ClassValue[]) {
                             <div className='w-full rounded-md flex flex-col gap-2 relative pl-5 border-l border-col'>
                                  <div className='absolute top-0 left-0 w-2 bg-[var(--secondary-hover)] rounded-r-xl h-8'/>
                                 <span className='mt-1'>Run the following command</span>
-                        
-                                <CodeBlock language={"jsx"} code={installCode ? installCode : ""}/>
+                                <CommandBlock item={title.toLocaleLowerCase().split(" ").join("")} type='x'/>
                             </div>
 
                         }
@@ -232,9 +233,7 @@ export function cn(...inputs: ClassValue[]) {
                                 <div className='flex flex-col gap-4 relative pl-5'>
                                     <div className='absolute top-0 left-0 w-2 bg-[var(--secondary-hover)] rounded-r-xl h-8'/>
                                     <span className='mt-1'>Install dependencies</span>
-                                    <div className='w-full h-20 rounded-md relative'>
-                                        <CodeBlock language={"jsx"} code={dependencies}/>
-                                    </div>
+                                    <CommandBlock item={dependencies} mainCommand={"add"} type='n'/>
                                     <span className='mt-1'>lib/utils.ts</span>
                                     <CodeBlock language={"jsx"} code={utilsCode}/>
                                 </div>
@@ -245,7 +244,7 @@ export function cn(...inputs: ClassValue[]) {
                                         <div className='h-[480px] md:h-[280px] gradient overflow-x-hidden
                                         bg-[var(--bg)] border border-col relative rounded-[6px] w-full'>
                                             
-                                            <div className='p-[1px] flex-center absolute top-2 z-60 right-8 w-fit rounded-md bg-[var(--secondary)] gap-2'>
+                                            <div className='p-[1px] flex-center absolute top-2 z-20 right-8 w-fit rounded-md bg-[var(--secondary)] gap-2'>
                                                 <span onClick={() => setCode({language: "tsx", code: codets})} className='cursor-pointer px-2 py-1 rounded hover:bg-[var(--secondary-hover)]'>TS</span>
                                                 <span onClick={() => setCode({language: "jsx", code: codejs})} className='cursor-pointer px-2 py-1 rounded hover:bg-[var(--secondary-hover)]'>JS</span>
                                                 <CopyButton onClick={handleCopy} className='py-2 hover:bg-[var(--secondary-hover)] rounded-md w-fit px-2' animationVariant={2}/>
