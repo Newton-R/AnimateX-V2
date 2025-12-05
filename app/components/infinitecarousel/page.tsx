@@ -43,13 +43,22 @@ const StaggerCardsPage = () => {
 
   return (
     <PageLayout 
-        title='Stagger Cards'
-        description='Smooth cards transition with stagger effects to give that fluid effect.'
-        type='' 
+        title='Infinite Carousel'
+        description='Carousel component with infiite scroll.'
+        type='Free' 
         codejs={codeReact}
         codets={codeNext}
         usecasecode={usecasecode}
         installCode='npx animatex-pro add infinitecarousel'
+        variants={
+          [
+            {
+              prop: "autoplay = true",
+              component: <InfiniteCarousel ImageCards={images} autoplay/>
+            }
+
+        ]
+      }
         props={component.props}
         features={component.features} 
         component={component.block}/>
