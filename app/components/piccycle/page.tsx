@@ -1,7 +1,5 @@
 import PageLayout from '@/components/dashboard/PageLayout'
-import { Flip, CodeJS, CodeTS, usecasecode } from '@/components/ui/cards/flip'
 import { PicCycle } from '@/components/ui/cards/picCycle'
-import React from 'react'
 
 const PicCyclePage = () => {
     const subImages = ["/demon/muza.jpeg","/demon/nezu.jpeg","/demon/pic1.jpeg", "/demon/pig.jpeg", "/demon/tanjiro.jpeg", "/demon/zenit.jpeg"]
@@ -74,9 +72,9 @@ const PicCyclePage = () => {
         title='Flip Card'
         description='Smooth 3d card flip'
         type='Pro' 
-        codejs={CodeJS}
-        codets={CodeTS}
-        usecasecode={usecasecode}
+        codejs={""}
+        codets={""}
+        usecasecode={""}
         props={component.props}
         sections={sections}
         features={component.features} 
