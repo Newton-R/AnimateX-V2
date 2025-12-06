@@ -43,13 +43,14 @@ interface pageprop{
     variants?: variants[],
     sections?: sections[],
     installCode?: string,
-    manual?:boolean
+    manual?:boolean,
+    layoutType?: "doc" | "component"
     
 }
 
 
 
-const PageLayout = ({title, variants, installCode, manual=true,
+const PageLayout = ({title, variants, installCode, manual=true, layoutType = "component", 
     description, component, type, sections, 
     codets, codejs, features=[""], props, usecasecode, componentType="block"}:pageprop) => {
     const [code, setCode] = useState({language: "tsx", code: codets})

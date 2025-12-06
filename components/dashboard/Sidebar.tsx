@@ -135,16 +135,17 @@ export const Sidebar = () => {
     const links = [
         {
             icon: <Text size={16}/>,
-            text: "Documentation"
-        },
-        {
-            icon: <Zap size={16}/>,
-            text: "Templates"
-        },
-        {
-            icon: <Flower size={16}/>,
-            text: "Gallery",
-            link: "/components/gallery"
+            text: "Documentation",
+            sublinks: [
+                {
+                    text: "Getting Started",
+                    link: "/components/docs/"
+                },
+                  {
+                    text: "AnimateX CLI",
+                    link: "/components/cli/"
+                }
+            ]
         }
     ]
     const fadeInVariants: Variants = {
@@ -181,15 +182,24 @@ export const Sidebar = () => {
           <div className='p-2'>
             {
                 links.map((link, i) => 
-                    <Link href={link.link ? link.link : ""} key={i}>
-                        <m.div whileHover="hovered" className='flex-center text-[14px] gap-2 hover:bg-[var(--secondary-hover)] 
-                        cursor-pointer p-2 py-1 rounded-md'>
-                                {link.icon}
-                            <m.span variants={{"hovered": {x : 5}}}>
-                                {link.text}
-                            </m.span>
-                        </m.div>
-                    </Link>
+                    <div key={i} className='p-2'>
+                        <div className='flex-center gap-2'>
+                            {link.icon}
+                            {link.text}
+                        </div>
+                        {
+                            link.sublinks.map((li, i) => 
+                                <Link href={li.link ? li.link : ""} key={i}>
+                                    <m.div whileHover="hovered" className='flex-center text-[14px] gap-2 hover:bg-[var(--secondary-hover)] 
+                                    cursor-pointer p-2 py-1 rounded-md'>
+                                        <m.span variants={{"hovered": {x : 5}}}>
+                                            {li.text}
+                                        </m.span>
+                                    </m.div>
+                                </Link>
+                            )
+                        }
+                    </div>
                 )
             }
             <div className='mt-2 text-[14px]'>
