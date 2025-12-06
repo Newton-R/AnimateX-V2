@@ -140,10 +140,6 @@ export const Sidebar = () => {
                 {
                     text: "Getting Started",
                     link: "/components/docs/"
-                },
-                  {
-                    text: "AnimateX CLI",
-                    link: "/components/cli/"
                 }
             ]
         }
@@ -175,7 +171,7 @@ export const Sidebar = () => {
       </AnimatePresence>
       
       {/* we are trying */}
-      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col md:mt-14 bg-[var(--bg)] overflow-y-scroll left-0 top-0 border-r-1 border-col h-screen z-50', 
+      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col mt-10 md:mt-14 bg-[var(--bg)] overflow-y-scroll left-0 top-0 border-r-1 border-col h-screen z-50', 
           isOpen ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"
       )}>
          
