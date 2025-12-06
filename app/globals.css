@@ -159,6 +159,14 @@ p{
   z-index: -1;
 }
 
+blockquote{
+  @apply leading-7 mt-3
+}
+
+.text-large{
+  @apply text-2xl md:text-4xl mb-2 
+}
+
 /* Mobile responsive improvements */
 @media (max-width: 768px) {
   .title {
