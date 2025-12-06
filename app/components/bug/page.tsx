@@ -1,7 +1,7 @@
 "use client"
 import PageLayout from '@/components/dashboard/PageLayout'
-import React, { useState } from 'react'
-import { ReportBug, CodeJS, CodeTS, UseCase } from '@/components/sub/reportbug'
+import { useState } from 'react'
+import { ReportBug, CodeJS, CodeTS, UseCase } from '@/components/ui/modals/reportbug'
 
 
 const ReportBugPage = () => {
