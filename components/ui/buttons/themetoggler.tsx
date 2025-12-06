@@ -1,12 +1,11 @@
 "use client"
-import { useState } from 'react'
 import { AnimatePresence, motion as m, Variants } from 'motion/react'
 import { cn } from '@/lib/utils'
 import { useTheme } from 'next-themes'
 import { Moon, Sun } from 'lucide-react'
 
-export const ThemeToggler = () => {
-  const [isOpen, setIsOpen] = useState(false)
+
+export const ThemeToggler = ({simple}:{simple?:boolean}) => {
   const { theme, setTheme} = useTheme()
 
   const LightIconVariants: Variants = {
@@ -49,8 +48,16 @@ export const ThemeToggler = () => {
     if(!document.startViewTransition) ThemeControl()
     document.startViewTransition(ThemeControl)
   }
+
+  const SwitchTheme = () => {
+    if(simple){
+      ThemeControl()
+    }else{
+      MakeTransition()
+    }
+  }
   return (
-    <div onClick={MakeTransition} 
+    <div onClick={SwitchTheme} 
     className={cn('w-14 p-[1px] flex items-center cursor-pointer bg-gray-50 dark:bg-neutral-800 rounded-full border-2 border-col',
       theme === "dark" ? "flex-row-reverse" : "justify-start"
     )}>

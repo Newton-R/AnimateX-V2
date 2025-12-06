@@ -20,7 +20,7 @@ export const CommandBlock = ({type, item}:CommandBlock) => {
         },
         {
             pkm: "yarn",
-            command: type === "x" ?  `yarn animatex-pro add ${item}` : `yarn add  ${item}` 
+            command: type === "x" ?  `yarn dlx animatex-pro add ${item}` : `yarn add  ${item}` 
         }
     ]
   return (

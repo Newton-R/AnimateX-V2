@@ -34,6 +34,11 @@ const StaggerCardsPage = () => {
             prop: "CardsInView",
             default: "3",
             description: "Determines the number of cards displayed in view."
+          },
+          {
+            prop: "cardStyle",
+            default: "",
+            description: "Style cards according to your preferences."
           }
 
         ]
@@ -41,7 +46,7 @@ const StaggerCardsPage = () => {
 
   return (
     <PageLayout 
-        title='Stagger Cards'
+        title='Stagger Carousel'
         description='Smooth cards transition with stagger effects to give that fluid effect.'
         type='Pro' 
         codejs={CodeJS}

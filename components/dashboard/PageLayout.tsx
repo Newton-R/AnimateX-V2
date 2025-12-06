@@ -43,12 +43,13 @@ interface pageprop{
     variants?: variants[],
     sections?: sections[],
     installCode?: string,
+    manual?:boolean
     
 }
 
 
 
-const PageLayout = ({title, variants, installCode,
+const PageLayout = ({title, variants, installCode, manual=true,
     description, component, type, sections, 
     codets, codejs, features=[""], props, usecasecode, componentType="block"}:pageprop) => {
     const [code, setCode] = useState({language: "tsx", code: codets})
@@ -208,13 +209,16 @@ export function cn(...inputs: ClassValue[]) {
                                }
                                 CLI
                             </div>
-                            <div onClick={() => setUsing("man")} className='p-2 cursor-pointer rounded-md relative'>
-                                {
-                                    using === "man" &&
-                                     <m.div layoutId='lip' className='absolute rounded-md inset-0 bg-[var(--secondary-hover)] -z-10'/>
-                               }
-                                Manual
-                            </div>
+                            {
+                                manual &&
+                                 <div onClick={() => setUsing("man")} className='p-2 cursor-pointer rounded-md relative'>
+                                    {
+                                        using === "man" &&
+                                        <m.div layoutId='lip' className='absolute rounded-md inset-0 bg-[var(--secondary-hover)] -z-10'/>
+                                }
+                                    Manual
+                                </div>
+                            }
                         </div>
 
                         {

@@ -5,7 +5,7 @@ import { ArrowButton, CodeJS, Code, UseCase } from '@/components/ui/buttons/arro
 
 const FeedbackPage = () => {
     const component = {
-        block: <ArrowButton bgPrimaryColor='#e2e2e2' className='shadow-md shadow-gray-100'/>,
+        block: <ArrowButton bgPrimaryColor='#e2e2e2'/>,
         features: [
           "Easily customizable with props",
             "Smooth color transition"
