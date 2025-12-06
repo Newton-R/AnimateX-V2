@@ -2,9 +2,10 @@ import PageLayout from '@/components/dashboard/PageLayout'
 import { Footer } from '@/components/main/Footer'
 import CodeBlock from '@/components/sub/codeblock'
 import { CommandBlock } from '@/components/sub/commandblock'
+import GithubLink from '@/components/sub/githublink'
 import { PropBlock } from '@/components/sub/propblock'
 import { AuraButton } from '@/components/ui/buttons/aurabutton'
-import { AlertCircle } from 'lucide-react'
+import { AlertCircle, Target } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -185,6 +186,7 @@ const DocumentationPage = () => {
 
           <div>
             You love what you see dropping a star⭐ on the repo would be of great help!!
+            <GithubLink/>
           </div>
           <div className='flex items-center border-t border-col mt-7 gap-3 justify-between py-4 md:py-8'>
             <p>&copy; 2025</p>

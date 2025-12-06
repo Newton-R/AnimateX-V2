@@ -26,7 +26,7 @@ const CodeBlock = ({code, language, type}:props) => {
             <CopyButton 
                 animationVariant={2}
                 onClick={copyCode}
-                className='absolute top-0 translate-y-full right-4 bg-transparent clickable p-1 px-0 w-8 flex items-center justify-center rounded-md'/>
+                className='absolute top-0 translate-y-full right-4 bg-(--secondary-hover) clickable p-1 px-0 w-8 flex items-center justify-center rounded-md'/>
           }
             <Prism language="typescript"  style={theme === "dark" ? vscDarkPlus : vs} 
             customStyle={{ padding: "1rem", height: "auto",
