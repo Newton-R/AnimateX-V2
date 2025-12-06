@@ -1,13 +1,13 @@
 import React from 'react'
 import PageLayout from '@/components/dashboard/PageLayout'
-import { StaggerCards, CodeTS, CodeJS, UseCaseCode } from '@/components/ui/staggercards'
+import { StaggerCarousel, CodeTS, CodeJS, UseCaseCode } from '@/components/ui/staggercards'
 
 const StaggerCardsPage = () => {
     const images = ["/fashion/fas.jpeg", "/fashion/fas1.jpeg", "/fashion/fas2.jpeg",
          "/fashion/fas3.jpeg", "/fashion/fas4.jpeg","/fashion/fas5.jpeg","/fashion/fas6.jpeg","/fashion/fas7.jpeg",
         "/fashion/fas8.jpeg"]
     const component = {
-        block: <StaggerCards CardsInView={3} items={images}/>,
+        block: <StaggerCarousel CardsInView={3} items={images}/>,
         features: [
           "Easily customizable with props",
           "Responsive on all screens",

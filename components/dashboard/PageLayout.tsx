@@ -233,7 +233,7 @@ export function cn(...inputs: ClassValue[]) {
                                 <div className='flex flex-col gap-4 relative pl-5'>
                                     <div className='absolute top-0 left-0 w-2 bg-[var(--secondary-hover)] rounded-r-xl h-8'/>
                                     <span className='mt-1'>Install dependencies</span>
-                                    <CommandBlock item={dependencies} mainCommand={"add"} type='n'/>
+                                    <CommandBlock item={dependencies} type='n'/>
                                     <span className='mt-1'>lib/utils.ts</span>
                                     <CodeBlock language={"jsx"} code={utilsCode}/>
                                 </div>

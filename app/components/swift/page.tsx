@@ -1,5 +1,5 @@
 import PageLayout from '@/components/dashboard/PageLayout'
-import { Swift } from '@/components/ui/carousels/swift'
+import { SwiftCarousel, codeNext, CodeReact } from '@/components/ui/carousels/swift'
 
 const InfiniteZPage = () => {
     const images = ["/demon/demon.jpeg", "/demon/muza.jpeg", "/demon/nezu.jpeg",
@@ -12,28 +12,64 @@ const InfiniteZPage = () => {
       "Responsive on all screens",
       "Button customisable with props"
     ],
+   
     props: [
       {
-        prop: "Cards",
+        prop: "images",
         default: "None",
-        description: "Determines the cards to be in the stack"
+        description: "Array of images for the switching interaction."
+      },
+       {
+        prop: "cardWidth",
+        default: "280",
+        description: "Determines the width of each card."
+      },
+       {
+        prop: "cardHeight",
+        default: "290",
+        description: "Determines the height of each card."
+      },
+       {
+        prop: "className",
+        default: "",
+        description: "style the main container to fit your design."
+      },
+      {
+        prop: "backText",
+        default: "",
+        description: "Determines the text that rests behind the carousel."
+      },
+      {
+        prop: "textStyle",
+        default: "",
+        description: "Style the backText."
+      },
+      {
+        prop: "swiftDelay",
+        default: "2",
+        description: "Controls the delay time before image switching."
+      },
+      {
+        prop: "swiftDuration",
+        default: "0.4",
+        description: "Controls how fast each images closes as it leaves."
       }
     ]
   }
   return (
     <div>
         <PageLayout 
-        title='Letter Stack'
-        description='Smooth letter cards interaction'
-        type='Pro' 
-        codejs=''
-        codets=''
+        title='Swift Carousel'
+        description='Carousel with auto zigzag switching effect.'
+        type='Free' 
+        codejs={CodeReact}
+        codets={codeNext}
         usecasecode=''
         props={component.props}
         features={component.features} 
         component={
         
-        <Swift images={images} backText='Anime'/>
+        <SwiftCarousel cardHeight={400} cardWidth={300} images={images} backText='Anime'/>
         }/>
     </div>
   )

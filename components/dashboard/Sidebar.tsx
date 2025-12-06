@@ -17,40 +17,7 @@ interface components{
     icon: React.ReactNode,
     content: content[]
 }
-
-export const Sidebar = () => {
-    const { isOpen, setToggle} = useNavToggle()
-    const links = [
-        {
-            icon: <Text size={16}/>,
-            text: "Documentation"
-        },
-        {
-            icon: <Zap size={16}/>,
-            text: "Templates"
-        },
-        {
-            icon: <Flower size={16}/>,
-            text: "Gallery",
-            link: "/components/gallery"
-        }
-    ]
-    const fadeInVariants: Variants = {
-    "hidden": {
-        opacity: 0,
-        transition: {
-            duration: 0.2
-        }
-    },
-    "visible": {
-        opacity: 1,
-        transition: {
-            duration: 0.4
-        }
-    }
-} 
-
-    const components: components[] = [
+export const componentslist: components[] = [
         {
             category: "Buttons",
             icon: <MousePointer size={16}/>,
@@ -96,13 +63,13 @@ export const Sidebar = () => {
             icon: <Drama size={18}/>,
             content: [
                 {
-                    text: "Stagger Cards",
+                    text: "Stagger",
                     link: "/components/staggercards",
                     tag: ""
                 },
                 {
-                    text: "Highlight Cards",
-                    link: "/components/rotate",
+                    text: "Highlight",
+                    link: "/components/highlight",
                     tag: ""
                 },
                 {
@@ -157,6 +124,37 @@ export const Sidebar = () => {
 
         }
     ]
+export const Sidebar = () => {
+    const { isOpen, setToggle} = useNavToggle()
+    const links = [
+        {
+            icon: <Text size={16}/>,
+            text: "Documentation"
+        },
+        {
+            icon: <Zap size={16}/>,
+            text: "Templates"
+        },
+        {
+            icon: <Flower size={16}/>,
+            text: "Gallery",
+            link: "/components/gallery"
+        }
+    ]
+    const fadeInVariants: Variants = {
+    "hidden": {
+        opacity: 0,
+        transition: {
+            duration: 0.2
+        }
+    },
+    "visible": {
+        opacity: 1,
+        transition: {
+            duration: 0.4
+        }
+    }
+} 
   return (
     <>
       {/* Mobile backdrop */}
@@ -170,7 +168,7 @@ export const Sidebar = () => {
       </AnimatePresence>
       
       {/* we are trying */}
-      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col pt-14 bg-[var(--bg)] overflow-y-scroll left-0 top-0 border-r-1 border-col h-screen z-50', 
+      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col md:mt-14 bg-[var(--bg)] overflow-y-scroll left-0 top-0 border-r-1 border-col h-screen z-50', 
           isOpen ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"
       )}>
          
@@ -190,7 +188,7 @@ export const Sidebar = () => {
             }
             <div className='mt-2 text-[14px]'>
                 {
-                    components.map((component, i) => 
+                    componentslist.map((component, i) => 
                       <div key={i} className='p-2'>
                         <div className='flex-center gap-2'>
                             {component.icon}
