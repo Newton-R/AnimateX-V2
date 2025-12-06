@@ -1,18 +1,19 @@
 "use client"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
-import { AnimatePresence, motion as m, Variants } from 'framer-motion'
+import { AnimatePresence, motion as m, Variants } from 'motion/react'
 import Image from 'next/image'
+import { cn } from '@/lib/utils'
 
 interface staggerProps{
     items: string[],
     CardsInView?: number,
     displacement?: number,
-    staggerDuration?: number
-
+    staggerDuration?: number,
+    cardStyle?:string
 }
 
-export const StaggerCards = ({displacement=25, staggerDuration=0.05, CardsInView=3, items=[""]}:staggerProps) => {
+export const StaggerCarousel = ({displacement=25, staggerDuration=0.05, CardsInView=3, items=[""], cardStyle}:staggerProps) => {
     
   
     const [direction, setDirection] = useState("")
@@ -91,7 +92,7 @@ export const StaggerCards = ({displacement=25, staggerDuration=0.05, CardsInView
                         animate="show"
                         exit="exit"
                         custom={i}
-                        className='w-full md:flex-1 flex h-80 rounded-md items-center justify-center'>
+                        className={cn('w-full md:flex-1 flex h-80 rounded-md items-center justify-center', cardStyle)}>
                            <Image height={320} width={280} alt="image" src={col}>
 
                            </Image>

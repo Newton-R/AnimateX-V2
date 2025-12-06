@@ -1,6 +1,5 @@
 import PageLayout from '@/components/dashboard/PageLayout'
-import { CanvasCarousel } from '@/components/ui/carousels/canvas/canvas'
-import React from 'react'
+import { CanvasCarousel, nextcode, reactcode } from '@/components/ui/carousels/canvas/canvas'
 
 const CanvasCarouselPage = () => {
     const images = [
@@ -15,20 +14,30 @@ const CanvasCarouselPage = () => {
     ],
     props: [
       {
-        prop: "Cards",
+        prop: "images",
         default: "None",
-        description: "Determines the cards to be in the stack"
+        description: "Array of images you want to exist on the carousel."
+      },
+      {
+        prop: "className",
+        default: "None",
+        description: "Style the carousel block as you want. Think monstly for width and height :)"
+      },
+      {
+        prop: "buttonStyles",
+        default: "None",
+        description: "Style the floating button to fit your design."
       }
     ]
   }
   return (
     <div>
         <PageLayout 
-        title='Letter Stack'
-        description='Smooth letter cards interaction'
-        type='' 
-        codejs=''
-        codets=''
+        title='Canvas Carousel'
+        description='Smooth linear carousel with free controls.'
+        type='Free' 
+        codejs={reactcode}
+        codets={nextcode}
         usecasecode=''
         props={component.props}
         features={component.features} 

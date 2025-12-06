@@ -4,24 +4,23 @@ import { motion as m } from 'motion/react'
 
 interface CommandBlock{
     type?: "x" | "n",
-    mainCommand?: string,
     item: string
 }
 
-export const CommandBlock = ({type, mainCommand ="animatex-pro add", item}:CommandBlock) => {
+export const CommandBlock = ({type, item}:CommandBlock) => {
     const [current, setcurrent] = useState(0)
     const commandlists = [
         {
             pkm: "npm",
-            command: type === "x" ?  `npx ${mainCommand} ${item}` : `npm ${mainCommand} ${item}` 
+            command: type === "x" ?  `npx animatex-pro add ${item}` : `npm i ${item}` 
         },
         {
             pkm: "pnpm",
-            command: type === "x" ?  `pnpx ${mainCommand} ${item}` : `pnpm ${mainCommand} ${item}` 
+            command: type === "x" ?  `pnpx animatex-pro add ${item}` : `pnpm add ${item}` 
         },
         {
             pkm: "yarn",
-            command: type === "x" ?  `yarn ${mainCommand} ${item}` : `yarn ${mainCommand} ${item}` 
+            command: type === "x" ?  `yarn animatex-pro add ${item}` : `yarn add  ${item}` 
         }
     ]
   return (
