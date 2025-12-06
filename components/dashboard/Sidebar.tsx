@@ -13,6 +13,8 @@ interface content{
     text: string
 }
 
+const states = ["New","Updated"]
+
 interface components{
     category: string,
     icon: React.ReactNode,
@@ -30,12 +32,12 @@ export const componentslist: components[] = [
                 {
                     text: "Aero Button",
                     link: "/components/aerobutton",
-                    tag: "updated"
+                    tag: states[1]
                 },
                 {
                     text: "Arrow Button",
                     link: "/components/arrow",
-                    tag: "updated"
+                    tag: states[1]
                 },
                  {
                     text: "Loading",
@@ -67,27 +69,27 @@ export const componentslist: components[] = [
                 {
                     text: "Stagger",
                     link: "/components/staggercards",
-                    tag: "updated"
+                    tag: states[1]
                 },
                 {
                     text: "Highlight",
                     link: "/components/highlight",
-                    tag: "updated"
+                    tag: states[1]
                 },
                 {
                     text: "Canvas",
                     link: "/components/canvas",
-                    tag: "updated"
+                    tag: states[1]
                 },
                 {
                     text: "Swift",
                     link: "/components/swift",
-                    tag: "updated"
+                    tag: states[1]
                 },
                 {
                     text: "Infinite",
                     link: "/components/infinitecarousel",
-                    tag: "New"
+                    tag: states[0]
                 }
             ]
 
@@ -98,12 +100,13 @@ export const componentslist: components[] = [
             content: [
                 {
                     text: "Dailog",
-                    link: "/components/dailog"
+                    link: "/components/dailog",
+                    tag: states[1]
                 },
                 {
                     text: "Report Bug",
                     link: "/components/bug",
-                    tag: ""
+                    tag: states[1]
                 }
             ]
 
@@ -120,7 +123,7 @@ export const componentslist: components[] = [
                 {
                     text: "Light Card",
                     link: "/components/lightcard",
-                    tag: "New"
+                    tag: states[0]
                 }
             ]
 

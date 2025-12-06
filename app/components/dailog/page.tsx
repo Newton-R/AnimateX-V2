@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import PageLayout from '@/components/dashboard/PageLayout'
-import { Dailog, CodeTS, CodeJS, usecasecode } from '@/components/ui/buttons/dailog'
+import { Dailog, CodeTS, CodeJS, usecasecode } from '@/components/ui/modals/dailog'
 import { CircleAlert } from 'lucide-react'
 
 const DailogPage = () => {
