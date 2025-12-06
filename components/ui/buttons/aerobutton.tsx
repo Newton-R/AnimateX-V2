@@ -1,8 +1,8 @@
 "use client"
 import React, { useState } from 'react'
 import { Send } from 'lucide-react'
-import { motion, MotionStyle } from 'framer-motion'
-import clsx from 'clsx'
+import { motion, MotionStyle } from 'motion/react'
+import { cn } from '@/lib/utils'
 
 type CSSVars = {
     [key: `--${string}`]: string | number
@@ -61,7 +61,7 @@ export const AeroButton = ({text="AeroButton",
             onClick()
         }
     }}
-    className={clsx(`flex rounded-md text-white gap-2 overflow-hidden cursor-pointer px-4 p-2 items-center justify-center`,
+    className={cn(`flex rounded-md text-white gap-2 overflow-hidden cursor-pointer px-4 p-2 items-center justify-center`,
         className && className
     )}>
         {text}
@@ -89,8 +89,8 @@ export const Code = `
 "use client"
 import React, { useState } from 'react'
 import { Send } from 'lucide-react'
-import { motion, MotionStyle } from 'framer-motion'
-import clsx from 'clsx'
+import { motion, MotionStyle } from 'motion/react'
+import { cn } from '@/lib/utils'
 
 type CSSVars = {
     [key: \`--$\{string}\`]: string | number
@@ -149,8 +149,8 @@ export const AeroButton = ({text="AeroButton",
             onClick()
         }
     }}
-    className={clsx("flex rounded-md text-white gap-2 overflow-hidden cursor-pointer px-4 p-2 items-center justify-center",
-        className && className
+    className={cn("flex rounded-md text-white gap-2 overflow-hidden cursor-pointer px-4 p-2 items-center justify-center",
+        className
     )}>
         {text}
         <motion.div className='max-w-fit overflow-hidden' 
@@ -178,8 +178,8 @@ export const AeroButton = ({text="AeroButton",
 export const CodeJS = `
 import React, { useState } from 'react'
 import { Send } from 'lucide-react'
-import { motion, MotionStyle } from 'framer-motion'
-import clsx from 'clsx'
+import { motion, MotionStyle } from 'motion/react'
+import { cn } from '@/lib/utils'
 
 type CSSVars = {
     [key: \`--$\{string}\`]: string | number
@@ -228,8 +228,8 @@ export const AeroButton = ({text="AeroButton",
             onClick()
         }
     }}
-    className={clsx("flex rounded-md text-white gap-2 overflow-hidden cursor-pointer px-4 p-2 items-center justify-center",
-        className && className
+    className={cn("flex rounded-md text-white gap-2 overflow-hidden cursor-pointer px-4 p-2 items-center justify-center",
+        className
     )}>
         {text}
         <motion.div className='max-w-fit overflow-hidden' 

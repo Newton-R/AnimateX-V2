@@ -5,6 +5,7 @@ import Link from 'next/link'
 import clsx from "clsx"
 import { useNavToggle } from '@/utils/store'
 import { Variants, motion as m, AnimatePresence} from 'motion/react'
+import { usePathname } from 'next/navigation'
 
 interface content{
     link: string,
@@ -28,12 +29,13 @@ export const componentslist: components[] = [
                 },
                 {
                     text: "Aero Button",
-                    link: "/components/aerobutton"
+                    link: "/components/aerobutton",
+                    tag: "updated"
                 },
                 {
                     text: "Arrow Button",
                     link: "/components/arrow",
-                    tag: ""
+                    tag: "updated"
                 },
                  {
                     text: "Loading",
@@ -65,27 +67,27 @@ export const componentslist: components[] = [
                 {
                     text: "Stagger",
                     link: "/components/staggercards",
-                    tag: ""
+                    tag: "updated"
                 },
                 {
                     text: "Highlight",
                     link: "/components/highlight",
-                    tag: ""
+                    tag: "updated"
                 },
                 {
                     text: "Canvas",
                     link: "/components/canvas",
-                    tag: ""
+                    tag: "updated"
                 },
                 {
                     text: "Swift",
                     link: "/components/swift",
-                    tag: ""
+                    tag: "updated"
                 },
                 {
                     text: "Infinite",
                     link: "/components/infinitecarousel",
-                    tag: ""
+                    tag: "New"
                 }
             ]
 
@@ -118,7 +120,7 @@ export const componentslist: components[] = [
                 {
                     text: "Light Card",
                     link: "/components/lightcard",
-                    tag: ""
+                    tag: "New"
                 }
             ]
 
@@ -126,6 +128,7 @@ export const componentslist: components[] = [
     ]
 export const Sidebar = () => {
     const { isOpen, setToggle} = useNavToggle()
+    const path = usePathname()
     const links = [
         {
             icon: <Text size={16}/>,
@@ -199,12 +202,16 @@ export const Sidebar = () => {
                                  component.content.map((cont, i) => 
                                     <Link href={cont.link} onClick={setToggle} key={i} >
                                         <m.div whileHover="hovered" 
-                                            className='flex-center gap-2 hover:bg-[var(--secondary-hover)] cursor-pointer
+                                            className='flex-center justify-between gap-2 relative hover:bg-[var(--secondary-hover)] cursor-pointer
                                             p-2 py-1 rounded-md'>
                                                 <m.span className='flex-center gap-4' variants={{"hovered": {x : 5}}}>
                                                     {cont.text}
                                                     {cont.tag ? <span className='blue-gradient-text text-xs h-fit'>{cont.tag}</span> : ""}
                                                 </m.span>
+                                                {
+                                                    path === cont.link &&
+                                                    <m.div layoutId='mondot' className='blue-gradient absolute w-2 h-2 rounded-full right-1'/>
+                                                }
                                         </m.div>
                                     </Link>
                                 )

@@ -1,8 +1,8 @@
 "use client"
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion } from 'motion/react'
 import { ArrowLeft } from 'lucide-react'
-import clsx from 'clsx'
+import { cn } from '@/lib/utils'
 
 interface props{
     text?: string,
@@ -35,8 +35,8 @@ export const ArrowButton = ({
         background : isHovered ? bgSecondaryColor : bgPrimaryColor ,
         color: isHovered ? textSecondaryColor : textPrimaryColor,
     }}
-    className={clsx("flex items-center cursor-pointer rounded-md p-2 shrink-0 overflow-hidden gap-2 justify-center",
-        className && className
+    className={cn("flex items-center cursor-pointer rounded-md p-2 shrink-0 overflow-hidden gap-2 justify-center",
+        className
     )}>
         <motion.div
             transition={{duration: 0.3, ease: "linear"}}
@@ -73,9 +73,9 @@ export const ArrowButton = ({
 export const Code = `
 "use client"
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { ArrowLeft } from 'lucide-react'
-import clsx from 'clsx'
+import { cn } from '@/lib/utils'
 
 interface props{
     text?: string,
@@ -107,8 +107,8 @@ export const ArrowButton = ({text="ArrowButton",
         background : isHovered ? bgSecondaryColor : bgPrimaryColor ,
         color: isHovered ? textSecondaryColor : textPrimaryColor,
     }}
-    className={clsx("flex items-center cursor-pointer rounded-md p-2 shrink-0 overflow-hidden gap-2 justify-center",
-        className && className
+    className={cn("flex items-center cursor-pointer rounded-md p-2 shrink-0 overflow-hidden gap-2 justify-center",
+        className
     )}>
         <motion.div
             transition={{duration: 0.3, ease: "linear"}}
@@ -144,9 +144,9 @@ export const ArrowButton = ({text="ArrowButton",
 
 export const CodeJS = `
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { ArrowLeft } from 'lucide-react'
-import clsx from 'clsx'
+import { cn } from '@/lib/utils'
 
 export const ArrowButton = ({text="ArrowButton", 
     onClick, 
@@ -168,7 +168,7 @@ export const ArrowButton = ({text="ArrowButton",
         background : isHovered ? bgSecondaryColor : bgPrimaryColor ,
         color: isHovered ? textSecondaryColor : textPrimaryColor,
     }}
-    className={clsx("flex items-center cursor-pointer rounded-md p-2 shrink-0 overflow-hidden gap-2 justify-center",
+    className={cn("flex items-center cursor-pointer rounded-md p-2 shrink-0 overflow-hidden gap-2 justify-center",
         className && className
     )}>
         <motion.div

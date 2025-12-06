@@ -21,72 +21,19 @@ const ThemeTogglerPage = () => {
         ],
         props: [
           {
-            prop: "className",
-            default: "None",
-            description: "Style the button with tailwind styles"
-          },
-          {
-            prop: "stagger",
-            default: "0",
-            description: "Controls the delay between each option's animation."
-          },
-          {
-            prop: "layered",
+            prop: "simple",
             default: "false",
-            description: "Enables layered hover effect on options."
-          },
-          {
-            prop: "smartDirection",
-            default: "false",
-            description: "Automatically adjusts the dropdown direction based on available space."
-          },
-          {
-            prop: "options",
-            default: "[]",
-            description: "Array of options to be displayed in the dropdown."
-          },
-          {
-            prop: "onChange",
-            default: "() => {}",
-            description: "Callback function that gets called when an option is selected."
-          },
-          {
-            prop: "defaultOption",
-            default: "{text: '', value: ''}",
-            description: "Sets the default option displayed when no option is selected."
-          },
-          {
-            prop: "menuStyle",
-            default: "{}",
-            description: "Custom styles for the dropdown menu."
-          },
-          {
-            prop: "optionStyle",
-            default: "{}",
-            description: "Custom styles for each dropdown option."
-          },
-          {
-            prop: "layerStyle",
-            default: "{}",
-            description: "Custom styles for the layered hover effect."
+            description: "Removes the transition animation from setup."
           }
         ]
       }
 
     const variants = [
       {
-        prop: "stagger = 0.025",
-        component: <DropDown options={values} stagger={0.021} defaultOption = {{text: "Message", value: "love"}} />
+        prop: "simple = true",
+        component: <ThemeToggler simple/>
       },
-      {
-        prop: "smartDirection = true",
-        component: <DropDown options={values} smartDirection defaultOption = {{text: "Message", value: "love"}} />
-      }
-      ,
-       {
-        prop: "layered = true",
-        component: <DropDown options={values} layered defaultOption = {{text: "Message", value: "love"}} />
-      }
+     
     ]
 
     const sections = [
@@ -114,12 +61,12 @@ const ThemeTogglerPage = () => {
     ]
     return (
     <PageLayout 
-    title='DropDown'
-    description='Drop down menu component with smooth animations and customizable options.'
+    title='Theme Toggler'
+    description='Theme toggler component with smooth transition.'
+    manual={false}
     type='Free' 
     codejs={codejs}
     codets={code}
-    installCode='npx animatex-pro add dropdown'
     usecasecode={usecase}
     variants={variants}
     props={component.props}
