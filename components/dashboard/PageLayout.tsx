@@ -10,7 +10,9 @@ import { ComponentLoader } from '../sub/componentLoader'
 import { RefreshCcw } from 'lucide-react'
 import { Footer } from '../main/Footer'
 import { PropBlock } from '../sub/propblock'
+import { space } from '@/utils/font'
 import { CommandBlock } from '../sub/commandblock'
+import { KeyLink } from '@/app/components/docs/page'
 
 
 interface props{
@@ -134,7 +136,7 @@ export function cn(...inputs: ClassValue[]) {
         <div className='flex flex-col gap-4 w-full md:max-w-[820px]'> 
             <div>
                     <div className='flex-center'>
-                        <h1 className='title'>{title}</h1>
+                        <h1 className={`title ${space.className} antialiased font-bold`}>{title}</h1>
                         <span className='blue-gradient bg-clip-text text-transparent p-1 border-dashed
                         border-2 border-col bg-[var(--secondary)] '>{type}</span>
                     </div>
@@ -200,7 +202,7 @@ export function cn(...inputs: ClassValue[]) {
 
                         {/* code preview */}
 
-                        <h1 className='title mt-8'>Installation</h1>
+                        <h1 className={`${space.className} title mt-8`}>Installation</h1>
 
                         <div ref={container2} className='w-full flex'>
                             <div onClick={() => setUsing("cli")} className='p-2 cursor-pointer rounded-md relative'>
@@ -276,7 +278,7 @@ export function cn(...inputs: ClassValue[]) {
                         }
 
                         {/* component props */}
-                        <h1 className='title mt-8'>Props</h1>
+                        <h1 className={`${space.className} title mt-8`}>Props</h1>
                         <div ref={container3} className='w-full overflow-x-auto'>
                             <table className='w-full text-center min-w-[600px]'>
                                 <thead>
@@ -321,6 +323,11 @@ export function cn(...inputs: ClassValue[]) {
                                 placeholder='Provide details about the issue..'></textarea>
                             </ReportBug>
                        </div>
+                       <div className='flex items-center border-t border-col mt-7 gap-3 justify-between py-4 md:py-8'>
+                            <p>&copy; 2025</p>
+                            <p>Built with ❤ by <KeyLink text='Newton' link=''/></p>
+                        </div>
+        
                        
                     </div>
             </div>

@@ -16,6 +16,7 @@
   --color-mid: #6e94fd; 
   --gradient-border: #5757570a;
   --secondary-hover: #f0f0f0;
+  --space-font: var(--space-font);
  
 }
 
@@ -115,7 +116,9 @@ p{
 .flex-col-center{
   @apply flex items-center gap-4 flex-col
 }
-
+h1{
+  @apply font-(family-name:--space-font) font-bold
+}
 .welcome{
   @apply text-3xl md:text-5xl text-center 
 }
@@ -178,3 +181,12 @@ blockquote{
   }
 }
 
+.splash{
+  background:  linear-gradient(45deg, #ff00ff 0%, transparent 60%),
+                linear-gradient(90deg, #00ffff 0%, transparent 60%),
+                linear-gradient(135deg, #00ff00 0%, transparent 60%),
+                linear-gradient(225deg, #ff0000 0%, transparent 60%),
+                linear-gradient(270deg, #0066ff 0%, transparent 60%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}

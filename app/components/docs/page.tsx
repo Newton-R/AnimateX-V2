@@ -14,7 +14,7 @@ interface keys{
   text: string
 }
 
-const KeyLink = ({link, text}:keys) => {
+export const KeyLink = ({link, text}:keys) => {
   return (
     <Link href={link} target='_blank' className='p-1 px-4 relative bg-[var(--secondary)] w-fit border border-col'>
         <span className="absolute w-2 h-2 bg-[var(--border)] left-0 -translate-y-1/2 -translate-x-1/2 top-0"/>
@@ -155,7 +155,17 @@ const DocumentationPage = () => {
                 <AlertCircle size={18}/>
                 Warning: For best use cases it&apos;s advisable the command line be used.
               </div>
-                <div className=' border-l border-col'>
+              <div className='mt-4'>
+                  <h1 className='blue-gradient-text'>Code TS & JS</h1>
+                  <blockquote>
+                    When copying code snippets you can choose from code <KeyText text='TS'/> which is the code snippet meant for a <KeyLink text='Next.js' link=''/> project with TypeScript
+                     or <KeyText text='JS'/> which is meant for a <KeyLink text='React' link=''/> project without typescript
+                  </blockquote>
+                  <span className='blue-gradient-text'>Further updates are to be made on the code snippets.</span>
+              </div>
+                
+                
+              <div className=' border-l border-col'>
 
               <div className='w-full rounded-md flex mt-6 flex-col gap-2 relative pl-5'>
                 <Bullet/>
@@ -172,7 +182,6 @@ const DocumentationPage = () => {
                <div className='w-full rounded-md flex mt-6 flex-col gap-2 relative pl-5'>
                   <Bullet/>
                   <span className='mt-1'>Within the utils folder create a <KeyText text='utils.ts'/> file.</span>
-                  <CodeBlock language='jsx' code='mkdir components'/>
                   <span className='mt-1'>Copy and paste the following code inside the <KeyText text='utils.ts'/></span>
                   <CodeBlock language={"jsx"} code={utilsCode}/>
                 </div>
