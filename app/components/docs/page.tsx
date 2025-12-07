@@ -176,7 +176,7 @@ const DocumentationPage = () => {
               <div className='w-full rounded-md flex mt-6 flex-col gap-2 relative pl-5'>
                 <Bullet/>
                 <span className='mt-1'>Create a lib folder.</span>
-               <CodeBlock language='jsx' code='mkdir components'/>
+               <CodeBlock language='jsx' code='mkdir lib'/>
               </div>
 
                <div className='w-full rounded-md flex mt-6 flex-col gap-2 relative pl-5'>
