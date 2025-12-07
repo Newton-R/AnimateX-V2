@@ -53,7 +53,7 @@ const FeedbackPage = () => {
     <PageLayout 
     title='Arrow Button'
     description='Button color trans with icon interaction'
-    type='' 
+    type='Free' 
     codejs={CodeJS}
     codets={Code}
     usecasecode={UseCase}

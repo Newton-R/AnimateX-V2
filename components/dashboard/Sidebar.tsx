@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { Blocks, Drama, Flower, MousePointer, Text, TextCursor, TextCursorInput, Zap } from 'lucide-react'
+import { Blocks, Drama, Flower, LayoutDashboard, MousePointer, Text, TextCursor, TextCursorInput, Zap } from 'lucide-react'
 import Link from 'next/link'
 import clsx from "clsx"
 import { useNavToggle } from '@/utils/store'
@@ -59,6 +59,22 @@ export const componentslist: components[] = [
                     text: "DropDown",
                     link: "/components/dropdown",
                     tag: ""
+                }
+            ]
+        },
+        {
+            category: "Navigations",
+            icon: <LayoutDashboard size={18}/>,
+            content: [
+                // {
+                //     text: "Momo Nav",
+                //     link: "/components/momonav",
+                //     tag: ""
+                // },
+                {
+                    text: "Vercel",
+                    link: "/components/vercel",
+                    tag: "New"
                 }
             ]
         },
