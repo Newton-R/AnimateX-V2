@@ -1,9 +1,10 @@
 import PageLayout from '@/components/dashboard/PageLayout'
-import { PicCycle } from '@/components/ui/cards/picCycle'
+import { PicCycle, NextCode, ReactCode, usecase } from '@/components/ui/carousels/picCycle'
 
 const PicCyclePage = () => {
-    const subImages = ["/demon/muza.jpeg","/demon/nezu.jpeg","/demon/pic1.jpeg", "/demon/pig.jpeg", "/demon/tanjiro.jpeg", "/demon/zenit.jpeg"]
-    const mainImage = "/demon/demon.jpeg"
+  const images = ["/random/pic1.jfif","/random/pic2.jfif","/random/pic3.jfif",
+        "/random/pic4.jfif","/random/pic8.jfif","/random/pic6.jfif",
+         "/random/pic7.jfif","/random/pic5.jfif","/random/pic9.jfif","/random/pic10.jfif"]
   const component = {
 
     features: [
@@ -12,39 +13,34 @@ const PicCyclePage = () => {
     ],
     props: [
       {
-        prop: "subImages",
+        prop: "cardstyle",
         default: "None",
-        description: "Array of images behind the mainImage"
+        description: "Style cards to fit your design."
       },
       {
-        prop: "mainImage",
+        prop: "raduis",
+        default: "170",
+        description: "The circle size."
+      },
+      {
+        prop: "images",
         default: "None",
-        description: "Main image displayed"
+        description: "Array containing image urls."
       },
       {
-        prop: "subStyle",
-        default: "None",
-        description: "Enables you to style the subImages control width & height"
+        prop: "finalScale",
+        default: "1.7",
+        description: "When an image is choosen the final size of that image"
       },
       {
-        prop: "mainStyle",
-        default: "None",
-        description: "Enables you to style the mainImage control width & height"
+        prop: "initialScale",
+        default: "0.66",
+        description: "Initial scale of the image before being selected"
       },
       {
-        prop: "flipDuration",
-        default: "0.5",
-        description: "Controls the rotation speed"
-      },
-      {
-        prop: "iniSpread",
-        default: "60",
-        description: "Controls the initail spacing between subcards"
-      },
-      {
-        prop: "finalSpread",
-        default: "150",
-        description: "Controls the final spacing between subcards"
+        prop: "className",
+        default: "",
+        description: "Style the parent container where components are found."
       }
     ]
   }
@@ -69,16 +65,16 @@ const PicCyclePage = () => {
   return (
     <div>
         <PageLayout 
-        title='Flip Card'
-        description='Smooth 3d card flip'
-        type='Pro' 
-        codejs={""}
-        codets={""}
-        usecasecode={""}
+        title='Pic Cycle'
+        description='Circular pic arrangement with choosen priority.'
+        type='Free' 
+        codejs={ReactCode}
+        codets={NextCode}
+        usecasecode={usecase}
         props={component.props}
         sections={sections}
         features={component.features} 
-        component={<PicCycle/>}/>
+        component={<PicCycle images={images}/>}/>
     </div>
   )
 }

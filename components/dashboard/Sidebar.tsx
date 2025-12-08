@@ -90,7 +90,7 @@ export const componentslist: components[] = [
                 {
                     text: "Highlight",
                     link: "/components/highlight",
-                    tag: states[1]
+                    tag: ""
                 },
                 {
                     text: "Canvas",
@@ -100,11 +100,16 @@ export const componentslist: components[] = [
                 {
                     text: "Swift",
                     link: "/components/swift",
-                    tag: states[1]
+                    tag: ""
                 },
                 {
                     text: "Infinite",
                     link: "/components/infinitecarousel",
+                    tag: states[0]
+                },
+                {
+                    text: "Pic Cycle",
+                    link: "/components/piccycle",
                     tag: states[0]
                 }
             ]

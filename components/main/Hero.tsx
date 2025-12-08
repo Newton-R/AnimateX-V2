@@ -6,10 +6,6 @@ import Link from 'next/link'
 import { PrimaryButton } from '../sub/primarybutton'
 import GithubLink from '../sub/githublink'
 
-
-
-
-
 export const Hero = () => {
     const container = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({target: container, offset:["start start", "end start"]})
@@ -50,7 +46,7 @@ export const Hero = () => {
                     </p>
                 
                     <div className="flex flex-col gap-6 md:flex-row w-[70%] items-center justify-center">
-                        <PrimaryButton text='Components' className='w-full md:w-fit px-6 p-2 rounded-[10px]' href={"/components/docs"} type='link'/>
+                        <PrimaryButton text={`Components`} className='w-full md:w-fit px-6 p-2 rounded-[10px]' href={"/components/docs"} type='link'/>
                         <GithubLink/>
                         {/* <Link className='link2' href={"#"}>Go Premium</Link> */}
                     </div>
