@@ -6,19 +6,7 @@ import { inter, space } from "@/utils/font";
 
 export const metadata: Metadata = {
   title: "AnimateX Pro",
-  description: "Pre built motion components built with motion",
-  openGraph: {
-    type: "website",
-    url: "https://animatex-pro.newtonraul.me/",
-    title: "Animatex-pro",
-    description: "Pre built motion components built with Motion",
-    siteName: "Animatex-pro",
-    images: [{
-      url: "/og.png",
-      width: 1200,
-      height: 630,
-    }]
-  }
+  description: "Pre built motion components built with motion, built for React and Nextjs",
 };
 
 export default function RootLayout({
