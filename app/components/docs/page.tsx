@@ -104,7 +104,7 @@ const DocumentationPage = () => {
                   animatex-pro cli into your project enabling you to use it.
                 </p>
 
-                <CommandBlock key='n' item={"animatex-pro@latest"} type='n'/>
+                <CommandBlock mykey='bonknkl' key='n' item={"animatex-pro@latest"} type='n'/>
               </div>
 
                <div className='w-full rounded-md flex mt-6 flex-col gap-2 relative pl-5'>
@@ -134,7 +134,7 @@ const DocumentationPage = () => {
                       </ListItem>
 
                   </div>
-                  <CommandBlock key='init' type='init'/>
+                  <CommandBlock mykey='ychf' key='init' type='init'/>
                 </div>
 
                 <div className='w-full rounded-md flex mt-6 flex-col gap-2 relative pl-5'>
@@ -170,7 +170,7 @@ const DocumentationPage = () => {
               <div className='w-full rounded-md flex mt-6 flex-col gap-2 relative pl-5'>
                 <Bullet/>
                 <span className='mt-1'>Install dependencies.</span>
-               <CommandBlock type='n' item='lucide-react motion tailwind-merge clsx'/>
+               <CommandBlock mykey='block' type='n' item='lucide-react motion tailwind-merge clsx'/>
               </div>
 
               <div className='w-full rounded-md flex mt-6 flex-col gap-2 relative pl-5'>

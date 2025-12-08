@@ -6,10 +6,10 @@ import { motion as m } from 'motion/react'
 interface CommandBlock{
     type?: "x" | "n" | "init",
     item?: string,
-    key?:string
+    mykey?:string
 }
 
-export const CommandBlock = ({type, item, key="slide"}:CommandBlock) => {
+export const CommandBlock = ({type, item, mykey="slide"}:CommandBlock) => {
     const [current, setcurrent] = useState(0)
     const commandlists = [
         {
@@ -26,7 +26,7 @@ export const CommandBlock = ({type, item, key="slide"}:CommandBlock) => {
         }
     ]
   return (
-    <div key={key}>
+    <div>
         <div className='flex items-end rounded-md border overflow-hidden border-col w-fit'>
             {
                 commandlists.map((cmd, i) => 
@@ -34,7 +34,7 @@ export const CommandBlock = ({type, item, key="slide"}:CommandBlock) => {
                         {cmd.pkm}
                         {
                             current === i &&
-                            <m.div transition={{duration: 0.25}} layoutId={key} className='absolute -z-10 inset-0 bg-(--secondary-hover)'/>
+                            <m.div transition={{duration: 0.25}} layoutId={mykey} className='absolute -z-10 inset-0 bg-(--secondary-hover)'/>
                         }
                     </button>
                 )
