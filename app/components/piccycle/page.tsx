@@ -2,9 +2,9 @@ import PageLayout from '@/components/dashboard/PageLayout'
 import { PicCycle, NextCode, ReactCode, usecase } from '@/components/ui/carousels/picCycle'
 
 const PicCyclePage = () => {
-  const images = ["/random/pic1.jfif","/random/pic2.jfif","/random/pic3.jfif",
-        "/random/pic4.jfif","/random/pic8.jfif","/random/pic6.jfif",
-         "/random/pic7.jfif","/random/pic5.jfif","/random/pic9.jfif","/random/pic10.jfif"]
+  const images = ["/random/pic1.jpg","/random/pic5.jpg","/random/pic3.jpg",
+        "/random/pic4.jpg","/random/pic8.jpg","/random/pic6.jpg",
+         "/random/pic7.jpg","/random/pic2.jpg","/random/pic9.jpg","/random/pic10.jpg"]
   const component = {
 
     features: [
