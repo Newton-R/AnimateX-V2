@@ -13,7 +13,11 @@ export const metadata: Metadata = {
     title: "Animatex-pro",
     description: "Pre built motion components built with Motion",
     siteName: "Animatex-pro",
-    images: [{url: "/og.png"}]
+    images: [{
+      url: "/og.png",
+      width: 1200,
+      height: 630,
+    }]
   }
 };
 
