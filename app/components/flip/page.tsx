@@ -72,7 +72,7 @@ const FlipPage = () => {
         <PageLayout 
         title='Flip Card'
         description='Smooth 3d card flip'
-        type='' 
+        type='Free' 
         codejs={CodeJS}
         codets={CodeTS}
         usecasecode={usecasecode}

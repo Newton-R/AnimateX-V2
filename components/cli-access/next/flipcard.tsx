@@ -1,6 +1,7 @@
+
 "use client"
 import React, { useState } from 'react'
-import { motion as m } from 'framer-motion'
+import { motion as m } from 'motion/react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
@@ -21,7 +22,7 @@ export const Flip = ({subImages=[""], mainStyle, subStyle,
     return (
         // parent conatiner
    <m.div 
-   whileHover={"hovered"} initial="idle" onMouseEnter={() => setRaduis(finalSubSpread)} 
+   whileHover={"hovered"} whileTap={"hovered"} initial="idle" onMouseEnter={() => setRaduis(finalSubSpread)} 
    onMouseLeave={() => setRaduis(iniSubSpread)} 
     className={cn('p-2 w-70 h-90 rounded-md relative', mainStyle && mainStyle)}>
 
@@ -54,10 +55,9 @@ export const Flip = ({subImages=[""], mainStyle, subStyle,
                {
                     subImages.map((img, i) => 
                         <m.div
-                        key={i}
                         animate={{
-                            x: raduis * Math.cos((i * 2 * Math.PI) / subImages.length),
-                            y: raduis * Math.sin((i * 2 * Math.PI) / subImages.length),
+                            x: raduis * Math.cos((i * 2 * Math.PI) / 6),
+                            y: raduis * Math.sin((i * 2 * Math.PI) / 6),
                             z: i * 20
                         }}
                         transition={{
