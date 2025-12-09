@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react'
-import { motion as m } from 'framer-motion'
+import { motion as m } from 'motion/react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
@@ -21,7 +21,10 @@ export const FlipCard = ({subImages=[""], mainStyle, subStyle,
     return (
         // parent conatiner
    <m.div 
-   whileHover={"hovered"} initial="idle" onMouseEnter={() => setRaduis(finalSubSpread)} 
+   whileHover={"hovered"} 
+   whileTap={"hovered"} 
+   initial="idle" 
+   onMouseEnter={() => setRaduis(finalSubSpread)} 
    onMouseLeave={() => setRaduis(iniSubSpread)} 
     className={cn('p-2 w-70 h-90 rounded-md relative', mainStyle && mainStyle)}>
 
@@ -99,7 +102,7 @@ export const page = () => {
 export const CodeTS = `
 "use client"
 import React, { useState } from 'react'
-import { motion as m } from 'framer-motion'
+import { motion as m } from 'motion/react'
 import Image from 'next/image'
 import { cn } from '@/app/lib/utils'
 
@@ -120,7 +123,7 @@ export const Flip = ({subImages=[""], mainStyle, subStyle,
     return (
         // parent conatiner
    <m.div 
-   whileHover={"hovered"} initial="idle" onMouseEnter={() => setRaduis(finalSubSpread)} 
+   whileHover={"hovered"} whileTap={"hovered"} initial="idle" onMouseEnter={() => setRaduis(finalSubSpread)} 
    onMouseLeave={() => setRaduis(iniSubSpread)} 
     className={cn('p-2 w-70 h-90 rounded-md relative', mainStyle && mainStyle)}>
 
@@ -180,9 +183,8 @@ export const Flip = ({subImages=[""], mainStyle, subStyle,
 `
 
 export const CodeJS = `
-
 import React, { useState } from 'react'
-import { motion as m } from 'framer-motion'
+import { motion as m } from 'motion/react'
 import { cn } from '@/app/lib/utils'
 
 
@@ -192,7 +194,7 @@ export const Flip = ({subImages=[""], mainStyle, subStyle,
     return (
         // parent conatiner
    <m.div 
-   whileHover={"hovered"} initial="idle" onMouseEnter={() => setRaduis(finalSubSpread)} 
+   whileHover={"hovered"} whileTap={"hovered"} initial="idle" onMouseEnter={() => setRaduis(finalSubSpread)} 
    onMouseLeave={() => setRaduis(iniSubSpread)} 
     className={cn('p-2 w-70 h-90 rounded-md relative', mainStyle && mainStyle)}>
 
