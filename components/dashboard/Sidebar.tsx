@@ -75,6 +75,11 @@ export const componentslist: components[] = [
                     text: "Vercel",
                     link: "/components/vercel",
                     tag: "New"
+                },
+                 {
+                    text: "Flower Menu",
+                    link: "/components/flower",
+                    tag: "New"
                 }
             ]
         },
