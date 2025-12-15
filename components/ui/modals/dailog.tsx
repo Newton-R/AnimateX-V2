@@ -11,8 +11,6 @@ type DialogProps = React.HTMLAttributes<HTMLDivElement> & {
     buttonText?: string
 }
 
-
-
 export const Dailog: React.FC<DialogProps> = ({children, className, buttonStyle, buttonText="Open Dialog"}) => {
     const defaultClass = 'p-4 w-[85%] z-90 md:w-[500px] h-auto bg-white border-1 shadow-2xl shadow-[#e2e2e2] border-gray-400/40 rounded-xl dark:bg-[#0b0b0f] dark:border-gray-900 dark:shadow-black'
 

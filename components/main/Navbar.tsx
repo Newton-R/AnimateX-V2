@@ -3,6 +3,7 @@ import { ThemeToggler } from './ThemeProvider'
 import { PrimaryButton } from '../sub/primarybutton'
 import TextLinks from '../sub/textlinks'
 import Logo from '../sub/logolink'
+import { RegistrationForm } from './forms/RegistrationForm'
 
 export const Navbar = () => {
  
@@ -20,6 +21,7 @@ export const Navbar = () => {
         </div>
         <div className='flex-center'>
             <ThemeToggler/>
+            <RegistrationForm/>
             {/* <PrimaryButton text='Sign Up' type='link' className='p-2 rounded-full text-[14px] px-4'/> */}
         </div>
        

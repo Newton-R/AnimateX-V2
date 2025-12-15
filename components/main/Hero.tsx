@@ -1,17 +1,13 @@
 "use client"
 import React, { useRef, useState, useEffect } from 'react'
 import { motion as m, useTransform, useScroll} from 'framer-motion'
-import { BuiltPill, SectionPill } from '../sub/sectionpill'
+import { BuiltPill } from '../sub/sectionpill'
 import Link from 'next/link'
 import { PrimaryButton } from '../sub/primarybutton'
 import GithubLink from '../sub/githublink'
+import { RegistrationForm } from './forms/RegistrationForm'
 
 export const Hero = () => {
-    const container = useRef<HTMLDivElement>(null)
-    const { scrollYProgress } = useScroll({target: container, offset:["start start", "end start"]})
-
-    const y = useTransform(scrollYProgress, [0, 1], [0, -200])
-    
     const features = [
         {text: "Built with NextJs"},
         {text: "Styled with tailwind"},
@@ -23,7 +19,7 @@ export const Hero = () => {
     ]
   return (
    <div className="gradient w-full">
-         <m.div ref={container} 
+         <m.div
             style={{
                 maskImage: "linear-gradient(to bottom, black 90%, transparent)"
             }}
