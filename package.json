@@ -9,8 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.11.1",
     "@prisma/adapter-pg": "^7.1.0",
     "@prisma/client": "^7.1.0",
+    "@prisma/extension-accelerate": "^3.0.1",
     "axios": "^1.12.2",
     "clsx": "^2.1.1",
     "dotenv": "^17.2.3",
