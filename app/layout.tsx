@@ -16,14 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.className} ${space.variable} antialiased`}
-      >
-       <ThemeWrapper>
+      <body className={`${inter.className} ${space.variable} antialiased`}>
+        <ThemeWrapper>
           {/* <div id="theme-transition">
            </div> */}
           {children}
-       </ThemeWrapper>
+        </ThemeWrapper>
       </body>
     </html>
   );
