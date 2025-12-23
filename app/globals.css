@@ -17,9 +17,9 @@
   --gradient-border: #5757570a;
   --secondary-hover: #f0f0f0;
   --space-font: var(--space-font);
+  --muted-text: #555555;
  
 }
-
 
 
 .dark{
@@ -37,6 +37,7 @@
   --color-mid: #4677ff; 
   --gradient-border: #8080800a;
   --secondary-hover: rgb(19, 19, 19);
+  --muted-text: #888888;
 }
 
 

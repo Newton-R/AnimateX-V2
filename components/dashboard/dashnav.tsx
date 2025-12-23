@@ -6,6 +6,7 @@ import { Sidebar } from 'lucide-react'
 import { useNavToggle } from '@/utils/store'
 import Logo from '../sub/logolink'
 import { SearchInput } from '../sub/searchInput'
+import { UserBlock } from './userblock'
 
 export const DashNav = () => {
   const { setToggle} = useNavToggle()

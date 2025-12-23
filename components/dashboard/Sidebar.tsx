@@ -1,11 +1,12 @@
 "use client"
 import React from 'react'
-import { Blocks, Drama, Flower, LayoutDashboard, MousePointer, Text, TextCursor, TextCursorInput, Zap } from 'lucide-react'
+import { Blocks, Drama, Flower, LayoutDashboard, MousePointer, Text, TextCursor, TextCursorInput, User, Zap } from 'lucide-react'
 import Link from 'next/link'
 import clsx from "clsx"
 import { useNavToggle } from '@/utils/store'
 import { Variants, motion as m, AnimatePresence} from 'motion/react'
 import { usePathname } from 'next/navigation'
+import { UserBlock } from './userblock'
 
 interface content{
     link: string,
@@ -153,6 +154,18 @@ export const componentslist: components[] = [
                 }
             ]
 
+        },
+         {
+            category: "Texts",
+            icon: <Text size={18}/>,
+            content: [
+                {
+                    text: "Swoop",
+                    link: "/components/swoop",
+                    tag: "New"
+                }
+            ]
+
         }
     ]
 export const Sidebar = () => {
@@ -197,11 +210,12 @@ export const Sidebar = () => {
       </AnimatePresence>
       
       {/* we are trying */}
-      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col mt-10 md:mt-14 bg-[var(--bg)] overflow-y-scroll left-0 top-0 border-r-1 border-col h-screen z-50', 
+      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col mt-10 md:mt-12 bg-[var(--bg)] left-0 top-0 border-r-1 border-col h-screen z-50', 
           isOpen ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"
       )}>
+        <UserBlock/>
          
-          <div className='p-2'>
+          <div className='p-2 overflow-y-scroll'>
             {
                 links.map((link, i) => 
                     <div key={i} className='p-2'>

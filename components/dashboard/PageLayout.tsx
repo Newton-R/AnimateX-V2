@@ -7,13 +7,17 @@ import { motion as m, useInView } from 'framer-motion'
 import { ReportBug } from '../sub/reportbug'
 import { cn } from '@/lib/utils'
 import { ComponentLoader } from '../sub/componentLoader'
-import { RefreshCcw } from 'lucide-react'
+import { Lock, LockKeyhole, RefreshCcw } from 'lucide-react'
 import { Footer } from '../main/Footer'
 import { PropBlock } from '../sub/propblock'
 import { space } from '@/utils/font'
 import { CommandBlock } from '../sub/commandblock'
 import { KeyLink } from '@/app/components/docs/page'
-
+import { getUserSession } from '@/utils/useAuth'
+import { userdata } from './userblock'
+import { RegistrationForm } from '../main/forms/RegistrationForm'
+import { ReportBugForm } from '../main/forms/reportbug'
+import { useAuthStore } from '@/utils/store'
 
 interface props{
     prop:string,
@@ -36,6 +40,7 @@ interface pageprop{
     type: string,
     codets: string,
     description: string,
+    membersonly?: boolean,
     component: React.ReactNode,
     codejs: string,
     features: string[],
@@ -53,13 +58,28 @@ interface pageprop{
 
 
 const PageLayout = ({title, variants, installCode, manual=true, layoutType = "component", 
-    description, component, type, sections, 
+    description, component, type, sections, membersonly=false,
     codets, codejs, features=[""], props, usecasecode, componentType="block"}:pageprop) => {
     const [code, setCode] = useState({language: "tsx", code: codets})
     const [current, setCurrent] = useState<string>("Preview")
     const [using, setUsing] = useState("cli")
     const [key, setKey] = useState(0)
-    
+    const [user, setUser] = useState(false);
+    const { isAuthenticated } = useAuthStore();
+        
+    useEffect(() => {
+        // const fetchUser = async () => {
+        //     const user = await getUserSession();
+        //     setUser(user.session?.user || null);
+        //     console.log(user);  
+        // }
+        if(membersonly && isAuthenticated){
+            setUser(true);
+        }else{
+            setUser(false);
+        }
+        ;
+    }, [])
     const dependencies = `motion lucide-react tailwind-merge clsx`
 
     const utilsCode = `
@@ -204,7 +224,18 @@ export function cn(...inputs: ClassValue[]) {
 
                         <h1 className={`${space.className} title mt-8`}>Installation</h1>
 
-                        <div ref={container2} className='w-full flex'>
+                      {
+                        membersonly && !user ?
+                        <div className='flex items-center flex-col w-full md:w-80 mx-auto text-center justify-center gap-1.5'>
+                            <Lock size={44} className='text-gray-500 dark:text-neutral-800'/>
+                            <p className='text-(--muted-text)'>This is a members only component. Please sign in to view installation instructions.</p>
+                            <RegistrationForm style='rounded-md w-80'/>
+                        </div>
+                        :
+
+                        //code snippets
+                        <>
+                              <div ref={container2} className='w-full flex'>
                             <div onClick={() => setUsing("cli")} className='p-2 cursor-pointer rounded-md relative'>
                                {
                                     using === "cli" &&
@@ -276,6 +307,8 @@ export function cn(...inputs: ClassValue[]) {
                                 </div>
                            </div>
                         }
+                        </>
+                      }
 
                         {/* component props */}
                         <h1 className={`${space.className} title mt-8`}>Props</h1>
@@ -306,22 +339,7 @@ export function cn(...inputs: ClassValue[]) {
                             <h1 className='text-2xl flex gap-2 items-center'><Bug size={20}/>Report a bug</h1>
                         </div> */}
                        <div ref={container4} className='w-full flex items-center min-h-80 justify-center'>
-                             <ReportBug id="main" className='w-full'>
-                                <div className='py-2 mt-4 flex md:flex-row flex-col w-full gap-4 justify-between'>
-                        
-                                    <input className='px-2 py-1 rounded-md bg-gray-50 dark:bg-black w-full
-                                    focus:outline-2 focus:outline-blue-500 border-2 border-gray-200 dark:border-neutral-900 md:w-[49%]' 
-                                    type='text' placeholder='Name'/>
-
-                                    <input className='px-2 py-1 rounded-md bg-gray-50 dark:bg-black border-2 focus:outline-2 focus:outline-blue-500
-                                    border-gray-200 dark:border-neutral-900 md:w-[49%] w-full' 
-                                    type='email' placeholder='Email'/>
-
-                                </div>
-                                <textarea style={{resize: "none"}} className='px-2 py-1 h-[120px] focus:outline-2 focus:outline-blue-500
-                                rounded-md bg-gray-50 dark:bg-black border-2 border-gray-200 dark:border-neutral-900 w-[100%]'
-                                placeholder='Provide details about the issue..'></textarea>
-                            </ReportBug>
+                            <ReportBugForm/>
                        </div>
                        <div className='flex items-center border-t border-col mt-7 gap-3 justify-between py-4 md:py-8'>
                             <p>&copy; 2025</p>
