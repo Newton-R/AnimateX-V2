@@ -3,8 +3,7 @@ import { authClient } from "@/lib/auth-client";
 import { redirect } from 'next/navigation';
 
 
-
-const FRONTEND_URL = "http://localhost:3000";    
+const FRONTEND_URL = process.env.BASE_URL || "http://localhost:3000";    
 
 export const emailPasswordSignUp = async (email: string, password: string, username: string) => {
     const { data, error } = await authClient.signUp.email({
