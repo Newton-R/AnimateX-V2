@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import { getUserSession, signout } from '@/utils/useAuth'
 import Image from 'next/image';
-import { EllipsisVertical, Loader, Loader2, LogOut, Verified, X } from 'lucide-react';
+import { EllipsisVertical, Loader2, LogOut, Verified, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/utils/store';
 import { CopyButton } from '../ui/buttons/copy';
