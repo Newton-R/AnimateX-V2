@@ -3,6 +3,7 @@ import { userdata } from "@/components/dashboard/userblock";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 
+
 interface toggle{
     isOpen: boolean,
     setClose: () => void,
@@ -15,6 +16,7 @@ interface authstore{
     setUser: (userData: userdata | null) => void,
     clearUser: () => void
 }
+
 
 export const useNavToggle = create<toggle>((set) => ({
     isOpen: false,

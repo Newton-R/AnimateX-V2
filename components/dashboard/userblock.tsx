@@ -35,7 +35,7 @@ export const UserBlock = () => {
         fetchUser();
     }, []);
   return (
-    <div className={cn('flex items-center relative gap-1 p-1 px-2 border-b border-col justify-between mt-4 md:mt-2')}>
+    <div className={cn('flex items-center relative gap-1 p-1 px-2 z-50 border-b border-col justify-between mt-4 md:mt-2')}>
        {
         isLoading ?
         <div className='flex gap-2 items-center text-xs text-gray-500'>
