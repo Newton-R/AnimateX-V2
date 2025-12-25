@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 import { redirect } from 'next/navigation'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { Toast } from '@/components/ui/modals/toast'
 
 interface fancyinput{
   type: string,
@@ -93,7 +94,7 @@ export const RegistrationForm = ({style}:{style?: string}) => {
     <Dailog buttonText='Sign Up' buttonStyle={`rounded-full p-2 px-4 text-white blue-gradient ${style ? style : ''}`} >
         <h1 className='text-4xl text-center'><span className='blue-gradient-text'>AnimateX</span>.</h1>
         <p className='text-center mb-3'>For a better experience join the Motion Family</p>
-       <div className='flex flex-col md:flex-row gap-2 py-2 border-b-1 border-col'>
+       <div className='flex flex-col md:flex-row gap-2 py-2 border-b border-col'>
            <button className={cn('p-2 px-4 rounded-md cursor-pointer bg-black dark:bg-white justify-center text-white dark:text-black w-full flex items-center gap-2',
             loading ? 'opacity-50 pointer-events-none' : ''
             )}
@@ -155,6 +156,7 @@ export const RegistrationForm = ({style}:{style?: string}) => {
           <p>Access to our Discord Channel</p>
         </div>
       </div>
+      
     </Dailog>
   )
 }

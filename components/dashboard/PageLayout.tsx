@@ -150,6 +150,8 @@ export function cn(...inputs: ClassValue[]) {
   return (
     <div className="flex gap-2">
         <div className='flex flex-col gap-4 w-full md:max-w-[820px]'> 
+
+            {/* //component details section */}
             <div>
                     <div className='flex-center'>
                         <h1 className={`title ${space.className} antialiased font-bold`}>{title}</h1>
@@ -158,6 +160,8 @@ export function cn(...inputs: ClassValue[]) {
                     </div>
                     <p>{description}</p>
             </div>
+
+            {/* first preview section */}
             <div>
                     <div className='w-full gap-4 flex flex-col'>
                         <div className='flex-center justify-between w-full'>
@@ -194,6 +198,7 @@ export function cn(...inputs: ClassValue[]) {
                             
                     }
 
+                    {/* if other variants section */}
 
                     {
                         variants &&

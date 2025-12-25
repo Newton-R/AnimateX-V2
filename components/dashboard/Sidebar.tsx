@@ -33,12 +33,12 @@ export const componentslist: components[] = [
                 {
                     text: "Aero Button",
                     link: "/components/aerobutton",
-                    tag: states[1]
+                    tag: ""
                 },
                 {
                     text: "Arrow Button",
                     link: "/components/arrow",
-                    tag: states[1]
+                    tag: ""
                 },
                  {
                     text: "Loading",
@@ -75,7 +75,7 @@ export const componentslist: components[] = [
                 {
                     text: "Vercel",
                     link: "/components/vercel",
-                    tag: "New"
+                    tag: ""
                 },
                  {
                     text: "Flower Menu",
@@ -91,7 +91,7 @@ export const componentslist: components[] = [
                 {
                     text: "Stagger",
                     link: "/components/staggercards",
-                    tag: states[1]
+                    tag: ""
                 },
                 {
                     text: "Highlight",
@@ -101,7 +101,7 @@ export const componentslist: components[] = [
                 {
                     text: "Canvas",
                     link: "/components/canvas",
-                    tag: states[1]
+                    tag: ""
                 },
                 {
                     text: "Swift",
@@ -111,12 +111,12 @@ export const componentslist: components[] = [
                 {
                     text: "Infinite",
                     link: "/components/infinitecarousel",
-                    tag: states[0]
+                    tag:""
                 },
                 {
                     text: "Pic Cycle",
                     link: "/components/piccycle",
-                    tag: states[0]
+                    tag: ""
                 }
             ]
 
@@ -128,12 +128,17 @@ export const componentslist: components[] = [
                 {
                     text: "Dailog",
                     link: "/components/dailog",
-                    tag: states[1]
+                    tag: ""
                 },
                 {
                     text: "Report Bug",
                     link: "/components/bug",
-                    tag: states[1]
+                    tag: ""
+                },
+                 {
+                    text: "Toast",
+                    link: "/components/toast",
+                    tag: states[0]
                 }
             ]
 
@@ -179,6 +184,10 @@ export const Sidebar = () => {
                 {
                     text: "Getting Started",
                     link: "/components/docs/"
+                },
+                {
+                    text: "useToast",
+                    link: "/components/docs/"
                 }
             ]
         }
@@ -210,12 +219,12 @@ export const Sidebar = () => {
       </AnimatePresence>
       
       {/* we are trying */}
-      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col mt-10 md:mt-12 bg-[var(--bg)] left-0 top-0 border-r-1 border-col h-screen z-50', 
+      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col mt-10 md:mt-12 bg-[var(--bg)] left-0 top-0 border-r-1 border-col h-screen z-50 pb-8', 
           isOpen ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"
       )}>
         <UserBlock/>
          
-          <div className='p-2 overflow-y-scroll'>
+          <div className='p-2 overflow-y-scroll h-[calc(100vh-80px)]'>
             {
                 links.map((link, i) => 
                     <div key={i} className='p-2'>
