@@ -16,22 +16,24 @@ export const Toast = ({position,
 
   const { toast, removeToast } = useToast()  
 
+  // defining the different positions
   const pos = position === "tl" ? " top-4 left-2" :
               position === "bc" ? "mx-auto bottom-4 left-0 right-0" :
               position === "bl" ? "bottom-4 left-2" :
               position === "tr" ? "top-4 right-2" :
               position === "tc" ? "mx-auto top-4 left-0 right-0" : "bottom-4 right-2"
   
-
+  // defining style "error" and "success"
   const styles = {
     error: "border-red-300 dark:border-red-800",
     success: "border-green-300 dark:border-green-800",
   }
 
+  // defining origin y & x directions for animations
   const ydirection = position?.split("")[0] === "t" ? -1 : 1
   const xdirection = position?.split("")[1] === "l" ? -1 : 1
 
-
+  // stacking variant
   const toastVariants:Variants = {
         "hidden": {
             opacity: 0,
@@ -49,6 +51,7 @@ export const Toast = ({position,
         }
     }
   
+    // flex-col layout toast arrangement variant
     const layoutVariant:Variants = {
        "hidden": {
             opacity: 0,
@@ -71,6 +74,7 @@ export const Toast = ({position,
 
   return (
     <>
+      {/* Main variant component */}
       <AnimatePresence>
         {
           toast.map((t, i) => 
@@ -97,3 +101,25 @@ export const Toast = ({position,
     </>
   )
 }
+
+
+export const usecasecode = `
+import { useToast } from '@/utils/useToast'
+const ToastPreview = () => {
+  const { addToast } = useToast()
+  const handleToast = (type: string) => {
+        addToast({
+        message: \`Your $\{type} toast :). Hope you like it!\`,
+        type: type
+        })
+    }
+  return (
+      <div className='flex gap-4 items-center'>
+          <button className='p-2 px-4 rounded-md border border-col bg-(--bg) cursor-pointer' onClick={() => handleToast("default")}>Default</button>
+          <button className='p-2 px-4 rounded-md border border-col bg-(--bg) cursor-pointer' onClick={() => handleToast("success")}>Success</button>
+          <button className='p-2 px-4 rounded-md border border-col bg-(--bg) cursor-pointer' onClick={() => handleToast("error")}>Error</button>
+      </div>
+  )
+}
+`
+

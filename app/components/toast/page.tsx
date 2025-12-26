@@ -1,10 +1,9 @@
 "use client"
 import PageLayout from '@/components/dashboard/PageLayout'
-import { AeroButton, CodeJS,  Code, UseCase} from '@/components/ui/buttons/aerobutton'
-import { Toast } from '@/components/ui/modals/toast'
+import { Toast, usecasecode } from '@/components/ui/modals/toast'
 import { useToast } from '@/utils/useToast'
 
-const FeedbackPage = () => {
+const ToastPage = () => {
     const { addToast } = useToast()
 
 
@@ -20,7 +19,6 @@ const FeedbackPage = () => {
             <button className='p-2 px-4 rounded-md border border-col bg-(--bg) cursor-pointer' onClick={() => handleToast("default")}>Default</button>
             <button className='p-2 px-4 rounded-md border border-col bg-(--bg) cursor-pointer' onClick={() => handleToast("success")}>Success</button>
             <button className='p-2 px-4 rounded-md border border-col bg-(--bg) cursor-pointer' onClick={() => handleToast("error")}>Error</button>
-            <Toast/>
         </div>,
         features: [
           "Easily customizable with props",
@@ -48,16 +46,17 @@ const FeedbackPage = () => {
   return (
     <PageLayout 
     title='Toast'
+    external='usetoast'
     description='Toast component with delay removal'
     type='Free' 
-    codejs={CodeJS}
-    codets={Code}
+    codejs={""}
+    codets={""}
     membersonly={true}
-    usecasecode={UseCase}
+    usecasecode={usecasecode}
     props={component.props}
     features={component.features} 
     component={component.block}/>
   )
 }
 
-export default FeedbackPage
+export default ToastPage

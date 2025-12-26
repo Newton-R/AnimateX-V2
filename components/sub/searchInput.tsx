@@ -67,7 +67,9 @@ export const SearchInput = () => {
         })
   return (
     <div className='flex-center border border-col rounded-xl px-[2px] md:px-2 h-9'>
-        <input type='text' onFocus={() => setSearching(true)} placeholder='Search Something' className='h-9 outline-none flex-1'></input>
+        <input type='text' 
+        onFocus={() => {setSearching(true)}} 
+            placeholder='Search Something' className='h-9 outline-none flex-1'></input>
         <div className='p-1 rounded-md bg-[var(--secondary-hover)] md:mr-0 mr-2 flex items-center justify-center shrink-0 text-xs'>
             Ctrl + K
         </div>
@@ -84,7 +86,7 @@ export const SearchInput = () => {
                     </div>
 
 
-                    <input placeholder='Search Components' 
+                    <input autoFocus placeholder='Search Components' 
                     value={searched}
                     onChange={(e) => {
                         setSearched(e.target.value)

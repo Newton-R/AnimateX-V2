@@ -42,12 +42,21 @@ const Bullet = () => {
 const DocumentationPage = () => {
   return (
    <div className='flex gap-2'>
-       <div className='flex w-full max-w-[820px] gap-4 flex-col'>
+       <div className='flex w-full max-w-205 gap-4 flex-col'>
           <div className='border-b border-col pb-4'>
              <h1 className='text-large blue-gradient-text'>Getting Started</h1>
             <p>Welcome to the Animatex-pro docs. Here you&apos;ll get an overview of what animatex is and how to start working with it.</p>
           </div>
           <div>
+
+
+          <div className='border border-col p-2'>
+            <span className='blue-gradient-text mr-1'>Info:</span>
+            Pages tags with the <span className='blue-gradient-text mr-1'>M</span> 
+            tag are protected and accessible only to members.
+          </div>
+
+
             <h1 className='text-xl md:text-xl blue-gradient-text'>What AnimateX is?</h1>
             <blockquote className='leading-7 mt-3 text-justify'>
                 AnimateX is a modern, <KeyLink text="Motion" link=""/> powered UI library built for <KeyLink text="React" link=""/> and <KeyLink text="Next.js" link=""/> applications. 
@@ -59,6 +68,7 @@ const DocumentationPage = () => {
                   and consistent across your entire application.
             </blockquote>
           </div>
+          
           <div>
             <div className='flex gap-1'><h1 className='text-xl md:text-xl blue-gradient-text'>Getting Started</h1>🎉</div>
             <blockquote className='leading-7 mt-3 text-justify'>

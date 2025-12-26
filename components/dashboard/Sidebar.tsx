@@ -187,7 +187,8 @@ export const Sidebar = () => {
                 },
                 {
                     text: "useToast",
-                    link: "/components/docs/"
+                    link: "/components/usetoast/",
+                    tag: "M"
                 }
             ]
         }
@@ -237,8 +238,9 @@ export const Sidebar = () => {
                                 <Link href={li.link ? li.link : ""} key={i}>
                                     <m.div whileHover="hovered" className='flex-center text-[14px] gap-2 hover:bg-[var(--secondary-hover)] 
                                     cursor-pointer p-2 py-1 rounded-md'>
-                                        <m.span variants={{"hovered": {x : 5}}}>
+                                        <m.span className='flex gap-2' variants={{"hovered": {x : 5}}}>
                                             {li.text}
+                                            <span className='blue-gradient-text'>{li.tag}</span>
                                         </m.span>
                                     </m.div>
                                 </Link>
