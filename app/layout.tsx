@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeWrapper } from "@/components/main/ThemeProvider";
 import { inter, space } from "@/utils/font";
+import { Toast } from "@/components/ui/modals/toast";
 
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${space.variable} antialiased`}
       >
+        <Toast className="border-blue-400 dark:border-blue-600" stacked/>
        <ThemeWrapper>
           {/* <div id="theme-transition">
            </div> */}

@@ -28,9 +28,10 @@ const CodeBlock = ({code, language, type}:props) => {
                 onClick={copyCode}
                 className='absolute top-0 translate-y-full right-4 bg-(--secondary-hover) clickable p-1 px-0 w-8 flex items-center justify-center rounded-md'/>
           }
-            <Prism language="typescript"  style={theme === "dark" ? vscDarkPlus : vs} 
+            <Prism language="typescript" 
+            style={theme === "dark" ? vscDarkPlus : vs} 
             customStyle={{ padding: "1rem", height: "auto",
-              borderRadius: "12px",
+              borderRadius: "",
               fontSize: "18px",
             fontFamily: '"Fira Code", "JetBrains Mono", monospace'}}>
               {code.trim()}

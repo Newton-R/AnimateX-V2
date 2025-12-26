@@ -1,6 +1,6 @@
 import { create } from "zustand"
 
-
+//typeItem type
 export type toastItem = {
     id?: string,
     message: string | React.ReactNode,
@@ -8,6 +8,8 @@ export type toastItem = {
     isOpen?: boolean
 }
 
+
+//toast array type
 interface toast{
     toast: Array<toastItem>,
     addToast: (toast: toastItem) => void,
@@ -20,6 +22,8 @@ const MAX_VALUE = 3
 
 export const useToast = create<toast>((set => ({
     toast: [],
+
+    //function to add toasts
     addToast: (toast:toastItem) => {
         const id = crypto.randomUUID()
         set((state) => {
@@ -32,26 +36,16 @@ export const useToast = create<toast>((set => ({
                     set((s) => ({
                         toast: s.toast.filter((tost) => tost.id !== oldest.id)
                     }))
-                }
-                // updatedtoasts[0] = {...updatedtoasts[0], isOpen: false}
-            }
-
-
+                }}
             updatedtoasts.push({
                 ...toast, id: id, isOpen: true
             })
-            // updatedtoasts.filter(t => t.id !== updatedtoasts[0].id)
-
             return { toast: updatedtoasts}
         }
-           
-            
-        //     ({
-        //     toast: [...state.toast, {...toast,isOpen: true, id: id}]
-        // })
+
     )
 
-        //remove toast after some period of time
+        //remove toast after some period of time (5s)
         setTimeout(() => {
             set((state) => ({
                 toast: state.toast.map((t) => 
@@ -65,5 +59,6 @@ export const useToast = create<toast>((set => ({
 
         }, 5000)
     },
+    //remove toast function
     removeToast: (id: string) => set((state) => ({toast: state.toast.filter(t => t.id !== String(id)), isOpen: state.toast.length - 1 > 0}))
 })))
