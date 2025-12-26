@@ -1,5 +1,4 @@
 "use client"
-import { Footer } from '@/components/main/Footer'
 import { ReportBugForm } from '@/components/main/forms/reportbug'
 import CodeBlock from '@/components/sub/codeblock'
 import { CommandBlock } from '@/components/sub/commandblock'
@@ -449,7 +448,7 @@ const UseToastDocs = () => {
               <div className='w-full rounded-md flex mt-6 flex-col gap-2 relative pl-5'>
                 <Bullet/>
                 <span className='mt-1'>Install <KeyLink text='Zustand' link=''/> with the following command.</span>
-                <CommandBlock key='init' item='zustand' type='n'/>
+                <CommandBlock key='init7y' item='zustand' type='n'/>
               </div>
 
               <div className='w-full rounded-md flex mt-6 flex-col gap-2 relative pl-5'>
