@@ -220,12 +220,12 @@ export const Sidebar = () => {
       </AnimatePresence>
       
       {/* we are trying */}
-      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col mt-10 md:mt-12 bg-[var(--bg)] left-0 top-0 border-r-1 border-col h-screen z-50 pb-8', 
+      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col mt-10 md:mt-12 bg-(--bg) left-0 top-0 border-r border-col h-screen z-50 pb-8', 
           isOpen ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"
       )}>
         <UserBlock/>
          
-          <div className='p-2 overflow-y-scroll h-[calc(100vh-80px)]'>
+          <div className='p-2 overflow-y-scroll h-[calc(100vh-100px)]'>
             {
                 links.map((link, i) => 
                     <div key={i} className='p-2'>
@@ -236,7 +236,7 @@ export const Sidebar = () => {
                         {
                             link.sublinks.map((li, i) => 
                                 <Link href={li.link ? li.link : ""} key={i}>
-                                    <m.div whileHover="hovered" className='flex-center text-[14px] gap-2 hover:bg-[var(--secondary-hover)] 
+                                    <m.div whileHover="hovered" className='flex-center text-[14px] gap-2 hover:bg-(--secondary-hover)
                                     cursor-pointer p-2 py-1 rounded-md'>
                                         <m.span className='flex gap-2' variants={{"hovered": {x : 5}}}>
                                             {li.text}
@@ -262,7 +262,7 @@ export const Sidebar = () => {
                                  component.content.map((cont, i) => 
                                     <Link href={cont.link} onClick={setToggle} key={i} >
                                         <m.div whileHover="hovered" 
-                                            className='flex-center justify-between gap-2 relative hover:bg-[var(--secondary-hover)] cursor-pointer
+                                            className='flex-center justify-between gap-2 relative hover:bg-(--secondary-hover) cursor-pointer
                                             p-2 py-1 rounded-md'>
                                                 <m.span className='flex-center gap-4' variants={{"hovered": {x : 5}}}>
                                                     {cont.text}

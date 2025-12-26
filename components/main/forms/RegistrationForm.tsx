@@ -5,10 +5,10 @@ import { emailPasswordSignUp, socialAuth, emailPasswordSignIn } from '@/utils/us
 import { Github, Lock, Mail, User, Verified } from 'lucide-react'
 import { LoadingButton } from '@/components/ui/buttons/loadingButton'
 import { cn } from '@/lib/utils'
-import { redirect } from 'next/navigation'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Toast } from '@/components/ui/modals/toast'
+import { useToast } from '@/utils/useToast'
+import { useRouter } from 'next/navigation'
 
 interface fancyinput{
   type: string,
@@ -38,6 +38,7 @@ const FancyInput = ({icon, type, value, onChange, placeholder}: fancyinput) => {
 export const RegistrationForm = ({style}:{style?: string}) => {
   const [loading, setLoading] = useState(false)
   const pathname = usePathname();
+  const router = useRouter()
   const currentComponent = pathname.split('/').pop();
   const [userdata, setUserdata] = useState<userdata>({
     email: '',
@@ -45,12 +46,13 @@ export const RegistrationForm = ({style}:{style?: string}) => {
     username: ''
   })
   const [currentStep, setCurrentStep] = useState("signup")
+  const { addToast } = useToast()
 
   const handleNavigation = () => {
     if(pathname === "/"){
-      redirect("/components/docs")
+      router.push("/components/docs")
     }else{
-      redirect(`/components/${currentComponent}`)
+      router.push(`/components/${currentComponent}`)
     }
   }
 
@@ -59,37 +61,62 @@ export const RegistrationForm = ({style}:{style?: string}) => {
     try{
       await socialAuth(method);
       setLoading(false);
-      handleNavigation();
+      // handleNavigation();
     }catch(error){
       console.error("Social auth error:", error);
       setLoading(false);
     }  
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    try{
-      if(currentStep === "login"){
-        await emailPasswordSignIn(
-          userdata.email,
-          userdata.password);
-        handleNavigation();
-        return;
-      }else{
-         await emailPasswordSignUp(
+    const signup = async () => {
+      try{
+          await emailPasswordSignUp(
           userdata.email,
           userdata.password, 
           userdata.username);
-        // Call your email/password sign-up function here
-        // await emailPasswordSignUp(userdata.email, userdata.password, userdata.username);
-        handleNavigation();
+          addToast({
+            type: "default",
+            message: "Account Created Successfully! Logging In"
+          })
+          // handleNavigation()
+      }catch(err: any){
+          setLoading(false)
+          addToast({
+            type: "error",
+            message: err.message
+          })
       }
-     
-    }catch(error){
-      console.error("Email/password sign-up error:", error);
-      setLoading(false);
-    }}
+    }
+
+    const login = async () => {
+      try{
+          await emailPasswordSignIn(
+          userdata.email,
+          userdata.password);
+          addToast({
+            type: "default",
+            message: "Login Successful! Logging In"
+          })
+        handleNavigation();
+      }catch(err: any){
+        setLoading(false)
+         addToast({
+            type: "error",
+            message: err.message
+          })
+      }
+    }
+
+    if(currentStep === "signup"){
+      signup()
+    }else{
+      login()
+    }
+  
+  }
   return (
     <Dailog buttonText='Sign Up' buttonStyle={`rounded-full p-2 px-4 text-white blue-gradient ${style ? style : ''}`} >
         <h1 className='text-4xl text-center'><span className='blue-gradient-text'>AnimateX</span>.</h1>

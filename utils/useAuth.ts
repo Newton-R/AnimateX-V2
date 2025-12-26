@@ -11,17 +11,16 @@ export const emailPasswordSignUp = async (email: string, password: string, usern
         password: password,
         name: username,
         callbackURL: `${FRONTEND_URL}/components/docs`
-    },
-        {
-            onSuccess: () => {
-                console.log("User signed up successfully");
-            },
-            onError: (error) => {
-                console.error("Error during sign up:", error); 
-            }
+    })
+    if(error){
+        throw{
+            code: error.code,
+            message: error.message
         }
-    );
-    return { data, error };
+    }
+    
+    ;
+    return data;
 }
 
 
@@ -31,15 +30,14 @@ export const emailPasswordSignIn = async (email: string, password: string) => {
         password: password,
         callbackURL: `${FRONTEND_URL}/components/docs`,
         rememberMe: true 
-    }, {
-        onSuccess: () => {
-            console.log("User signed in successfully");
-        },
-        onError: (error) => {
-            console.error("Error during sign in:", error);
-        }
     });
-    return { data, error };
+    if(error){
+        throw({
+            code: error.code,
+            message: error.message
+        })
+    }
+    return data;
 }
 
 
