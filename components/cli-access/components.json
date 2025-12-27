@@ -8,5 +8,15 @@
         "dep_module": "zustand"
       }
     ]
+  },
+  "swoop": {
+    "access": "member",
+    "dependencies": [
+      {
+        "type": "hook",
+        "path": "useToast",
+        "dep_module": "zustand"
+      }
+    ]
   }
 }
