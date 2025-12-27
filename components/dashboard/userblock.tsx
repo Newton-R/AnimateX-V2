@@ -62,7 +62,7 @@ export const UserBlock = () => {
                     <X onClick={() => setIsOpen(!isOpen)} size={18} className='absolute right-0 top-0 m-2 cursor-pointer hover:text-red-500'/>
                   <Image src={user?.image || '/avatar/default.jpg'} alt='User Avatar' width={55} height={55} className='rounded-xl border-2 border-col'/>
                   <div>
-                      <h1 className='text-lg font-semibold flex items-center gap-[2px]'>{user?.name} <Verified className='text-gray-500' size={16}/></h1>
+                      <h1 className='text-lg font-semibold flex items-center gap-0.5'>{user?.name} <Verified className='text-gray-500' size={16}/></h1>
                       <div className='text-sm text-(--muted-text)'>{user?.email}</div>
                   </div>
                 </div>
