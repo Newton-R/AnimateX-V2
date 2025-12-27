@@ -5,7 +5,7 @@
       {
         "type": "hook",
         "path": "useToast",
-        "dep_module": "zustand"
+        "dep_module": ["zustand"]
       }
     ]
   },
@@ -15,7 +15,7 @@
       {
         "type": "hook",
         "path": "useToast",
-        "dep_module": "zustand"
+        "dep_modules": ["zustand"]
       }
     ]
   }
