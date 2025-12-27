@@ -148,7 +148,7 @@ export function cn(...inputs: ClassValue[]) {
    
   return (
     <div className="flex gap-2">
-        <div className='flex flex-col gap-4 w-full md:max-w-[820px]'> 
+        <div className='flex flex-col gap-4 w-full md:max-w-205'> 
 
             {/* //component details section */}
             <div>

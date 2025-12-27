@@ -11,12 +11,6 @@
   },
   "swoop": {
     "access": "member",
-    "dependencies": [
-      {
-        "type": "hook",
-        "path": "useToast",
-        "dep_modules": ["zustand"]
-      }
-    ]
+    "dependencies": []
   }
 }

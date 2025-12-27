@@ -186,6 +186,10 @@ export const Sidebar = () => {
                     link: "/components/docs/"
                 },
                 {
+                    text: "Animatex-Pro CLI",
+                    link: "/components/cli/"
+                },
+                {
                     text: "useToast",
                     link: "/components/usetoast/",
                     tag: "M"

@@ -427,9 +427,17 @@ const UseToastDocs = () => {
                 <Bullet/>
                 <span className='mt-1'>In your project directory run the following command. 🎈</span>
                 <p>
-                  <span className='blue-gradient-text'>What this does:</span> Add components into a folder
+                  <span className='blue-gradient-text'>What this does:</span> Helps authenticate you. Giving you access to members only components
                 </p>
-                <CommandBlock key='init' item='toast' type='x'/>
+                <CommandBlock key='initin' item='<user-key>' type='s'/>
+              </div>
+              <div className='w-full rounded-md flex mt-6 flex-col gap-2 relative pl-5'>
+                <Bullet/>
+                <span className='mt-1'>Add the component into your project with the following command. 🎈</span>
+                {/* <p>
+                  <span className='blue-gradient-text'>What this does:</span> Add components into a folder
+                </p> */}
+                <CommandBlock key='dmkh' item='toast' type='x'/>
               </div>
           </div>
 
