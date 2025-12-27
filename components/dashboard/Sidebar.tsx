@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { Blocks, Drama, Flower, LayoutDashboard, MousePointer, Text, TextCursor, TextCursorInput, User, Zap } from 'lucide-react'
+import { Blocks, Drama, LayoutDashboard, MousePointer, Text, TextCursor} from 'lucide-react'
 import Link from 'next/link'
 import clsx from "clsx"
 import { useNavToggle } from '@/utils/store'
