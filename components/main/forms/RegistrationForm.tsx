@@ -2,7 +2,7 @@
 import React, { ChangeEvent, useState } from 'react'
 import { Dailog } from '@/components/ui/modals/dailog'
 import { emailPasswordSignUp, socialAuth, emailPasswordSignIn } from '@/utils/useAuth'
-import { Github, Lock, Mail, User, Verified } from 'lucide-react'
+import { Github, Loader2, Lock, Mail, User, Verified } from 'lucide-react'
 import { LoadingButton } from '@/components/ui/buttons/loadingButton'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
@@ -40,6 +40,7 @@ export const RegistrationForm = ({style}:{style?: string}) => {
   const pathname = usePathname();
   const router = useRouter()
   const currentComponent = pathname.split('/').pop();
+  const [authid, setAuthid] = useState(0)
   const [userdata, setUserdata] = useState<userdata>({
     email: '',
     password: '',
@@ -56,67 +57,67 @@ export const RegistrationForm = ({style}:{style?: string}) => {
     }
   }
 
-  const handleSocialAuth = async (method:string) => {
+  const handleSocialAuth = async (method:string, id:number) => {
     setLoading(true);
+    setAuthid(id)
     try{
       await socialAuth(method);
-      setLoading(false);
-      // handleNavigation();
+      handleNavigation();
     }catch(error){
       console.error("Social auth error:", error);
       setLoading(false);
     }  
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    const signup = async () => {
-      try{
-          await emailPasswordSignUp(
-          userdata.email,
-          userdata.password, 
-          userdata.username);
-          addToast({
-            type: "default",
-            message: "Account Created Successfully! Logging In"
-          })
-          // handleNavigation()
-      }catch(err: any){
-          setLoading(false)
-          addToast({
-            type: "error",
-            message: err.message
-          })
-      }
-    }
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   const signup = async () => {
+  //     try{
+  //         await emailPasswordSignUp(
+  //         userdata.email,
+  //         userdata.password, 
+  //         userdata.username);
+  //         addToast({
+  //           type: "default",
+  //           message: "Account Created Successfully! Logging In"
+  //         })
+  //         // handleNavigation()
+  //     }catch(err: any){
+  //         setLoading(false)
+  //         addToast({
+  //           type: "error",
+  //           message: err.message
+  //         })
+  //     }
+  //   }
 
-    const login = async () => {
-      try{
-          await emailPasswordSignIn(
-          userdata.email,
-          userdata.password);
-          addToast({
-            type: "default",
-            message: "Login Successful! Logging In"
-          })
-        handleNavigation();
-      }catch(err: any){
-        setLoading(false)
-         addToast({
-            type: "error",
-            message: err.message
-          })
-      }
-    }
+  //   const login = async () => {
+  //     try{
+  //         await emailPasswordSignIn(
+  //         userdata.email,
+  //         userdata.password);
+  //         addToast({
+  //           type: "default",
+  //           message: "Login Successful! Logging In"
+  //         })
+  //       handleNavigation();
+  //     }catch(err: any){
+  //       setLoading(false)
+  //        addToast({
+  //           type: "error",
+  //           message: err.message
+  //         })
+  //     }
+  //   }
 
-    if(currentStep === "signup"){
-      signup()
-    }else{
-      login()
-    }
+  //   if(currentStep === "signup"){
+  //     signup()
+  //   }else{
+  //     login()
+  //   }
   
-  }
+  // }
   return (
     <Dailog buttonText='Sign Up' buttonStyle={`rounded-full p-2 px-4 text-white blue-gradient ${style ? style : ''}`} >
         <h1 className='text-4xl text-center'><span className='blue-gradient-text'>AnimateX</span>.</h1>
@@ -125,19 +126,28 @@ export const RegistrationForm = ({style}:{style?: string}) => {
            <button className={cn('p-2 px-4 rounded-md cursor-pointer bg-black dark:bg-white justify-center text-white dark:text-black w-full flex items-center gap-2',
             loading ? 'opacity-50 pointer-events-none' : ''
             )}
-           onClick={() => handleSocialAuth("github")}>
-           <Github size={18}/>
+           onClick={() => handleSocialAuth("github", 0)}>
+           {
+              loading && authid === 0 ? 
+              <Loader2 size={18} className='animate-spin duration-300'/>
+              : <Github size={18}/>
+           }
           Github
         </button>
          <button className={cn('p-2 px-4 rounded-md blue-gradient dark:bg-white justify-center text-white w-full flex items-center gap-2',
           loading ? 'opacity-50 pointer-events-none' : ''
           )}
-          onClick={() => handleSocialAuth("google")}>
-          <Image height={24} width={24} src='/icons/google.svg' alt='Google Icon'/>
+          onClick={() => handleSocialAuth("google", 1)}>
+          {
+            loading && authid === 1 ?
+            <Loader2 size={18} className='animate-spin duration-300'/>:
+            <Image height={24} width={24} src='/icons/google.svg' alt='Google Icon'/>
+
+          }
           Google
         </button>
        </div>
-      <div className='border-b border-col py-2'>
+      {/* <div className='border-b border-col py-2'>
          <form className='py-4 flex flex-col gap-2' onSubmit={(e) => handleSubmit(e)}>
           <FancyInput
           placeholder='Email'
@@ -174,7 +184,7 @@ export const RegistrationForm = ({style}:{style?: string}) => {
           <button onClick={() => setCurrentStep("signup")}> Sign Up</button>
          }
         </span> </p>
-      </div>
+      </div> */}
       <div>
         <span className='text-[14px] flex items-center gap-1 mt-2 mb-1'><Verified size={16} className='fill-blue-400 text-(--bg)'/> Members perk!</span>
         <div className='flex flex-col px-2 gap-1 text-[12px] text-left'>

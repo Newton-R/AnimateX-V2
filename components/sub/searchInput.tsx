@@ -66,11 +66,11 @@ export const SearchInput = () => {
             return category || contentMatch
         })
   return (
-    <div className='flex-center border border-col rounded-xl px-[2px] md:px-2 h-9'>
+    <div className='flex-center flex-1 border border-col rounded-xl px-0.5 md:px-2 h-9'>
         <input type='text' 
         onFocus={() => {setSearching(true)}} 
             placeholder='Search Something' className='h-9 outline-none flex-1'></input>
-        <div className='p-1 rounded-md bg-[var(--secondary-hover)] md:mr-0 mr-2 flex items-center justify-center shrink-0 text-xs'>
+        <div className='p-1 rounded-md bg-(--secondary-hover) md:mr-0 mr-2 flex items-center justify-center shrink-0 text-xs'>
             Ctrl + K
         </div>
         <AnimatePresence>
@@ -79,7 +79,7 @@ export const SearchInput = () => {
              <m.div key={1} variants={fadeInVariants} initial="hidden" exit={"hidden"} animate="visible"
              className='fixed bg-transparent backdrop-blur-[2px] z-80 min-w-screen p-4 top-0 left-0 min-h-screen flex pt-25 justify-center'>
                 <m.div variants={fadeInVariants} initial="hiddenblock" animate="visibleblock" exit={"hiddenblock"}
-                className='p-4 rounded-xl w-full max-w-[480px] border border-col bg-[var(--bg)] h-[410px]'>
+                className='p-4 rounded-xl w-full max-w-120 border border-col bg-(--bg) h-102.5'>
                     <div className='mb-2 flex justify-between items-center'>
                         <p>{componentslist.reduce((acc, count) => count.content.length + acc , 0 )} components</p>
                         <X size={18} onClick={close} className='cursor-pointer'/>
