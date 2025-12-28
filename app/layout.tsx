@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     url: "https://animatex-pro.newtonraul.me/",
     images: [
       {
-          url: "/opengraph-image.png",
+          url: "/og.jpeg",
           width: 1200,
           height: 630,
       }
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Animatex Pro",
     description: "Animated UI components for React and Next.js. Build fast, modern, and beauiful web interfaces with Animatex Pro, Built with ❤ NGWA NEWTON-RAUL.",
-    images: ["/opengraph-image.png"],
+    images: ["/og.jpeg"],
   }
 };
 
