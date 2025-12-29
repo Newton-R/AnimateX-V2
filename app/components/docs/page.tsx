@@ -35,7 +35,7 @@ export function cn(...inputs: ClassValue[]) {
 
 const Bullet = () => {
   return (
-      <div className='absolute top-0 left-0 w-2 bg-[var(--secondary-hover)] rounded-r-xl h-8'/>
+      <div className ='absolute top-0 left-0 w-2 bg-(--secondary-hover) rounded-r-xl h-8'/>
   )
 }
 
