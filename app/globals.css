@@ -139,6 +139,13 @@ h1{
   @apply bg-linear-0 text-transparent bg-clip-text cursor-pointer from-blue-400 to-blue-500;
 }
 
+.onthispage{
+  @apply w-50 hidden fixed right-6 top-20 md:flex md:flex-col pt-4 h-full
+}
+
+.dash-main{
+  @apply flex w-full max-w-205 gap-4 flex-col
+}
 
 .section-head{
   @apply text-2xl md:text-3xl w-full text-center mx-auto md:w-[70%]

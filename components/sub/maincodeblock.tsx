@@ -23,8 +23,8 @@ const MainCodeBlock = ({codejs, codets, type}:codeblock) => {
             bg-(--bg) border border-col relative w-full'>
                 
                 <div className='p-px flex-center absolute top-2 z-20 right-8 w-fit rounded-md bg-(--secondary) gap-2'>
-                    <span onClick={() => setCode({language: "tsx", code: codets})} className={cn('cursor-pointer px-2 py-1 rounded', code.code === codets && "bg-(--secondary-hover)")}>TS</span>
-                    <span onClick={() => setCode({language: "jsx", code: codejs})} className={cn('cursor-pointer px-2 py-1 rounded', code.code === codejs && "bg-(--secondary-hover)")}>JS</span>
+                    <span onClick={() => setCode({language: "tsx", code: codets})} className={cn('cursor-pointer px-2 py-1 rounded', code.code === codets && "bg-(--secondary-hover)")}>Nextjs</span>
+                    <span onClick={() => setCode({language: "jsx", code: codejs})} className={cn('cursor-pointer px-2 py-1 rounded', code.code === codejs && "bg-(--secondary-hover)")}>Reactjs</span>
                     <CopyButton onClick={handleCopy} className='py-2 hover:bg-(--secondary-hover) rounded-md w-fit px-2' animationVariant={2}/>
                 
                 </div>

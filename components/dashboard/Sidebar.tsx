@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { Blocks, Drama, LayoutDashboard, MousePointer, Text, TextCursor} from 'lucide-react'
+import { Blocks, Drama, LayoutDashboard, MousePointer, Text, TextCursor, Verified} from 'lucide-react'
 import Link from 'next/link'
 import clsx from "clsx"
 import { useNavToggle } from '@/utils/store'
@@ -195,6 +195,17 @@ export const Sidebar = () => {
                     tag: "M"
                 }
             ]
+        },
+        {
+            icon: <Verified className='fill-blue-400 text-(--bg)' size={16}/>,
+            text: "Pro Blocks",
+            sublinks: [
+                {
+                    text: "Sections",
+                    link: "/components/sections/"
+                }
+            ]
+
         }
     ]
     const fadeInVariants: Variants = {
@@ -232,14 +243,14 @@ export const Sidebar = () => {
           <div className='p-2 overflow-y-scroll h-[calc(100vh-100px)]'>
             {
                 links.map((link, i) => 
-                    <div key={i} className='p-2'>
-                        <div className='flex-center gap-2'>
+                    <div key={i} className='p-2 text-[14px]'>
+                        <div className='flex-center gap-2 text-[16px]'>
                             {link.icon}
                             {link.text}
                         </div>
                         {
                             link.sublinks.map((li, i) => 
-                                <Link href={li.link ? li.link : ""} key={i}>
+                                <Link href={li.link ? li.link : ""} key={i} onClick={setToggle}>
                                     <m.div whileHover="hovered" className='flex-center text-[14px] gap-2 hover:bg-(--secondary-hover)
                                     cursor-pointer p-2 py-1 rounded-md'>
                                         <m.span className='flex gap-2' variants={{"hovered": {x : 5}}}>
@@ -257,7 +268,7 @@ export const Sidebar = () => {
                 {
                     componentslist.map((component, i) => 
                       <div key={i} className='p-2'>
-                        <div className='flex-center gap-2'>
+                        <div className='flex-center gap-2 text-[16px]'>
                             {component.icon}
                             {component.category}
                         </div>

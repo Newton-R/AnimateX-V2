@@ -1,3 +1,4 @@
+"use client"
 import React, { Suspense, useState } from 'react'
 import CodeBlock from './codeblock'
 import { ComponentLoader } from './componentLoader'
