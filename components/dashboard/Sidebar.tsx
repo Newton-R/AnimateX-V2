@@ -244,7 +244,7 @@ export const Sidebar = () => {
             {
                 links.map((link, i) => 
                     <div key={i} className='p-2 text-[14px]'>
-                        <div className='flex-center gap-2'>
+                        <div className='flex-center gap-2 text-[16px]'>
                             {link.icon}
                             {link.text}
                         </div>
@@ -268,7 +268,7 @@ export const Sidebar = () => {
                 {
                     componentslist.map((component, i) => 
                       <div key={i} className='p-2'>
-                        <div className='flex-center gap-2'>
+                        <div className='flex-center gap-2 text-[16px]'>
                             {component.icon}
                             {component.category}
                         </div>

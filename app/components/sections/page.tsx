@@ -4,6 +4,7 @@ import { Stagger3D } from '@/components/ui/sections/gallery/stagger3d'
 import { SampleCodeBlock } from '@/components/sub/samplecodeblock'
 import { ArrowDown, ArrowUp, SendHorizonal } from 'lucide-react'
 import { SectionLinkBlock } from '@/components/sub/sectionlinkblock'
+import Link from 'next/link'
 
 const SectionPage = () => {
 
@@ -13,111 +14,14 @@ const SectionPage = () => {
       description: "Pictures sections representing different features or people.",
       components: [
         {
-          title: "Stagger 3D",
-          link: "",
+          title: "Stagger3D",
+          link: "/stagger3d",
           preview: null
         }
       ]
     }
   ]
 
-  const base_dir = '/random/'
-  const images = [
-    {
-      image: `${base_dir}pic1.jpg`,
-      offset: {
-        xoffset: 20,
-      }
-    },  
-    {
-      image: `${base_dir}pic2.jpg`,
-      offset: {
-        xoffset: 20,
-        yoffset: 0
-      }
-    },  
-    {
-      image: `${base_dir}pic3.jpg`,
-      offset: {
-        xoffset: 20,
-        yoffset: 0
-      }
-    },  
-    {
-      image: `${base_dir}pic4.jpg`,
-      offset: {
-        xoffset: 30,
-        yoffset: 20
-      }
-    },  
-    {
-      image: `${base_dir}pic5.jpg`,
-      offset: {
-        xoffset: 1,
-        yoffset: -30
-      }
-    },  
-    {
-      image: `${base_dir}pic6.jpg`,
-      offset: {
-        xoffset: 0,
-        yoffset: 0
-      }
-    },  
-    {
-      image: `${base_dir}pic7.jpg`,
-      offset: {
-        xoffset: 0,
-        yoffset: 0
-      }
-    },  
-    {
-      image: `${base_dir}pic8.jpg`,
-      offset: {
-        xoffset: 1,
-        yoffset: 20
-      }
-    },  
-    {
-      image: `${base_dir}pic9.jpg`,
-      offset: {
-        xoffset: -20,
-        yoffset: -20
-      }
-    },  
-    {
-      image: `${base_dir}pic10.jpg`,
-      offset: {
-        xoffset: -20,
-        yoffset: 0
-      }
-    },  
-    {
-      image: `${base_dir}pic11.jpg`,
-      offset: {
-        xoffset: -20,
-        yoffset: 0
-      }
-    },  
-    {
-      image: `${base_dir}pic12.jpg`,
-       offset: {
-        xoffset: 20,
-        yoffset: 20
-      }
-    },  
-  //  `${base_dir}pic2.jpg`,  
-  //  `${base_dir}pic3.jpg`,  
-  //  `${base_dir}pic4.jpg`,  
-  //  `${base_dir}pic5.jpg`,  
-  //  `${base_dir}pic6.jpg`,  
-  //  `${base_dir}pic7.jpg`,  
-  //  `${base_dir}pic8.jpg`,  
-  //  `${base_dir}pic9.jpg`,   
-  //  `${base_dir}pic10.jpg`,  
-  //  `${base_dir}pic11.jpg`,  
-  //  `${base_dir}pic12.jpg`
-  ]
   return (
     <div className='flex gap-2'>
       <div className='dash-main'>
@@ -145,24 +49,30 @@ const SectionPage = () => {
         {/* <h1 className='text-2xl blue-gradient-text'>Gallery</h1>
         <SampleCodeBlock 
         component={
-          <>
-               <div className='flex flex-col gap-3 w-full items-center justify-center min-h-100 bg-(--bg)'>
-                    <span>Scroll Down</span>
-                    <ArrowDown size={24}/>
-                </div>
-              <Stagger3D images={images}/>
-               <div className='flex flex-col gap-3 w-full items-center justify-center min-h-100 bg-(--bg)'>
-                    <span>Scroll Up</span>
-                    <ArrowUp size={24}/>
-                </div>
         
-          </>
         } code='' componentType='num'/> */}
       </div> 
 
       {/* on this page menu  */}
       <div className='onthispage'>
           <p>On this page</p>
+          <div className='pl-2 border-l border-col'>
+            {
+              sections.map((sec, i) => 
+                <div>
+                    <Link key={i} href={`#${sec.heading.toLocaleLowerCase()}`}>{sec.heading}</Link>
+                  <div className='pl-4 text-neutral-600 flex flex-col gap-2 text-[14px]'>
+                    {
+                      sec.components.map((com, i) => 
+                        <Link key={i} href={`#${com.title.toLocaleLowerCase()}`}>{com.title}</Link>
+                      )
+                    }
+                    
+                  </div>
+                </div>
+              )
+            }
+          </div>
       </div>
     </div>
   )
