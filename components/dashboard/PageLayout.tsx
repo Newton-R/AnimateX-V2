@@ -6,7 +6,7 @@ import { CopyButton } from '../ui/buttons/copy'
 import { motion as m, useInView } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { ComponentLoader } from '../sub/componentLoader'
-import { Lock, RefreshCcw } from 'lucide-react'
+import { Lock, RefreshCcw, Verified } from 'lucide-react'
 import { PropBlock } from '../sub/propblock'
 import { space } from '@/utils/font'
 import { CommandBlock } from '../sub/commandblock'
@@ -17,6 +17,8 @@ import { useAuthStore } from '@/utils/store'
 import Link from 'next/link'
 import MainCodeBlock from '../sub/maincodeblock'
 import { SampleCodeBlock } from '../sub/samplecodeblock'
+import { Dailog } from '../ui/modals/dailog'
+import { ProForm } from '../main/forms/ProForm'
 
 interface props{
     prop:string,
@@ -51,14 +53,15 @@ interface pageprop{
     installCode?: string,
     manual?:boolean,
     layoutType?: "doc" | "component",
-    external?: string
+    external?: string,
+    isPro?: boolean
     
 }
 
 
 
 const PageLayout = ({title, variants, installCode, manual=true, layoutType = "component", 
-    description, component, type, sections, membersonly=false, external,
+    description, component, type, sections, membersonly=false, external, isPro=false,
     codets, codejs, features=[""], props, usecasecode, componentType="block"}:pageprop) => {
     const [code, setCode] = useState({language: "tsx", code: codets})
     const [current, setCurrent] = useState<string>("Preview")
@@ -204,8 +207,16 @@ export function cn(...inputs: ClassValue[]) {
                             <p className='text-(--muted-text)'>This is a members only component. Please sign in to view installation instructions.</p>
                             <RegistrationForm style='rounded-md w-80'/>
                         </div>
+                        : isPro ?
+                        <div className='w-full p-2 flex flex-col items-center justify-center gap-2'>
+                            <h1>This is a Pro Component.</h1>
+                            <Dailog buttonText={
+                                <span className='flex items-center justify-center gap-2'>
+                                <Verified size={18} className='text-black dark:text-white fill-blue-500'/> Go Premuim</span>} buttonStyle='bg-black dark:bg-white dark:text-black text-white rounded-md'>
+                                <ProForm/>
+                            </Dailog>
+                        </div> 
                         :
-
                         external ?
                         <div className='flex items-center flex-col w-full md:w-80 py-8 mx-auto text-center justify-center gap-1.5'>
                            <Link href={`/components/${external}`} className='hover:underline'>Follow the link to view installation</Link>

@@ -20,13 +20,13 @@ const CodeBlock = ({code, language, type}:props) => {
     }
  
   return (
-     <div className='w-full h-fit p-0 rounded-md overflow-hidden relative'>
+     <div className='w-full p-0 mt-2 flex items-center bg-(--code-block) border border-col relative'>
           {
             type !== "maincode" &&
             <CopyButton 
                 animationVariant={2}
                 onClick={copyCode}
-                className='absolute top-0 translate-y-full right-4 bg-(--secondary-hover) clickable p-1 px-0 w-8 flex items-center justify-center rounded-md'/>
+                className='absolute top-4 right-4 bg-(--secondary-hover) clickable p-1 px-0 w-8 flex items-center justify-center rounded-md'/>
           }
             <Prism language="typescript" 
             style={theme === "dark" ? vscDarkPlus : vs} 
@@ -35,6 +35,8 @@ const CodeBlock = ({code, language, type}:props) => {
               backgroundColor: "transparent",
               borderRadius: "",
               fontSize: "18px",
+              margin: 0,
+              border: 0,
             fontFamily: '"Fira Code", "JetBrains Mono", monospace'}}>
               {code.trim()}
             </Prism>

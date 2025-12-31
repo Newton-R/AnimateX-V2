@@ -108,6 +108,7 @@ export default page
         codejs={ReactCode}
         membersonly
         codets={NextCode}
+        isPro
         usecasecode={usecase}
         props={component.props}
         sections={sections}

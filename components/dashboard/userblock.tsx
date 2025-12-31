@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import { getUserSession, signout } from '@/utils/useAuth'
 import Image from 'next/image';
-import { EllipsisVertical, Loader, Loader2, LogOut, Verified, X } from 'lucide-react';
+import { EllipsisVertical, Loader2, LogOut, Verified, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/utils/store';
 import { CopyButton } from '../ui/buttons/copy';
@@ -31,7 +31,6 @@ export const UserBlock = () => {
         const fetchUser = async () => {
             const user = await getUserSession();
             setUser(user.session?.user || null);
-            console.log(user); 
             setIsLoading(false); 
         };
         fetchUser();
@@ -87,6 +86,7 @@ export const UserBlock = () => {
         <div className='flex gap-2 items-center w-full'>
             <p className='text-sm'>Not signed in</p> 
             <RegistrationForm style='rounded-md p-1 text-[14px]'/>
+           
         </div>
        }
     </div>

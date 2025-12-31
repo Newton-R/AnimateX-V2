@@ -22,19 +22,19 @@ export const SampleCodeBlock = ({componentType="block", component, code}:props) 
       <div className='flex flex-col gap-4 justify-between w-full'>
         <div className='flex items-center rounded-xl'>
             <span onClick={() => setCurrent("Preview")} 
-            className={cn('flex-center cursor-pointer p-2 rounded-md', current === "Preview" ? "bg-[var(--secondary-hover)] " : "")}>Preview</span>
+            className={cn('flex-center cursor-pointer p-2 rounded-md', current === "Preview" ? "bg-(--secondary-hover) " : "")}>Preview</span>
             <span onClick={() => setCurrent("Code")} 
-            className={cn('flex-center cursor-pointer p-2 rounded-md', current === "Code" ? "bg-[var(--secondary-hover)] " : "")}>
+            className={cn('flex-center cursor-pointer p-2 rounded-md', current === "Code" ? "bg-(--secondary-hover) " : "")}>
                 Code</span>
         </div>
          {
             componentType === "block" ?
-           <div className={('p-[10px] w-full bg-[var(--secondary)] transition-all duration-300 @container mx-auto border border-col')}>
+           <div className={('p-[10px] w-full bg-(--secondary) transition-all duration-300 @container mx-auto border border-col')}>
                 <div key={key}
-                className='min-h-[490px] md:h-[480px] flex-center overflow-hidden justify-center relative gradient p-2 bg-[var(--bg)] border border-col w-full'>
+                className='min-h-[490px] md:h-[480px] flex-center overflow-hidden justify-center relative gradient p-2 bg-(--bg) border border-col w-full'>
                         {
                             current === "Preview" &&
-                            <button onClick={Reload} className='p-2 cursor-pointer bg-[var(--bg)] rounded-md absolute top-2 right-2'><RefreshCcw/></button>
+                            <button onClick={Reload} className='p-2 cursor-pointer bg-(--bg) rounded-md absolute top-2 right-2'><RefreshCcw/></button>
                         }
                         {current === "Preview" ? 
                         <Suspense fallback={<ComponentLoader/>}>

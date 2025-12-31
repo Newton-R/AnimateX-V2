@@ -8,7 +8,7 @@ type DialogProps = React.HTMLAttributes<HTMLDivElement> & {
     children?: React.ReactNode,
     className?: string ,
     buttonStyle?: string,
-    buttonText?: string
+    buttonText?: string | React.ReactNode
 }
 
 
