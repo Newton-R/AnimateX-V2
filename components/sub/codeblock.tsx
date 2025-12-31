@@ -31,6 +31,8 @@ const CodeBlock = ({code, language, type}:props) => {
             <Prism language="typescript" 
             style={theme === "dark" ? vscDarkPlus : vs} 
             customStyle={{ padding: "1rem", height: "auto",
+              background: "transparent",
+              backgroundColor: "transparent",
               borderRadius: "",
               fontSize: "18px",
             fontFamily: '"Fira Code", "JetBrains Mono", monospace'}}>
