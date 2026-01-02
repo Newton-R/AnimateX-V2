@@ -39,7 +39,7 @@ const MainCodeBlock = ({codejs, codets, type}:codeblock) => {
                     )
                 }
             
-                <div className={cn('h-full overflow-hidden overflow-y-scroll', type !== "Pro" && "")}>
+                <div className={cn('h-full overflow-hidden', type !== "Pro" && "")}>
                     <CodeBlock type='maincode' language={code.language} code={code.code}/>
                 </div>
             </div>
