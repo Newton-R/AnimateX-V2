@@ -4,15 +4,16 @@ import { Prism } from "react-syntax-highlighter"
 import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useTheme } from 'next-themes';
 import { CopyButton } from '../ui/buttons/copy';
+import { cn } from '@/lib/utils';
 
 interface props{
     code: string,
     language: string,
     type?: string,
-    
+    className?: string,
 }
 
-const CodeBlock = ({code, language, type}:props) => {
+const CodeBlock = ({code, language, type, className}:props) => {
     const { theme } = useTheme()
 
     const copyCode = () => {
@@ -20,7 +21,7 @@ const CodeBlock = ({code, language, type}:props) => {
     }
  
   return (
-     <div className='w-full h-fit mt-2 border border-col bg-(--code-block) relative'>
+     <div className={cn('w-full h-fit mt-2 border border-col bg-(--code-block) relative', className && className)}>
           {
             type !== "maincode" &&
             <CopyButton 

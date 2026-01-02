@@ -279,7 +279,7 @@ export const Sidebar = () => {
                                         <m.div whileHover="hovered" 
                                             className='flex-center justify-between gap-2 relative hover:bg-(--secondary-hover) cursor-pointer
                                             p-2 py-1 rounded-md'>
-                                                <m.span className='flex-center gap-4' variants={{"hovered": {x : 5}}}>
+                                                <m.span className='flex-center gap-4 text-[14px] text-(--muted-text)' variants={{"hovered": {x : 5}}}>
                                                     {cont.text}
                                                     {cont.tag ? <span className='blue-gradient-text text-xs h-fit'>{cont.tag}</span> : ""}
                                                 </m.span>
