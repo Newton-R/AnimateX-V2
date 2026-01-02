@@ -328,7 +328,7 @@ export function cn(...inputs: ClassValue[]) {
                             <ReportBugForm/>
                        </div>
                        <div className='flex items-center border-t border-col mt-7 gap-3 justify-between py-4 md:py-8'>
-                            <p>&copy; 2025</p>
+                            <p>&copy; { new Date().getFullYear()}</p>
                             <p>Built with ❤ by <KeyLink text='Newton' link='https://www.newtonraul.me/'/></p>
                         </div>
         
