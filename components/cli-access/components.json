@@ -9,7 +9,15 @@
       }
     ]
   },
+  "stagger3d": {
+    "access": "member",
+    "dependencies": []
+  },
   "swoop": {
+    "access": "member",
+    "dependencies": []
+  },
+  "featureswoop": {
     "access": "member",
     "dependencies": []
   }
