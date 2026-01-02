@@ -18,7 +18,7 @@
   --secondary-hover: #f0f0f0;
   --space-font: var(--space-font);
   --muted-text: #555555;
- 
+  --code-block: #f0f0f0;
 }
 
 
@@ -38,6 +38,7 @@
   --gradient-border: #8080800a;
   --secondary-hover: rgb(19, 19, 19);
   --muted-text: #888888;
+  --code-block: rgb(19, 19, 19);
 }
 
 

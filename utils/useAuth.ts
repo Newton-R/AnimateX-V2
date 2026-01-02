@@ -50,6 +50,7 @@ export const emailPasswordSignIn = async (email: string, password: string) => {
 export const socialAuth = async (method:string) => {
     await authClient.signIn.social({
         provider: method,
+        callbackURL: `${FRONTEND_URL}/components/docs`
     })
 }
 

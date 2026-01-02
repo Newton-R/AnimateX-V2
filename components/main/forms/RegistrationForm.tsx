@@ -53,7 +53,7 @@ export const RegistrationForm = ({style}:{style?: string}) => {
     if(pathname === "/"){
       router.push("/components/docs")
     }else{
-      router.push(`/components/${currentComponent}`)
+      router.refresh()
     }
   }
 
