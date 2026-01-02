@@ -14,6 +14,9 @@ import { KeyLink } from '../sub/keylink'
 import { RegistrationForm } from '../main/forms/RegistrationForm'
 import { ReportBugForm } from '../main/forms/reportbug'
 import { useAuthStore } from '@/utils/store'
+import Link from 'next/link'
+import MainCodeBlock from '../sub/maincodeblock'
+import { SampleCodeBlock } from '../sub/samplecodeblock'
 
 interface props{
     prop:string,
@@ -47,14 +50,15 @@ interface pageprop{
     sections?: sections[],
     installCode?: string,
     manual?:boolean,
-    layoutType?: "doc" | "component"
+    layoutType?: "doc" | "component",
+    external?: string
     
 }
 
 
 
 const PageLayout = ({title, variants, installCode, manual=true, layoutType = "component", 
-    description, component, type, sections, membersonly=false,
+    description, component, type, sections, membersonly=false, external,
     codets, codejs, features=[""], props, usecasecode, componentType="block"}:pageprop) => {
     const [code, setCode] = useState({language: "tsx", code: codets})
     const [current, setCurrent] = useState<string>("Preview")
@@ -64,11 +68,6 @@ const PageLayout = ({title, variants, installCode, manual=true, layoutType = "co
     const { isAuthenticated } = useAuthStore();
         
     useEffect(() => {
-        // const fetchUser = async () => {
-        //     const user = await getUserSession();
-        //     setUser(user.session?.user || null);
-        //     console.log(user);  
-        // }
         if(membersonly && isAuthenticated){
             setUser(true);
         }else{
@@ -149,7 +148,9 @@ export function cn(...inputs: ClassValue[]) {
    
   return (
     <div className="flex gap-2">
-        <div className='flex flex-col gap-4 w-full md:max-w-[820px]'> 
+        <div className='flex flex-col gap-4 w-full md:max-w-205'> 
+
+            {/* //component details section */}
             <div>
                     <div className='flex-center'>
                         <h1 className={`title ${space.className} antialiased font-bold`}>{title}</h1>
@@ -158,42 +159,17 @@ export function cn(...inputs: ClassValue[]) {
                     </div>
                     <p>{description}</p>
             </div>
+
+            {/* first preview section */}
             <div>
                     <div className='w-full gap-4 flex flex-col'>
-                        <div className='flex-center justify-between w-full'>
-                            <div className='flex items-center rounded-xl'>
-                                <span onClick={() => setCurrent("Preview")} 
-                                className={cn('flex-center cursor-pointer p-2 rounded-md', current === "Preview" ? "bg-[var(--secondary-hover)] " : "")}>Preview</span>
-                                <span onClick={() => setCurrent("Code")} 
-                                className={cn('flex-center cursor-pointer p-2 rounded-md', current === "Code" ? "bg-[var(--secondary-hover)] " : "")}>
-                                    Code</span>
-                            </div>
-                        
-                        </div>
                     {
-                            componentType === "block" ?
-                            <div  ref={container1} className={('p-[10px] rounded-[16px] w-full bg-[var(--secondary)] transition-all duration-300 @container mx-auto border border-col')}>
-                                <div key={key}
-                                className='min-h-[490px] md:h-[480px] flex-center overflow-hidden justify-center relative gradient p-2 bg-[var(--bg)] border border-col rounded-[6px] w-full'>
-                                        {
-                                            current === "Preview" &&
-                                            <button onClick={Reload} className='p-2 cursor-pointer bg-[var(--bg)] rounded-md absolute top-2 right-2'><RefreshCcw/></button>
-                                        }
-                                        {current === "Preview" ? 
-                                        <Suspense fallback={<ComponentLoader/>}>
-                                            {component}
-                                        </Suspense> : 
-                                        <div className='w-full h-full'>
-                                            <CodeBlock language="tsx" code={usecasecode}/>
-                                        </div>}
-                                </div>
-                            </div> :
-                            <div className="w-full gradient">
-                                {component}
+                            <div  ref={container1}>
+                               <SampleCodeBlock component={component} code={usecasecode} componentType={componentType}/>
                             </div>
-                            
                     }
 
+                    {/* if other variants section */}
 
                     {
                         variants &&
@@ -203,9 +179,9 @@ export function cn(...inputs: ClassValue[]) {
                                  variants.map((vari, i) => 
                                     <div className="flex flex-col gap-4" key={i}>
                                          <h2 className='flex gap-2 items-center'>With props <PropBlock prop={vari.prop}/></h2>
-                                         <div className={('p-[10px] w-full bg-[var(--secondary)] transition-all duration-300 @container mx-auto border border-col rounded-[16px]')}>
+                                         <div className={('p-[10px] w-full bg-[var(--secondary)] transition-all duration-300 @container mx-auto border border-col ')}>
                                              <div 
-                                             className='min-h-[300px] md:min-h-[480px] overflow-hidden flex-center justify-center gradient p-2 bg-[var(--bg)] border border-col rounded-[6px] w-full'>
+                                             className='min-h-[300px] md:min-h-[480px] overflow-hidden flex-center justify-center gradient p-2 bg-[var(--bg)] border border-col  w-full'>
                                                  {vari.component} 
                                              </div>
                                          </div>     
@@ -215,8 +191,9 @@ export function cn(...inputs: ClassValue[]) {
                        </div>
                     }
 
-
-                        {/* code preview */}
+                    {/* INSTALLATION --------------------------------------------------------------------*/}
+                    <>
+                                                {/* code preview */}
 
                         <h1 className={`${space.className} title mt-8`}>Installation</h1>
 
@@ -227,6 +204,12 @@ export function cn(...inputs: ClassValue[]) {
                             <p className='text-(--muted-text)'>This is a members only component. Please sign in to view installation instructions.</p>
                             <RegistrationForm style='rounded-md w-80'/>
                         </div>
+                        :
+
+                        external ?
+                        <div className='flex items-center flex-col w-full md:w-80 py-8 mx-auto text-center justify-center gap-1.5'>
+                           <Link href={`/components/${external}`} className='hover:underline'>Follow the link to view installation</Link>
+                        </div> 
                         :
 
                         //code snippets
@@ -272,16 +255,18 @@ export function cn(...inputs: ClassValue[]) {
                                     <CodeBlock language={"jsx"} code={utilsCode}/>
                                 </div>
                                 <div className='pl-5 relative flex flex-col gap-4'>
-                                    <div className='absolute top-0 left-0 w-2 bg-[var(--secondary-hover)] rounded-r-xl h-8'/>
-                                    <span className='mt-1'>Copy the source code</span>    
-                                    <div className='w-full p-[10px] bg-[var(--secondary)] border border-col rounded-[16px]'>    
-                                        <div className='h-[480px] md:h-[280px] gradient overflow-x-hidden
-                                        bg-[var(--bg)] border border-col relative rounded-[6px] w-full'>
+                                    <div className='absolute top-0 left-0 w-2 bg-(--secondary-hover) rounded-r-xl h-8'/>
+                                    <span className='mt-1'>Copy the source code</span>   
+
+                                    <MainCodeBlock codejs={codejs} codets={codets} type={type}/> 
+                                    {/* <div className='w-full p-2.5 bg-(--secondary) border border-col'>    
+                                        <div className='h-120 md:h-70 gradient overflow-x-hidden
+                                        bg-(--bg) border border-col relative w-full'>
                                             
-                                            <div className='p-[1px] flex-center absolute top-2 z-20 right-8 w-fit rounded-md bg-[var(--secondary)] gap-2'>
+                                            <div className='p-px flex-center absolute top-2 z-20 right-8 w-fit rounded-md bg-(--secondary) gap-2'>
                                                 <span onClick={() => setCode({language: "tsx", code: codets})} className={cn('cursor-pointer px-2 py-1 rounded', code.code === codets && "bg-(--secondary-hover)")}>TS</span>
                                                 <span onClick={() => setCode({language: "jsx", code: codejs})} className={cn('cursor-pointer px-2 py-1 rounded', code.code === codejs && "bg-(--secondary-hover)")}>JS</span>
-                                                <CopyButton onClick={handleCopy} className='py-2 hover:bg-[var(--secondary-hover)] rounded-md w-fit px-2' animationVariant={2}/>
+                                                <CopyButton onClick={handleCopy} className='py-2 hover:bg-(--secondary-hover) rounded-md w-fit px-2' animationVariant={2}/>
                                             
                                             </div>
                                             {
@@ -299,17 +284,21 @@ export function cn(...inputs: ClassValue[]) {
                                                 <CodeBlock type='maincode' language={code.language} code={code.code}/>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                            </div>
                         }
                         </>
                       }
+                    </>
 
-                        {/* component props */}
+
+                      {/* PROPS -------------------------------------------------------------------------*/}
+                    <>
+                       {/* component props */}
                         <h1 className={`${space.className} title mt-8`}>Props</h1>
                         <div ref={container3} className='w-full overflow-x-auto'>
-                            <table className='w-full text-center min-w-[600px]'>
+                            <table className='w-full text-center min-w-150'>
                                 <thead>
                                     <tr className='font-bold'>
                                         <td className='p-2 border border-col'>Prop</td>
@@ -331,6 +320,7 @@ export function cn(...inputs: ClassValue[]) {
                             </table>
                         </div>
 
+                    </>
                         {/* <div className='mt-5'>
                             <h1 className='text-2xl flex gap-2 items-center'><Bug size={20}/>Report a bug</h1>
                         </div> */}

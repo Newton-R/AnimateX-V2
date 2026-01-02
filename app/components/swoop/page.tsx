@@ -1,8 +1,7 @@
 import PageLayout from '@/components/dashboard/PageLayout'
-import { AeroButton, CodeJS,  Code, UseCase} from '@/components/ui/buttons/aerobutton'
-import { Swoop } from '@/components/ui/text/swoop'
+import { Swoop, codejs, codets, UseCase } from '@/components/ui/text/swoop'
 
-const FeedbackPage = () => {
+const SwoopTextPage = () => {
     const component = {
         block: <Swoop/> ,
         features: [
@@ -33,8 +32,8 @@ const FeedbackPage = () => {
     title='Swoop'
     description='Section based transitions with smooth animations for a dynamic user experience.'
     type='Free' 
-    codejs={CodeJS}
-    codets={Code}
+    codejs={codejs}
+    codets={codets}
     membersonly={true}
     usecasecode={UseCase}
     props={component.props}
@@ -43,4 +42,4 @@ const FeedbackPage = () => {
   )
 }
 
-export default FeedbackPage
+export default SwoopTextPage

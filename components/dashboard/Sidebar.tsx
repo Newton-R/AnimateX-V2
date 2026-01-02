@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { Blocks, Drama, Flower, LayoutDashboard, MousePointer, Text, TextCursor, TextCursorInput, User, Zap } from 'lucide-react'
+import { Blocks, Drama, LayoutDashboard, MousePointer, Text, TextCursor, Verified} from 'lucide-react'
 import Link from 'next/link'
 import clsx from "clsx"
 import { useNavToggle } from '@/utils/store'
@@ -33,12 +33,12 @@ export const componentslist: components[] = [
                 {
                     text: "Aero Button",
                     link: "/components/aerobutton",
-                    tag: states[1]
+                    tag: ""
                 },
                 {
                     text: "Arrow Button",
                     link: "/components/arrow",
-                    tag: states[1]
+                    tag: ""
                 },
                  {
                     text: "Loading",
@@ -75,7 +75,7 @@ export const componentslist: components[] = [
                 {
                     text: "Vercel",
                     link: "/components/vercel",
-                    tag: "New"
+                    tag: ""
                 },
                  {
                     text: "Flower Menu",
@@ -91,7 +91,7 @@ export const componentslist: components[] = [
                 {
                     text: "Stagger",
                     link: "/components/staggercards",
-                    tag: states[1]
+                    tag: ""
                 },
                 {
                     text: "Highlight",
@@ -101,7 +101,7 @@ export const componentslist: components[] = [
                 {
                     text: "Canvas",
                     link: "/components/canvas",
-                    tag: states[1]
+                    tag: ""
                 },
                 {
                     text: "Swift",
@@ -111,12 +111,12 @@ export const componentslist: components[] = [
                 {
                     text: "Infinite",
                     link: "/components/infinitecarousel",
-                    tag: states[0]
+                    tag:""
                 },
                 {
                     text: "Pic Cycle",
                     link: "/components/piccycle",
-                    tag: states[0]
+                    tag: ""
                 }
             ]
 
@@ -128,12 +128,17 @@ export const componentslist: components[] = [
                 {
                     text: "Dailog",
                     link: "/components/dailog",
-                    tag: states[1]
+                    tag: ""
                 },
                 {
                     text: "Report Bug",
                     link: "/components/bug",
-                    tag: states[1]
+                    tag: ""
+                },
+                 {
+                    text: "Toast",
+                    link: "/components/toast",
+                    tag: states[0]
                 }
             ]
 
@@ -179,8 +184,28 @@ export const Sidebar = () => {
                 {
                     text: "Getting Started",
                     link: "/components/docs/"
+                },
+                {
+                    text: "Animatex-Pro CLI",
+                    link: "/components/cli/"
+                },
+                {
+                    text: "useToast",
+                    link: "/components/usetoast/",
+                    tag: "M"
                 }
             ]
+        },
+        {
+            icon: <Verified className='fill-blue-400 text-(--bg)' size={16}/>,
+            text: "Pro Blocks",
+            sublinks: [
+                {
+                    text: "Sections",
+                    link: "/components/sections/"
+                }
+            ]
+
         }
     ]
     const fadeInVariants: Variants = {
@@ -210,26 +235,27 @@ export const Sidebar = () => {
       </AnimatePresence>
       
       {/* we are trying */}
-      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col mt-10 md:mt-12 bg-[var(--bg)] left-0 top-0 border-r-1 border-col h-screen z-50', 
+      <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col mt-10 md:mt-12 bg-(--bg) left-0 top-0 border-r border-col h-screen z-50 pb-8', 
           isOpen ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"
       )}>
         <UserBlock/>
          
-          <div className='p-2 overflow-y-scroll'>
+          <div className='p-2 overflow-y-scroll h-[calc(100vh-100px)]'>
             {
                 links.map((link, i) => 
-                    <div key={i} className='p-2'>
-                        <div className='flex-center gap-2'>
+                    <div key={i} className='p-2 text-[14px]'>
+                        <div className='flex-center gap-2 text-[16px]'>
                             {link.icon}
                             {link.text}
                         </div>
                         {
                             link.sublinks.map((li, i) => 
-                                <Link href={li.link ? li.link : ""} key={i}>
-                                    <m.div whileHover="hovered" className='flex-center text-[14px] gap-2 hover:bg-[var(--secondary-hover)] 
+                                <Link href={li.link ? li.link : ""} key={i} onClick={setToggle}>
+                                    <m.div whileHover="hovered" className='flex-center text-[14px] gap-2 hover:bg-(--secondary-hover)
                                     cursor-pointer p-2 py-1 rounded-md'>
-                                        <m.span variants={{"hovered": {x : 5}}}>
+                                        <m.span className='flex gap-2' variants={{"hovered": {x : 5}}}>
                                             {li.text}
+                                            <span className='blue-gradient-text'>{li.tag}</span>
                                         </m.span>
                                     </m.div>
                                 </Link>
@@ -242,7 +268,7 @@ export const Sidebar = () => {
                 {
                     componentslist.map((component, i) => 
                       <div key={i} className='p-2'>
-                        <div className='flex-center gap-2'>
+                        <div className='flex-center gap-2 text-[16px]'>
                             {component.icon}
                             {component.category}
                         </div>
@@ -251,7 +277,7 @@ export const Sidebar = () => {
                                  component.content.map((cont, i) => 
                                     <Link href={cont.link} onClick={setToggle} key={i} >
                                         <m.div whileHover="hovered" 
-                                            className='flex-center justify-between gap-2 relative hover:bg-[var(--secondary-hover)] cursor-pointer
+                                            className='flex-center justify-between gap-2 relative hover:bg-(--secondary-hover) cursor-pointer
                                             p-2 py-1 rounded-md'>
                                                 <m.span className='flex-center gap-4' variants={{"hovered": {x : 5}}}>
                                                     {cont.text}

@@ -1,5 +1,11 @@
 import PageLayout from '@/components/dashboard/PageLayout'
 import { AeroButton, CodeJS,  Code, UseCase} from '@/components/ui/buttons/aerobutton'
+import { generateMetadata } from '@/utils/useMetadata'
+import { Metadata } from 'next'
+
+export async function generate(): Promise<Metadata> {
+  return generateMetadata({title: "Aero Buttton", description: "Smooth button animation with icon takeoff on click"})
+}
 
 const FeedbackPage = () => {
     const component = {

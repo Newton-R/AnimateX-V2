@@ -5,6 +5,7 @@ import { BuiltPill, SectionPill } from '../sub/sectionpill'
 import Link from 'next/link'
 import { PrimaryButton } from '../sub/primarybutton'
 import GithubLink from '../sub/githublink'
+import { Toast } from '../ui/modals/toast'
 
 export const Hero = () => {
     const container = useRef<HTMLDivElement>(null)
@@ -24,10 +25,10 @@ export const Hero = () => {
   return (
    <div className="gradient w-full">
          <m.div ref={container} 
-            style={{
-                maskImage: "linear-gradient(to bottom, black 90%, transparent)"
-            }}
-            className=' min-h-screen h-[600px] w-full center-container overflow-hidden relative'>
+            // style={{
+            //     maskImage: "linear-gradient(to bottom, black 90%, transparent)"
+            // }}
+            className=' min-h-screen h-150 w-full overflow-hidden center-container relative'>
 
                 <div className='w-full flex-1 flex-col-center justify-center h-full'>
                     {/* <SectionPill/> */}
@@ -55,8 +56,8 @@ export const Hero = () => {
                 </div>
                 {/* <m.div style={{y}} className='w-full h-[400px] -z-10 md:h-[1300px] bg-radial from-transparent via-blue-400/40 via-40% 
                 absolute to-transparent top-[88%] blur-[14px] rounded-full '/> */}
-            
-            
+
+               
             </m.div>
    </div>
   )

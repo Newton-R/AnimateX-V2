@@ -2,12 +2,13 @@
 import React, { ChangeEvent, useState } from 'react'
 import { Dailog } from '@/components/ui/modals/dailog'
 import { emailPasswordSignUp, socialAuth, emailPasswordSignIn } from '@/utils/useAuth'
-import { Github, Lock, Mail, User, Verified } from 'lucide-react'
+import { Github, Loader2, Lock, Mail, User, Verified } from 'lucide-react'
 import { LoadingButton } from '@/components/ui/buttons/loadingButton'
 import { cn } from '@/lib/utils'
-import { redirect } from 'next/navigation'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { useToast } from '@/utils/useToast'
+import { useRouter } from 'next/navigation'
 
 interface fancyinput{
   type: string,
@@ -37,27 +38,30 @@ const FancyInput = ({icon, type, value, onChange, placeholder}: fancyinput) => {
 export const RegistrationForm = ({style}:{style?: string}) => {
   const [loading, setLoading] = useState(false)
   const pathname = usePathname();
+  const router = useRouter()
   const currentComponent = pathname.split('/').pop();
+  const [authid, setAuthid] = useState(0)
   const [userdata, setUserdata] = useState<userdata>({
     email: '',
     password: '',
     username: ''
   })
   const [currentStep, setCurrentStep] = useState("signup")
+  const { addToast } = useToast()
 
   const handleNavigation = () => {
     if(pathname === "/"){
-      redirect("/components/docs")
+      router.push("/components/docs")
     }else{
-      redirect(pathname)
+      router.push(`/components/${currentComponent}`)
     }
   }
 
-  const handleSocialAuth = async (method:string) => {
+  const handleSocialAuth = async (method:string, id:number) => {
     setLoading(true);
+    setAuthid(id)
     try{
       await socialAuth(method);
-      setLoading(false);
       handleNavigation();
     }catch(error){
       console.error("Social auth error:", error);
@@ -65,51 +69,85 @@ export const RegistrationForm = ({style}:{style?: string}) => {
     }  
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    try{
-      if(currentStep === "login"){
-        await emailPasswordSignIn(
-          userdata.email,
-          userdata.password);
-        handleNavigation();
-        return;
-      }else{
-         await emailPasswordSignUp(
-          userdata.email,
-          userdata.password, 
-          userdata.username);
-        // Call your email/password sign-up function here
-        // await emailPasswordSignUp(userdata.email, userdata.password, userdata.username);
-        handleNavigation();
-      }
-     
-    }catch(error){
-      console.error("Email/password sign-up error:", error);
-      setLoading(false);
-    }}
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   const signup = async () => {
+  //     try{
+  //         await emailPasswordSignUp(
+  //         userdata.email,
+  //         userdata.password, 
+  //         userdata.username);
+  //         addToast({
+  //           type: "default",
+  //           message: "Account Created Successfully! Logging In"
+  //         })
+  //         // handleNavigation()
+  //     }catch(err: any){
+  //         setLoading(false)
+  //         addToast({
+  //           type: "error",
+  //           message: err.message
+  //         })
+  //     }
+  //   }
+
+  //   const login = async () => {
+  //     try{
+  //         await emailPasswordSignIn(
+  //         userdata.email,
+  //         userdata.password);
+  //         addToast({
+  //           type: "default",
+  //           message: "Login Successful! Logging In"
+  //         })
+  //       handleNavigation();
+  //     }catch(err: any){
+  //       setLoading(false)
+  //        addToast({
+  //           type: "error",
+  //           message: err.message
+  //         })
+  //     }
+  //   }
+
+  //   if(currentStep === "signup"){
+  //     signup()
+  //   }else{
+  //     login()
+  //   }
+  
+  // }
   return (
     <Dailog buttonText='Sign Up' buttonStyle={`rounded-full p-2 px-4 text-white blue-gradient ${style ? style : ''}`} >
         <h1 className='text-4xl text-center'><span className='blue-gradient-text'>AnimateX</span>.</h1>
         <p className='text-center mb-3'>For a better experience join the Motion Family</p>
-       <div className='flex flex-col md:flex-row gap-2 py-2 border-b-1 border-col'>
+       <div className='flex flex-col md:flex-row gap-2 py-2 border-b border-col'>
            <button className={cn('p-2 px-4 rounded-md cursor-pointer bg-black dark:bg-white justify-center text-white dark:text-black w-full flex items-center gap-2',
             loading ? 'opacity-50 pointer-events-none' : ''
             )}
-           onClick={() => handleSocialAuth("github")}>
-           <Github size={18}/>
+           onClick={() => handleSocialAuth("github", 0)}>
+           {
+              loading && authid === 0 ? 
+              <Loader2 size={18} className='animate-spin duration-300'/>
+              : <Github size={18}/>
+           }
           Github
         </button>
          <button className={cn('p-2 px-4 rounded-md blue-gradient dark:bg-white justify-center text-white w-full flex items-center gap-2',
           loading ? 'opacity-50 pointer-events-none' : ''
           )}
-          onClick={() => handleSocialAuth("google")}>
-          <Image height={24} width={24} src='/icons/google.svg' alt='Google Icon'/>
+          onClick={() => handleSocialAuth("google", 1)}>
+          {
+            loading && authid === 1 ?
+            <Loader2 size={18} className='animate-spin duration-300'/>:
+            <Image height={24} width={24} src='/icons/google.svg' alt='Google Icon'/>
+
+          }
           Google
         </button>
        </div>
-      <div className='border-b border-col py-2'>
+      {/* <div className='border-b border-col py-2'>
          <form className='py-4 flex flex-col gap-2' onSubmit={(e) => handleSubmit(e)}>
           <FancyInput
           placeholder='Email'
@@ -146,7 +184,7 @@ export const RegistrationForm = ({style}:{style?: string}) => {
           <button onClick={() => setCurrentStep("signup")}> Sign Up</button>
          }
         </span> </p>
-      </div>
+      </div> */}
       <div>
         <span className='text-[14px] flex items-center gap-1 mt-2 mb-1'><Verified size={16} className='fill-blue-400 text-(--bg)'/> Members perk!</span>
         <div className='flex flex-col px-2 gap-1 text-[12px] text-left'>
@@ -155,6 +193,7 @@ export const RegistrationForm = ({style}:{style?: string}) => {
           <p>Access to our Discord Channel</p>
         </div>
       </div>
+      
     </Dailog>
   )
 }

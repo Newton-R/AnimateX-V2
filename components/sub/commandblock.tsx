@@ -4,7 +4,7 @@ import CodeBlock from './codeblock'
 import { motion as m } from 'motion/react'
 
 interface CommandBlock{
-    type?: "x" | "n" | "init",
+    type?: "x" | "n" | "init" | "s",
     item?: string,
     mykey?:string
 }
@@ -14,16 +14,17 @@ export const CommandBlock = ({type, item, mykey="slide"}:CommandBlock) => {
     const commandlists = [
         {
             pkm: "npm",
-            command: type === "x" ?  `npx animatex-pro add ${item}` : type === "n" ? `npm i ${item}` : `npx animatex-pro init` 
+            command: type === "x" ?  `npx animatex-pro add ${item}` : type === "n" ? `npm i ${item}` : type === "s" ? `npx animatex-pro store ${item}` : `npx animatex-pro init` 
         },
         {
             pkm: "pnpm",
-            command: type === "x" ?  `pnpx animatex-pro add ${item}` : type === "n" ? `pnpm add ${item}` : `pnpx animatex-pro init`
+            command: type === "x" ?  `pnpx animatex-pro add ${item}` : type === "n" ? `pnpm add ${item}` : type === "s" ? `pnpx animatex-pro store ${item}` : `pnpx animatex-pro init`
         },
         {
             pkm: "yarn",
-            command: type === "x" ?  `yarn dlx animatex-pro add ${item}` : type === "n" ? `yarn add ${item}` : `yarn dlx animatex-pro init`
-        }
+            command: type === "x" ?  `yarn dlx animatex-pro add ${item}` : type === "n" ? `yarn add ${item}` : type === "s" ? `yarn dlx animatex-pro store ${item}` : `yarn dlx animatex-pro init`
+        },
+        
     ]
   return (
     <div>

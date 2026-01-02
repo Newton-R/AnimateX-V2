@@ -14,11 +14,11 @@ export const DashNav = () => {
     <div className='p-2 flex-center justify-between w-full border-b-1 border-col bg-[var(--bg)] z-60 fixed left-0 top-0'>
          <div className='flex-center gap-2'>
             <Logo/>
-            <div className='md:flex-center hidden md:flex gap-2 '>
+            {/* <div className='md:flex-center hidden md:flex gap-2 '>
             <TextLink3 link='/components' text='Components'/>
             <TextLink3 link='/learn' text='Learn'/>
             <TextLink3 link='#' text='Templates'/>
-            </div>
+            </div> */}
         </div>
         <div className='flex-center gap-2'>
             <SearchInput/>

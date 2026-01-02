@@ -98,7 +98,7 @@ export const CopyButton: React.FC<buttonProps> = ({className, onClick, iconSize 
    className={cn('flex gap-2 items-center overflow-hidden p-2 px-6 rounded-full hover:bg-gray-300 hover:dark:bg-neutral-800 cursor-pointer text-black dark:text-white', 
                 className && className
    )}>
-       <AnimatePresence mode='popLayout'>
+       <AnimatePresence mode='popLayout' initial={false}>
             {
                 Copying ?
                 <m.div key='icon1' variants={variant} initial="initial" animate="animate" exit="initial">
