@@ -49,7 +49,7 @@ export const RegistrationForm = ({style}:{style?: string}) => {
     if(pathname === "/"){
       redirect("/components/docs")
     }else{
-      redirect(`/components/${currentComponent}`)
+      redirect(pathname)
     }
   }
 
