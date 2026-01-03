@@ -90,14 +90,14 @@ const SectionPage = () => {
       </div> 
 
       {/* on this page menu  */}
-      <div className='onthispage'>
-          <p>On this page</p>
-          <div className='pl-2 border-l border-col'>
+      <div className='onthispage text-[14px]'>
+          <p className='mb-2'>On this page</p>
+          <div className='pl-2'>
             {
               sections.map((sec, i) => 
                 <div>
                     <Link key={i} href={`#${sec.heading.toLocaleLowerCase()}`}>{sec.heading}</Link>
-                  <div className='pl-4 text-neutral-600 flex flex-col gap-2 text-[14px]'>
+                  <div className='pl-2 border-l border-col my-1 text-neutral-600 flex flex-col gap-2 text-[14px]'>
                     {
                       sec.components.map((com, i) => 
                         <Link key={i} href={`#${com.title.toLocaleLowerCase()}`}>{com.title}</Link>
