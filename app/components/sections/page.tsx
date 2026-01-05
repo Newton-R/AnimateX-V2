@@ -52,7 +52,18 @@ const SectionPage = () => {
           preview: <FeatureSwoop features={features}/>
         }
       ]
-    }
+    },
+    // {
+    //   heading: "Intergration",
+    //   description: "Show users the different external services your business partners with.",
+    //   components: [
+    //     {
+    //       title: "Tool Spread",
+    //       link: "/toolspread",
+    //       preview: null
+    //     }
+    //   ]
+    // }
   ]
 
   return (
