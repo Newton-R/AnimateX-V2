@@ -117,7 +117,12 @@ export const componentslist: components[] = [
                     text: "Pic Cycle",
                     link: "/components/piccycle",
                     tag: ""
-                }
+                },
+                //  {
+                //     text: "Wheel Carousel",
+                //     link: "/components/wheel",
+                //     tag: "New"
+                // }
             ]
 
         },
