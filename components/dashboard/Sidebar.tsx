@@ -43,7 +43,7 @@ export const componentslist: components[] = [
                  {
                     text: "Loading",
                     link: "/components/loadingbtn",
-                    tag: ""
+                    tag: states[1]
                 },
                  {
                     text: "Theme Toggler",
