@@ -155,7 +155,7 @@ export const componentslist: components[] = [
                 {
                     text: "Flip",
                     link: "/components/flip",
-                    tag: ""
+                    tag: states[1]
                 },
                 {
                     text: "Light Card",

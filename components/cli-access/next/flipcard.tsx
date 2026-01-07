@@ -1,7 +1,6 @@
-
 "use client"
-import React, { useState } from 'react'
-import { motion as m } from 'motion/react'
+import { useState } from 'react'
+import { motion as m, Variants } from 'motion/react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
@@ -13,28 +12,58 @@ interface flipProps{
     subStyle?: string,
     flipDuration?: number,
     iniSubSpread?: number,
-    finalSubSpread?: number
+    finalSubSpread?: number,
+    flipOnView?: boolean
 }
 
-export const Flip = ({subImages=[""], mainStyle, subStyle,
+export const FlipCard = ({subImages=[""], mainStyle, subStyle, flipOnView = false,
     mainImage, iniSubSpread = 60, finalSubSpread = 150, flipDuration=0.5}:flipProps) => {
+    
+        // state holding raduis that's distance of separation between images
     const [raduis, setRaduis] = useState(iniSubSpread)
+
+    const subVariants:Variants = {
+        spreading: (i) => ({
+            x: raduis * Math.cos((i * 2 * Math.PI) / subImages.length),
+            y: raduis * Math.sin((i * 2 * Math.PI) / subImages.length),
+            z: i * 20
+        })
+    } 
     return (
         // parent conatiner
    <m.div 
-   whileHover={"hovered"} whileTap={"hovered"} initial="idle" onMouseEnter={() => setRaduis(finalSubSpread)} 
-   onMouseLeave={() => setRaduis(iniSubSpread)} 
+   whileHover={"hovered"} 
+   whileTap={"hovered"} 
+   initial="idle" 
+   whileInView={ flipOnView ? "hovered" : {}}
+   viewport={{amount: 1}}
+   onMouseEnter={() => {if(!flipOnView){setRaduis(finalSubSpread)}}} 
+   onMouseLeave={() => {if(!flipOnView){setRaduis(iniSubSpread)}}} 
+
+//    view port raduis controls
+   onViewportEnter={() =>{
+    if(flipOnView){
+         setRaduis(finalSubSpread)
+    }
+   }}
+   onViewportLeave={() => {
+    if(flipOnView){
+        setRaduis(iniSubSpread)
+    }
+   }}
     className={cn('p-2 w-70 h-90 rounded-md relative', mainStyle && mainStyle)}>
 
         {/* rotating card */}
-        <m.div variants={{
+        <m.div 
+        variants={{
             'hovered': {
                 rotateY: 180
             },
             'idle': {
                 rotateY: 0
             }
-        }} transition={{duration: flipDuration}} 
+        }} 
+        transition={{duration: flipDuration}} 
         style={{
             perspective: "1000px", 
             transformStyle: 'preserve-3d'}} 
@@ -47,7 +76,7 @@ export const Flip = ({subImages=[""], mainStyle, subStyle,
 
                     {/* Main image conatiner */}
                     <div className="w-full h-full relative">
-                        <Image src={mainImage} fill alt={"img"}/>
+                        <Image src={mainImage} fill draggable={false} alt={"img"}/>
                     </div>
                 </div>
 
@@ -55,11 +84,11 @@ export const Flip = ({subImages=[""], mainStyle, subStyle,
                {
                     subImages.map((img, i) => 
                         <m.div
-                        animate={{
-                            x: raduis * Math.cos((i * 2 * Math.PI) / 6),
-                            y: raduis * Math.sin((i * 2 * Math.PI) / 6),
-                            z: i * 20
-                        }}
+                        key={i}
+                        variants={subVariants}
+                        animate="spreading"
+                        whileInView={flipOnView ? "spreading" : {}}
+                        custom={i}
                         transition={{
                             duration: flipDuration
                         }}
@@ -67,7 +96,7 @@ export const Flip = ({subImages=[""], mainStyle, subStyle,
                             subStyle && subStyle
                         )}>
                             <div className='h-full w-full relative'>
-                                <Image src={img} fill alt={img}/>
+                                <Image draggable={false} src={img} fill alt={img}/>
                             </div>
                         </m.div>
                     )
@@ -78,4 +107,3 @@ export const Flip = ({subImages=[""], mainStyle, subStyle,
    </m.div>
   )
 }
-
