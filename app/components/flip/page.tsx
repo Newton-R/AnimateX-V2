@@ -5,6 +5,13 @@ import React from 'react'
 const FlipPage = () => {
     const subImages = ["/demon/muza.jpeg","/demon/nezu.jpeg","/demon/pic1.jpeg", "/demon/pig.jpeg", "/demon/tanjiro.jpeg", "/demon/zenit.jpeg"]
     const mainImage = "/demon/demon.jpeg"
+
+    const variants = [
+      {
+        prop: "flipOnView = true",
+        component: <FlipCard subImages={subImages} mainImage={mainImage} mainStyle='rounded-xs' flipOnView/>
+      }
+    ]
   const component = {
 
     features: [
@@ -46,6 +53,11 @@ const FlipPage = () => {
         prop: "finalSpread",
         default: "150",
         description: "Controls the final spacing between subcards"
+      },
+       {
+        prop: "flipOnView",
+        default: "false",
+        description: "Determines if the card is view controlled or trigger by hover/tap."
       }
     ]
   }
@@ -78,6 +90,7 @@ const FlipPage = () => {
         usecasecode={usecasecode}
         props={component.props}
         sections={sections}
+        variants={variants}
         features={component.features} 
         installCode='npx animatex-pro add flipcard'
         component={<FlipCard subImages={subImages} mainImage={mainImage} mainStyle='rounded-xs'/>}/>

@@ -66,8 +66,8 @@ export const ToolSpread = () => {
 
   return (
     // main section block
-    <section ref={containerRef} className='h-[200vh] w-full relative'>
-      <div className='h-screen sticky top-0 w-full'>
+    <section ref={containerRef} className='h-screen md:h-[200vh] w-full relative'>
+      <div className='sticky top-0 w-full'>
         <div className='w-full h-full flex relative items-center justify-center'>
             <m.div 
             style={{
@@ -83,7 +83,7 @@ export const ToolSpread = () => {
             </m.div>
             {
               icons.map((item, i) => 
-                 <IconCard key={i} index={i} img={item.image} size={item.size} finalX={item.x} finalY={item.y} scrollYProgress={scrollYProgress}/>
+                 <IconCard key={i} parentRef={containerRef} index={i} img={item.image} size={item.size} finalX={item.x} finalY={item.y} scrollYProgress={scrollYProgress}/>
               )
             }
         </div>
@@ -99,10 +99,11 @@ interface CardProps{
   finalY: number,
   index: number,
   size: number,
-  img: string
+  img: string,
+  parentRef: React.RefObject<null>
 }
 
-const IconCard = ({scrollYProgress, img, finalX, finalY, index, size}:CardProps) => {
+const IconCard = ({scrollYProgress, parentRef, img, finalX, finalY, index, size}:CardProps) => {
 
   const duration = 0.07
   const scale = useTransform(scrollYProgress, [0, 1], [0, 1])
