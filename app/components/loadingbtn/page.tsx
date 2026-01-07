@@ -1,6 +1,7 @@
 "use client"
 import PageLayout from '@/components/dashboard/PageLayout'
 import { LoadingButton , codejs, codets, usecase} from '@/components/ui/buttons/loadingButton'
+import { ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 
 const LoadingButtonPage = () => {
@@ -10,7 +11,13 @@ const LoadingButtonPage = () => {
         setTimeout(() => setIsLoading(false), 5000)
     }
     const component = {
-        block: <LoadingButton loading={loading} onClick={demo}/> ,
+        block: 
+        <LoadingButton loading={loading} onClick={demo} 
+        text={
+        <span className='flex gap-2 items-center'> <ArrowRight size={18}/>
+          Start Loading</span>} 
+        className='flex gap-2 w-40'/>
+          ,
         features: [
           "Easily customizable with props",
             "Smooth icon entrance and exit"
