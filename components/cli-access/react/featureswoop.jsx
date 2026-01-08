@@ -1,7 +1,6 @@
 import { ArrowDownRight, User } from 'lucide-react'
 import { useState } from 'react'
 import { motion as m} from 'motion/react'
-import Image from 'next/image'
 
 export const FeatureSwoop = ({features}) => {
   // state holding cuurent features
@@ -119,7 +118,7 @@ const ImageCard = ({id, current, url}) => {
     animate={current === id ? "visible" : "exit"}
     transition={{duration: 0.5}}
     className='hidden md:flex absolute w-50 dark:shadow-black h-50 border-2 border-col top-0 rounded-md shadow-xs shadow-neutral-500 z-20 right-40'>
-      <Image height={200} width={200} src={url} className='w-full h-full rounded-md' alt='image'/>
+      <img height={200} width={200} src={url} className='w-full h-full rounded-md' alt='image'/>
     </m.div>
   )
 }

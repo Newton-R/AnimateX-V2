@@ -11,12 +11,8 @@ interface props{
 const TextLinks = ({text, link}:props) => {
   return (
     <m.div initial="initial" whileHover="hovers" className='w-fit h-fit pb-[2px] relative'>
-          <m.div variants={{
-                "initial": {opacity: 0 },
-                "hovers": {opacity: 1}
-            }} className='absolute bg-linear-90 from-transparent via-[var(--primary)] to-transparent -z-10 w-full h-full'/>
          <Link href={link} className='relative w-fit h-fit'>
-            <span className='bg-[var(--secondary)] h-full p-1 text-[14px]'>{text}</span>
+            <span className='bg-(--secondary) h-full p-1 text-[16px]'>{text}</span>
         </Link>
     </m.div>
   )
