@@ -6,13 +6,51 @@ import Link from 'next/link'
 import { PrimaryButton } from '../sub/primarybutton'
 import GithubLink from '../sub/githublink'
 import { Toast } from '../ui/modals/toast'
+import Image from 'next/image'
+import { CommandBlock } from '../sub/commandblock'
+import { useTheme } from 'next-themes'
+import { CopyButton } from '../ui/buttons/copy'
+import { Prism } from 'react-syntax-highlighter'
+import { vs, vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { ComponentWall } from '../sub/componentwall'
+
+
+const CodeBlock = ({code = "npm i animatex-pro@latest"}:{code?: string}) => {
+    const { theme } = useTheme()
+
+    const copyCode = () => {
+      navigator.clipboard.writeText(code)
+    }
+ 
+  return (
+     <div className={('w-full h-fit mt-2 border border-col bg-(--code-block) relative')}>
+         
+            <CopyButton 
+                animationVariant={2}
+                onClick={copyCode}
+                className='absolute top-4 right-4 bg-(--secondary-hover) clickable p-1 px-0 w-8 flex items-center justify-center rounded-md'/>
+
+            <Prism language="typescript" 
+            style={theme === "dark" ? vscDarkPlus : vs} 
+            customStyle={{ height: "auto",
+              background: "transparent",
+              backgroundColor: "transparent",
+              borderRadius: "",
+              fontSize: "18px",
+              border: 0,
+              margin: 0,
+            fontFamily: '"Fira Code", "JetBrains Mono", monospace'}}>
+              {code.trim()}
+            </Prism>
+      </div>
+   
+  )
+}
+
+
 
 export const Hero = () => {
-    const container = useRef<HTMLDivElement>(null)
-    const { scrollYProgress } = useScroll({target: container, offset:["start start", "end start"]})
 
-    const y = useTransform(scrollYProgress, [0, 1], [0, -200])
-    
     const features = [
         {text: "Built with NextJs"},
         {text: "Styled with tailwind"},
@@ -22,43 +60,39 @@ export const Hero = () => {
         {text: "10+ Hero sections"},
         {text: "And many more"}
     ]
+
+    const tools = ["tools/typescript.svg", "tools/next2.svg", "boom/wind.svg", "boom/motion.svg", "boom/js.svg", "boom/react.svg"]
   return (
-   <div className="gradient w-full">
-         <m.div ref={container} 
-            // style={{
-            //     maskImage: "linear-gradient(to bottom, black 90%, transparent)"
-            // }}
-            className=' min-h-screen h-150 w-full overflow-hidden center-container relative'>
-
-                <div className='w-full flex-1 flex-col-center justify-center h-full'>
-                    {/* <SectionPill/> */}
-                    <h1 className='welcome w-full md:w-[70%] flex-wrap text-center gap-2 flex-center justify-center'>
-                        <span className='font-bold text-transparent bg-clip-text blue-gradient'>AnimateX</span>
-                        <span className='px-1 py-0 border-2 border-dashed border-col mx-2'>Pro</span>
-                        {
-                            ("Motion Components. Elevate Your Web Experience.").split(" ").map((word, i) => 
-                            <m.span key={i}>{word}</m.span>
-                            )
-                        }
-                    </h1>
-                    <p className='paragraph text-center w-[95%] md:w-[70%]'>
-                        {/* AnimateX Pro delivers the advanced tools, optimised performance, and creative freedom that professional developers and designers demand. */}
-                        No compromises. No limits. Just pure, fluid motion that brings your boldest ideas to life.
-                    </p>
-                
-                    <div className="flex flex-col gap-6 md:flex-row w-[70%] items-center justify-center">
-                        <PrimaryButton text={`Components`} className='w-full md:w-fit px-6 p-2 rounded-[10px]' href={"/components/docs"} type='link'/>
-                        <GithubLink/>
-                        {/* <Link className='link2' href={"#"}>Go Premium</Link> */}
-                    </div>
-                    <BuiltPill/>
-
-                </div>
-                {/* <m.div style={{y}} className='w-full h-[400px] -z-10 md:h-[1300px] bg-radial from-transparent via-blue-400/40 via-40% 
-                absolute to-transparent top-[88%] blur-[14px] rounded-full '/> */}
-
-               
-            </m.div>
+   <div className="gradient w-full flex flex-col lg:flex-row lg:gap-2 p-2 gap-8 mt-24 lg:mt-0 h-screen md:px-8 items-center justify-between md:h-150">
+        <div className='lg:w-[50%] w-full text-center flex flex-col justify-center items-center gap-6 mb-[10px] lg:mb-0 lg:justify-start lg:items-start lg:text-left '>
+            <div className='light-block w-fit'>Motion Powered, Tailwind v4 styled Components!🎉</div>
+            <div className='text-5xl leading-12'>
+                 <h1>
+                    The <span className='blue-gradient-text p-2 border-dashed overflow-hidden'>Easiest</span>
+                </h1>
+                <h1>Motion Library for Developers Who Love Speed</h1>
+            </div>
+            <div>
+                <h2>
+                    AnimateX Pro is a lightweight UI animation library that makes it easy to add smooth, 
+                    interactive animations to your web projects.
+                     Built for developers, it enhances user experience with fluid motion and minimal setup.
+                </h2>
+            </div>
+            <div className='flex relative p-2 px-4 rounded-full border border-col gap-4 w-fit'>
+               {
+                tools.map((tool, i) => 
+                     <Image src={tool} key={i} alt={"boom"} width={30} height={30}/>
+                )
+               }
+            </div>
+            <div className='flex gap-4 items-center flex-col md:flex-row w-full justify-center lg:justify-start'>
+                <PrimaryButton type='link' href='/components' text='Get Started' className='w-full md:max-w-50 p-2 rounded-md'/>
+                <GithubLink/>
+            </div>
+        </div>
+       
+      <ComponentWall/>
    </div>
   )
 }
