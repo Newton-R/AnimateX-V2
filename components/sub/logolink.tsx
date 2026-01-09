@@ -11,7 +11,7 @@ const Logo = () => {
         <m.div initial={{x: -100}} animate={{x: 100}} transition={{repeat: Infinity, duration: 4, ease: "easeIn"}} 
         className='absolute w-1/2 h-full bg-white top-0 blur-[15px]'/>
     </Link>
-    <h1 className='text-2xl font-bold'>AnimateX <span className='border-2 px-0.75 border-dashed p-px blue-gradient-text border-col'>Pro</span></h1>
+    <h1 className='text-2xl md:flex hidden font-bold'>AnimateX <span className='border-2 px-0.75 border-dashed p-px blue-gradient-text border-col'>Pro</span></h1>
     </div>
   )
 }
