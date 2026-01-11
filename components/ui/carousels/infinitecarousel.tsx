@@ -107,8 +107,6 @@ import { motion as m } from 'motion/react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
-
-
 interface carouselProps{
     autoplay?: boolean,
     playDuration?: number,
@@ -205,10 +203,8 @@ export const InfiniteCarousel = ({autoplay = false, playDuration = 2, ImageCards
 `
 
 export const codeReact = `
-"use client"
 import { useEffect, useState } from 'react'
 import { motion as m } from 'motion/react'
-import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 export const InfiniteCarousel = ({autoplay = false, playDuration = 2, ImageCards=[""], className, cardClassName}) => {
@@ -285,7 +281,7 @@ export const InfiniteCarousel = ({autoplay = false, playDuration = 2, ImageCards
                     onClick={() => setcurrent(i)}
                     className={cn('w-full h-full absolute cursor-pointer mx-auto top-0 left-0 right-0 flex items-center justify-center shadow-2xl shadow-black shrink-0', cardClassName)}>
                           <div className='w-full h-full relative'>
-                            <Image src={card} fill alt={card}/>
+                            <img src={card} fill alt={card}/>
                         </div> 
                     </m.div>
                 )

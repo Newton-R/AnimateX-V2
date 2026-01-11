@@ -3,11 +3,23 @@ import "./globals.css";
 import { ThemeWrapper } from "@/components/main/ThemeProvider";
 import { inter, space } from "@/utils/font";
 import { Toast } from "@/components/ui/modals/toast";
+import { url } from "inspector";
 
 
 export const metadata: Metadata = {
   title: "AnimateX Pro",
   description: "Animated UI components for React and Next.js. Build fast, modern, and beauiful web interfaces with Animatex Pro",
+  keywords: [
+    "Motion",
+    "Framer Motion",
+    "Animatex",
+    "Animatex-pro",
+    "Animated",
+    "UI",
+    "Newton-Raul",
+    "Animated Blocks"
+  ],
+  creator:"Ngwa Newton-Raul",
   openGraph: {
     title: "Animatex Pro",
     description: "Animated UI components for React and Next.js. Build fast, modern, and beauiful web interfaces with Animatex Pro, Built with ❤ NGWA NEWTON-RAUL.",

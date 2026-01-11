@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link'
 import React from 'react'
-import { motion as m } from 'framer-motion'
+import { motion as m } from 'motion/react'
 
 interface props{
     text: string,
@@ -10,7 +10,7 @@ interface props{
 
 const TextLinks = ({text, link}:props) => {
   return (
-    <m.div initial="initial" whileHover="hovers" className='w-fit h-fit pb-[2px] relative'>
+    <m.div initial="initial" whileHover="hovers" className='w-fit h-fit pb-[2px] bg-transparent relative'>
          <Link href={link} className='relative w-fit h-fit'>
             <span className='bg-(--secondary) h-full p-1 text-[16px]'>{text}</span>
         </Link>

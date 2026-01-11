@@ -12,7 +12,7 @@ export const Navbar = () => {
  
   return (
     <div className='fixed top-0 w-full flex-center justify-between p-3 border-col border-b
-     mx-auto left-0 right-0 bg-transparent z-60 backdrop-blur-2xl'>
+     mx-auto left-0 right-0 bg-transparent z-60 backdrop-blur-xl'>
         <div className='flex-center gap-2 pl-2 md:pl-4'>
             <Logo/>
         </div>
