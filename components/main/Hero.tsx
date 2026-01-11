@@ -87,7 +87,7 @@ export const Hero = () => {
                }
             </div>
             <div className='flex gap-4 items-center flex-col md:flex-row w-full justify-center lg:justify-start'>
-                <PrimaryButton type='link' href='/components' text='Get Started' className='w-full md:max-w-50 p-2 rounded-md'/>
+                <PrimaryButton type='link' href='/components/docs' text='Get Started' className='w-full md:max-w-50 p-2 rounded-md'/>
                 <GithubLink/>
             </div>
         </div>

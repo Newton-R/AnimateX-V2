@@ -50,6 +50,11 @@ const SectionPage = () => {
           title: "Feature Swoop",
           link: "/featureswoop",
           preview: <FeatureSwoop features={features}/>
+        },
+         {
+          title: "Scroll Stack",
+          link: "/scrollstack",
+          preview: null
         }
       ]
     },

@@ -20,5 +20,9 @@
   "featureswoop": {
     "access": "member",
     "dependencies": []
+  },
+  "scrollstack": {
+    "access": "member",
+    "dependencies": []
   }
 }
