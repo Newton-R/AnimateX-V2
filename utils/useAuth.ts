@@ -4,11 +4,6 @@ import { redirect } from 'next/navigation';
 
 
 const FRONTEND_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';    
-//  const emailverifigation = await authClient.emailOtp.sendVerificationOtp({
-//         email: "",
-//         type: "email-verification",
-//     })
-
 
 export const emailPasswordSignUp = async (email: string, password: string, username: string) => {
    
