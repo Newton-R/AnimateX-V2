@@ -80,6 +80,11 @@ export const componentslist: components[] = [
                  {
                     text: "Flower Menu",
                     link: "/components/flower",
+                    tag: ""
+                },
+                {
+                    text: "Morphing Tabs",
+                    link: "/components/morphingtabs",
                     tag: "New"
                 }
             ]

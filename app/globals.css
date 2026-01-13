@@ -96,9 +96,9 @@ body{
   overflow-x: hidden;
 }
 
-p{
+/* p{
   color: var(--paragraph);
-}
+} */
 
 .bg-center-gradient{
   background-image: radial-gradient(circle 400px at top center, var(--color-start), var(--color-mid) , var(--bg))
