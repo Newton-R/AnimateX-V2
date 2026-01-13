@@ -16,6 +16,7 @@
     "axios": "^1.12.2",
     "better-auth": "^1.4.7",
     "clsx": "^2.1.1",
+    "dodopayments": "^2.14.2",
     "dotenv": "^17.2.3",
     "framer-motion": "^12.23.19",
     "highlight.js": "^11.11.1",

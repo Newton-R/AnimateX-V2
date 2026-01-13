@@ -26,6 +26,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      dodopayments:
+        specifier: ^2.14.2
+        version: 2.14.2
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
@@ -1470,8 +1473,8 @@ packages:
     resolution: {integrity: sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw==}
     engines: {node: '>=0.10.0'}
 
-  dodopayments@2.13.1:
-    resolution: {integrity: sha512-awA3WM6m8vPIaD6k6fNV57Hk6dwooBdyNDbWpXdG8OPrdmma8qjt5NOILRvjHseRWGm2/LewJFq/Md0HFROA4w==}
+  dodopayments@2.14.2:
+    resolution: {integrity: sha512-aeuDb82rHOcWVI2J6ollWISuTvluOuKVIk6w9u6X+04f3imnR3yYX8gMno974cL/QZDWrt1EvxuNjDrymZq4CQ==}
     hasBin: true
 
   dotenv@16.6.1:
@@ -3076,7 +3079,7 @@ snapshots:
 
   '@dodopayments/core@0.3.8(zod@4.2.1)':
     dependencies:
-      dodopayments: 2.13.1
+      dodopayments: 2.14.2
       standardwebhooks: 1.0.0
       zod: 4.2.1
 
@@ -4197,7 +4200,7 @@ snapshots:
     dependencies:
       esutils: 2.0.3
 
-  dodopayments@2.13.1:
+  dodopayments@2.14.2:
     dependencies:
       standardwebhooks: 1.0.0
 
