@@ -3,8 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { Webhook } from "standardwebhooks";
 import prisma from "@/lib/prisma";
 
-const webhook = new Webhook(process.env.DODO_PAYMENTS_WEBHOOK_KEY || "");
+export const runtime = "nodejs";
+
 export const POST = async (request: NextRequest) => {
+  const webhook = new Webhook(process.env.DODO_PAYMENTS_WEBHOOK_KEY || "");
   const rawbody = await request.text();
   const webhookheaders = {
     "webhook-id": request.headers.get("webhook-id") || "",
