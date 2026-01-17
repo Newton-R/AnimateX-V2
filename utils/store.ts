@@ -13,8 +13,10 @@ interface toggle{
 interface authstore{
     user: userdata | null,
     isAuthenticated: boolean,
+    isPro: boolean,
     setUser: (userData: userdata | null) => void,
-    clearUser: () => void
+    clearUser: () => void,
+    setIsPro: () => void
 }
 
 
@@ -29,8 +31,10 @@ export const useAuthStore = create<authstore>()(
         (set) => ({
             user: null,
             isAuthenticated: false,
+            isPro: false,
             setUser: (userData: userdata | null) => set(() => ({user: userData, isAuthenticated: userData !== null})),
-            clearUser: () => set(() => ({user: null, isAuthenticated: false}))
+            clearUser: () => set(() => ({user: null, isAuthenticated: false})),
+            setIsPro: () => set(() => ({isPro: true}))
         }),
         {
             name: "auth-storage",

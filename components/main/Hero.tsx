@@ -1,8 +1,4 @@
 "use client"
-import React, { useRef, useState, useEffect } from 'react'
-import { motion as m, useTransform, useScroll} from 'framer-motion'
-import { BuiltPill, SectionPill } from '../sub/sectionpill'
-import Link from 'next/link'
 import { PrimaryButton } from '../sub/primarybutton'
 import GithubLink from '../sub/githublink'
 import { Toast } from '../ui/modals/toast'
@@ -23,12 +19,12 @@ const CodeBlock = ({code = "npm i animatex-pro@latest"}:{code?: string}) => {
     }
  
   return (
-     <div className={('w-full h-fit mt-2 border border-col bg-(--code-block) relative')}>
+     <div className={('w-full md:max-w-80 h-11 mt-2 border flex items-center border-col bg-(--code-block) relative')}>
          
             <CopyButton 
                 animationVariant={2}
                 onClick={copyCode}
-                className='absolute top-4 right-4 bg-(--secondary-hover) clickable p-1 px-0 w-8 flex items-center justify-center rounded-md'/>
+                className='absolute top-2 right-2 bg-(--secondary-hover) clickable p-1 px-0 w-8 flex items-center justify-center rounded-md'/>
 
             <Prism language="typescript" 
             style={theme === "dark" ? vscDarkPlus : vs} 
@@ -86,9 +82,9 @@ export const Hero = () => {
                 )
                }
             </div>
-            <div className='flex gap-4 items-center flex-col md:flex-row w-full justify-center lg:justify-start'>
+            <div className='flex gap-4 items-center flex-col md:flex-row w-full justify-center md:items-end lg:justify-start'>
                 <PrimaryButton type='link' href='/components/docs' text='Get Started' className='w-full md:max-w-50 p-2 rounded-md'/>
-                <GithubLink/>
+               <CodeBlock/>
             </div>
         </div>
        

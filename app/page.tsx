@@ -10,7 +10,7 @@ import { AboutMe } from "@/components/main/AboutMe";
 export default function Home() {
   return (
     <div className="w-full flex flex-col gap-24 max-w-350 mx-auto">
-      	<Navbar/>
+      	{/* <Navbar/> */}
         <Hero/>
         {/* <Features/>
         <Pricing/>

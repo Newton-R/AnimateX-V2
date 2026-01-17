@@ -4,6 +4,7 @@ import { ThemeWrapper } from "@/components/main/ThemeProvider";
 import { inter, space } from "@/utils/font";
 import { Toast } from "@/components/ui/modals/toast";
 import { url } from "inspector";
+import { Navbar } from "@/components/main/Navbar";
 
 
 export const metadata: Metadata = {
@@ -54,6 +55,7 @@ export default function RootLayout({
        <ThemeWrapper>
           {/* <div id="theme-transition">
            </div> */}
+           <Navbar/>
           {children}
        </ThemeWrapper>
       </body>

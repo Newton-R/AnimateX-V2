@@ -28,6 +28,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
   accounts      Account[]
+  subscription  subscribed[]
 
   @@unique([email])
   @@map("user")
@@ -79,4 +80,14 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+
+model subscribed {
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [userId], references: [id])
+  userId String
+  payment_status String 
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
