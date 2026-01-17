@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { authClient } from "@/lib/auth-client";
 import { redirect } from 'next/navigation';
+import prisma from '@/lib/prisma';
 
 
 const FRONTEND_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';    

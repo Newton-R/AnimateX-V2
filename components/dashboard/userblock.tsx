@@ -23,28 +23,22 @@ export type userdata = {
 
 export const UserBlock = () => {
     // const [user, setUser] = React.useState<userdata | null>(null);
-    const { clearUser, setUser, user } = useAuthStore();
+    const { clearUser, user } = useAuthStore();
     const [isOpen, setIsOpen] = React.useState(false);
-    const [isLoading, setIsLoading] = React.useState(false);
-    useEffect(() => {
-        setIsLoading(true);
-        const fetchUser = async () => {
-            const user = await getUserSession();
-            setUser(user.session?.user || null);
-            console.log(user); 
-            setIsLoading(false); 
-        };
-        fetchUser();
-    }, []);
+    // const [isLoading, setIsLoading] = React.useState(false);
+    // useEffect(() => {
+    //     setIsLoading(true);
+    //     const fetchUser = async () => {
+    //         const user = await getUserSession();
+    //         setUser(user.session?.user || null);
+    //         console.log(user); 
+    //         setIsLoading(false); 
+    //     };
+    //     fetchUser();
+    // }, []);
   return (
     <div className={cn('flex items-center relative gap-1 p-1 px-2 z-50 border-b border-col justify-between mt-4 md:mt-2')}>
        {
-        isLoading ?
-        <div className='flex gap-2 items-center text-xs text-gray-500'>
-          <Loader2 size={17} className='animate-spin'/>
-           <i>Loading...</i>
-        </div>
-        :
         user ?
         <>
            <Image onClick={() => setIsOpen(!isOpen)} src={user?.image || '/avatar/default.jpg'} alt='User Avatar' width={35} height={35} className='rounded-xl border-2 border-col'/>

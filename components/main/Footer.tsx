@@ -1,11 +1,12 @@
 import React from 'react'
 import { Socials } from '../sub/Socials'
+import { KeyLink } from '../sub/keylink'
 
 export const Footer = () => {
   return (
-    <div className="w-full p-2 border-t-1 border-col bg-[var(--secondary)] flex flex-col justify-between md:justify-between md:flex-row-reverse mt-auto">
-      <Socials/>
-      <p className='text-sx text-center'>Copyright (c) 2024</p>
+    <div className='flex w-full items-center border-t border-col gap-3 justify-between py-4 mt-auto'>
+        <p>&copy; { new Date().getFullYear()}</p>
+        <p>Built with ❤ by <KeyLink text='Newton' link='https://www.newtonraul.me/'/></p>
     </div>
   )
 }

@@ -7,6 +7,7 @@ import { useNavToggle } from '@/utils/store'
 import { Variants, motion as m, AnimatePresence} from 'motion/react'
 import { usePathname } from 'next/navigation'
 import { UserBlock } from './userblock'
+import { SearchInput } from '../sub/searchInput'
 
 interface content{
     link: string,
@@ -248,7 +249,10 @@ export const Sidebar = () => {
       <div className={clsx('w-60 transition-all duration-400 fixed flex flex-col mt-10 md:mt-12 bg-(--bg) left-0 top-0 border-r border-col h-screen z-50 pb-8', 
           isOpen ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"
       )}>
-        <UserBlock/>
+        {/* <UserBlock/> */}
+        <div className='w-full mt-4 p-1 border-b border-col mb-1'>
+             <SearchInput/>
+        </div>
          
           <div className='p-2 overflow-y-scroll h-[calc(100vh-100px)]'>
             {

@@ -1,7 +1,8 @@
 import { dodopayments } from "@/lib/dodopayments"
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 
 export const GET = async() => {
-    const products = await dodopayments.products.list()
+    // const recurring = Boolean(request.nextUrl.searchParams.get("recurring"))
+    const products = await dodopayments.products.list({recurring: true})
     return NextResponse.json(products.items)
 }

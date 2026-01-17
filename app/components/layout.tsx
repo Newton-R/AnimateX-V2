@@ -7,7 +7,7 @@ import "highlight.js/styles/github-dark.css"
 const Layout = ({children}: Readonly<{children: React.ReactNode}>) => {
   return (
    <div>
-      <DashNav/>
+      {/* <DashNav/> */}
       <div className='w-full'>
           <Sidebar/>
         <div className='md:ml-45'>

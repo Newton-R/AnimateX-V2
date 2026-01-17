@@ -73,7 +73,7 @@ export const FeatureSwoop = ({features}:features) => {
                         <div style={{background: feat.color}} className='p-2 w-fit text-white rounded-full flex items-center justify-center'>
                           <User size={18}/>
                         </div>
-                        <p className='text-[14px]'>
+                        <p className='text-[14px] text-black dark:text-white'>
                           {feat.description}
                         </p>
                     </m.div>

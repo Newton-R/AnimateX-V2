@@ -66,11 +66,11 @@ export const SearchInput = () => {
             return category || contentMatch
         })
   return (
-    <div className='flex-center flex-1 border border-col rounded-xl px-0.5 md:px-2 h-9'>
+    <div className='flex-center w-full border border-col rounded-xs relative px-0.5 md:px-2 h-9'>
         <input type='text' 
         onFocus={() => {setSearching(true)}} 
-            placeholder='Search Something' className='h-9 outline-none flex-1'></input>
-        <div className='p-1 rounded-md bg-(--secondary-hover) md:mr-0 mr-2 flex items-center justify-center shrink-0 text-xs'>
+            placeholder='Search Something' className='h-9 outline-none'></input>
+        <div className='p-1 rounded-xs bg-(--secondary-hover) md:mr-0 mr-2 flex absolute right-1 items-center justify-center shrink-0 text-xs'>
             Ctrl + K
         </div>
         <AnimatePresence>
