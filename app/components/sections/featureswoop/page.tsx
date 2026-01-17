@@ -106,12 +106,12 @@ export default page
         description='Features section.'
         type='Premium'
         codejs={ReactCode}
-        membersonly
         codets={NextCode}
         usecasecode={usecase}
         props={component.props}
         sections={sections}
         features={component.features} 
+        isProComponent
         component={<FeatureSwoop features={features}/>}/>
     </div>
   )

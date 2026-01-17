@@ -9,12 +9,12 @@ import { UserBlock } from '../dashboard/userblock'
 import GithubLink from '../sub/githublink'
 import { use, useEffect, useState } from 'react'
 import { getUserSession } from '@/utils/useAuth'
-import { Loader2 } from 'lucide-react'
+import { Loader2, Verified } from 'lucide-react'
 
 
 
 export const Navbar = () => {
-  const { user, setUser } = useAuthStore();
+  const { user, setUser, setIsPro, isPro } = useAuthStore();
   const [loading, setIsLoading] = useState(false)
 
    useEffect(() => {
@@ -22,6 +22,18 @@ export const Navbar = () => {
           const fetchUser = async () => {
               const user = await getUserSession();
               setUser(user.session?.user || null);
+              if(user){
+                try{
+                  const ispro = await fetch(`/api/checkpro/${user.session?.user.id}`,
+                  {method: "GET"})
+                  const data = await ispro.json()
+                  if(data.payment_status === "active"){
+                    setIsPro()
+                  }
+                }catch(e){
+                  console.log(e)
+                }
+              }
               console.log(user); 
               setIsLoading(false); 
           };
@@ -51,8 +63,12 @@ export const Navbar = () => {
                <Loader2 size={17} className='animate-spin'/> :
               !user ?
               <RegistrationForm style='rounded-md h-9 flex items-center'/> :
-              <div className='rounded-md border-2 border-col overflow-hidden'>
-                <Image src={user.image ? user.image : "/avatar/default.jpg"} alt='move' height={35} width={35}/>
+              <div className='rounded-md border-2 border-col relative'>
+                <Image src={user.image ? user.image : "/avatar/default.jpg"} className='rounded-md' alt='move' height={35} width={35}/>
+                {
+                  isPro &&
+                  <Verified size={16} className='absolute left-0 bottom-0 text-white dark:text-neutral-800 fill-(--primary) -translate-x-1/2 translate-y-1/3'/>
+                }
             </div>
            }
            

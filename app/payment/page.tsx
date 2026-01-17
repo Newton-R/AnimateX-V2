@@ -11,11 +11,14 @@ import { X } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
 import { space } from '@/utils/font'
 import { LoadingButton } from '@/components/ui/buttons/loadingButton'
+import { DropDown } from '@/components/ui/inputs/dropdown'
+import { countries } from '@/utils/countries'
 
 const PaymentPage = () => {
   const [products, setProduct] = useState<ProductListResponse[] | undefined>()
   const [checkopen, setCheckOpen] = useState(false)
   const [isloading, setIsLoading] = useState(false)
+  const [country, setCountry] = useState("")
   const [productloading, setProductLoading] = useState(false)
   const router = useRouter()
   const { user } = useAuthStore()
@@ -51,7 +54,7 @@ const PaymentPage = () => {
       if(!user) return;
       try{
         const response = await useMonthlyPayment({email: user.email, 
-          productid: products[option].product_id, name: user.name})
+          productid: products[option].product_id, name: user.name, country:country})
         if(response?.payment_link){
           router.push(response.payment_link) 
         }else{
@@ -99,22 +102,23 @@ const PaymentPage = () => {
                   <p className='text-neutral-500'>Fill in the form to start processing your payment.</p>
                   <div>
                     <div className='mt-2.5'>
-                      <span className='mb-1'>Email</span>
-                      <div className='h-10 w-full border border-col flex items-center rounded-md p-2 text-neutral-500'>
+                      <span className='mb-1 text-[14px]'>Email</span>
+                      <div className='h-10 w-full border hover:cursor-not-allowed border-col flex items-center rounded-md p-2 text-neutral-500'>
                         {user?.email}
                       </div>
                     </div>
                     <div className='mt-2.5'>
-                      <span className='mb-1'>Username</span>
-                      <div className='h-10 w-full border border-col flex items-center rounded-md p-2 text-neutral-500'>
+                      <span className='mb-1 text-[14px]'>Username</span>
+                      <div className='h-10 w-full border border-col hover:cursor-not-allowed flex items-center rounded-md p-2 text-neutral-500'>
                         {user?.name}
                       </div>
                     </div>
                     <div className='mt-2.5'>
-                      <span className='mb-1'>Country</span>
-                      <div className='h-10 w-full border border-col flex items-center rounded-md p-2 text-neutral-500'>
-                          newton4raul@gmail.com
-                      </div>
+                      <span className='mb-1 text-[14px]'>Country</span>
+                      <DropDown options={countries} className='w-full h-10' 
+                      onChange={(choice) => setCountry(choice)}
+                      smartDirection menuStyle='max-h-50 overflow-y-scroll overflow-x-hidden'/>
+                     
                     </div>
                     <LoadingButton loading={isloading} text='Checkout' onClick={handleSub} className='w-full mt-2 p-2 rounded-md'/>
                   </div>

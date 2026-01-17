@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (request: NextRequest) => {
     const body = await request.json()
-    const { email, productid, name } = body
+    const { email, productid, name, countrycode } = body
 
     if(!email){
         return NextResponse.json({error: "Email Required!"})
@@ -12,7 +12,7 @@ export const POST = async (request: NextRequest) => {
             const payment = await dodopayments.subscriptions.create({
                 billing: {
                     city: "",
-                    country: "KZ",
+                    country: countrycode,
                     state: "",
                     street: "",
                     zipcode: "",

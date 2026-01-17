@@ -66,11 +66,11 @@ const ScrollStackPage = () => {
         description='Features section with stacking animation on scroll'
         type='Premium'
         codejs={codejs}
-        membersonly
         codets={codets}
         usecasecode={usecase}
         props={component.props}
         sections={sections}
+        isProComponent
         features={component.features} 
         componentType='free'
         component={

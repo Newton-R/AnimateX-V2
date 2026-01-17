@@ -138,13 +138,13 @@ const Stagger3dPage = () => {
         description='Stagger pic gallery section with 3D effects.'
         type='Premium'
         codejs={ReactCode}
-        membersonly
         codets={NextCode}
         usecasecode={""}
         props={component.props}
         sections={sections}
         features={component.features} 
-        componentType='free'
+        componentType='Premium'
+        isProComponent
         component={
               <>
                <div className='flex flex-col gap-3 w-full items-center justify-center min-h-100 bg-(--bg)'>

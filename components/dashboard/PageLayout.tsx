@@ -50,6 +50,7 @@ interface pageprop{
     sections?: sections[],
     installCode?: string,
     manual?:boolean,
+    isProComponent?:boolean,
     layoutType?: "doc" | "component",
     external?: string
     
@@ -57,7 +58,7 @@ interface pageprop{
 
 
 
-const PageLayout = ({title, variants, installCode, manual=true, layoutType = "component", 
+const PageLayout = ({title, variants, installCode, manual=true, isProComponent=false, layoutType = "component", 
     description, component, type, sections, membersonly=false, external,
     codets, codejs, features=[""], props, usecasecode, componentType="block"}:pageprop) => {
     const [code, setCode] = useState({language: "tsx", code: codets})
@@ -65,7 +66,7 @@ const PageLayout = ({title, variants, installCode, manual=true, layoutType = "co
     const [using, setUsing] = useState("cli")
     const [key, setKey] = useState(0)
     const [user, setUser] = useState(false);
-    const { isAuthenticated } = useAuthStore();
+    const { isAuthenticated, isPro } = useAuthStore();
         
     useEffect(() => {
         if(membersonly && isAuthenticated){
@@ -198,6 +199,14 @@ export function cn(...inputs: ClassValue[]) {
                         <h1 className={`${space.className} title mt-8`}>Installation</h1>
 
                       {
+                        isProComponent && !isPro?
+
+                        <div className='flex items-center flex-col w-full md:w-80 mx-auto text-center justify-center gap-1.5'>
+                            <Lock size={44} className='text-gray-500 dark:text-neutral-800'/>
+                            <p className='text-(--muted-text)'>This is a Pro members only component. Kindly subscribe to view installation.</p>
+                            <Link href={"/payment"} className='p-2 text-white bg-black rounded-md border-2 border-neutral-600 flex items-center px-4'>Go Pro</Link>
+                        </div> :
+
                         membersonly && !user ?
                         <div className='flex items-center flex-col w-full md:w-80 mx-auto text-center justify-center gap-1.5'>
                             <Lock size={44} className='text-gray-500 dark:text-neutral-800'/>
