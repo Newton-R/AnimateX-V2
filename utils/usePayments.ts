@@ -39,7 +39,8 @@ export const useLifeTimePayment = async ({email, productid}:{email:string, produ
 }
 
 
-export const useMonthlyPayment = async ({email, productid, name}:{email:string, name:string, productid:string}) => {
+export const useMonthlyPayment = async ({email, productid, name, country}:
+    {country:string,email:string, name:string, productid:string}) => {
     try{
         const response = await fetch("/api/payment/checkout/monthly", {
             method: "POST",
@@ -49,7 +50,8 @@ export const useMonthlyPayment = async ({email, productid, name}:{email:string, 
             body: JSON.stringify({
                 email: email ,
                 productid: productid,
-                name: name
+                name: name,
+                countrycode: country
             })
         })
         const body = await response.json() as PaymentCreateResponse
