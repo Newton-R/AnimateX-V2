@@ -23,7 +23,7 @@ export const DashNav = () => {
         <div className='flex-center gap-2'>
             <SearchInput/>
             <ThemeToggler/>
-            <Sidebar size={25} onClick={setToggle} className='md:hidden cursor-pointer p-1 hover:bg-[var(--secondary-hover)] rounded'/>
+           
             {/* <PrimaryButton text='Sign Up' type='link' className='p-2 hidden md:flex rounded-full text-[14px] px-4'/> */}
         </div>
     </div>

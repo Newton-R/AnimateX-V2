@@ -51,7 +51,7 @@ export const Dailog: React.FC<DialogProps> = ({children, className, buttonStyle,
                     perspective: "1000px"
                 }}
                 className='min-w-screen fixed bg-transparent backdrop-blur-[2px] flex items-center justify-center
-                    top-0 left-0 z-80 min-h-screen'>
+                    top-0 left-0 z-80 h-screen'>
 
                     <m.div 
                     style={{
