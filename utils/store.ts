@@ -16,7 +16,8 @@ interface authstore{
     isPro: boolean,
     setUser: (userData: userdata | null) => void,
     clearUser: () => void,
-    setIsPro: () => void
+    setIsPro: () => void,
+    setIsNotPro: () => void
 }
 
 
@@ -33,8 +34,9 @@ export const useAuthStore = create<authstore>()(
             isAuthenticated: false,
             isPro: false,
             setUser: (userData: userdata | null) => set(() => ({user: userData, isAuthenticated: userData !== null})),
-            clearUser: () => set(() => ({user: null, isAuthenticated: false})),
-            setIsPro: () => set(() => ({isPro: true}))
+            clearUser: () => set(() => ({user: null, isAuthenticated: false, isPro: false})),
+            setIsPro: () => set(() => ({isPro: true})),
+            setIsNotPro: () => set(() => ({isPro: false}))
         }),
         {
             name: "auth-storage",

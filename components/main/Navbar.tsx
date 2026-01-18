@@ -14,7 +14,7 @@ import { CopyButton } from "../ui/buttons/copy";
 import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
-  const { user, setUser, setIsPro, isPro, clearUser } = useAuthStore();
+  const { user, setUser, setIsPro, isPro, clearUser, setIsNotPro } = useAuthStore();
   const [loading, setIsLoading] = useState(false);
   const { setToggle } = useNavToggle();
   const pathname = usePathname();
@@ -33,6 +33,8 @@ export const Navbar = () => {
           const data = await ispro.json();
           if (data.payment_status === "active") {
             setIsPro();
+          }else{
+            setIsNotPro()
           }
         } catch (e) {
           console.log(e);

@@ -51,7 +51,11 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${space.variable} antialiased`}
       >
-        <Toast className="border-blue-400 dark:border-blue-600" position="tr"/>
+        <Toast 
+        className="border border-col bg-(--secondary) text-white rounded-2xl p-4" 
+        dangerstyle="bg-red-600 text-white border border-red-600 dark:bg-red-500"
+        successStyle="bg-green-500 text-white dark:bg-green-600 border border-green-600"
+        position="tr"/>
        <ThemeWrapper>
           {/* <div id="theme-transition">
            </div> */}
