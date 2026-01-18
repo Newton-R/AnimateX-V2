@@ -85,7 +85,7 @@ export const Navbar = () => {
             <Image
               onClick={() => setIsOpen(!isOpen)}
               src={user.image ? user.image : "/avatar/default.jpg"}
-              className="rounded-md"
+              className="rounded-md cursor-pointer"
               alt="move"
               height={35}
               width={35}
@@ -95,10 +95,11 @@ export const Navbar = () => {
              <AnimatePresence>
               {
                 isOpen &&
-                <m.div animate={{opacity: 1, scale: 1, x:0}} 
-                initial={{opacity: 0, scale: 0.95, x: 50}}
-                exit={{opacity: 0, scale: 0.95, x:50}}
-                className='absolute -right-2 w-80 -bottom-3 translate-y-full bg-(--bg) p-2 border border-col rounded-xl'>
+                <m.div animate={{opacity: 1, x:0}} 
+                initial={{opacity: 0, x: 50}}
+                exit={{opacity: 0, x:50}}
+                transition={{ duration: 0.2 }}
+                className='absolute right-0 w-80 -bottom-3 translate-y-full bg-(--bg) p-2 border border-col rounded-xl'>
                 <div className='flex gap-2 relative'>
                     <X onClick={() => setIsOpen(!isOpen)} size={18} className='absolute right-0 top-0 m-2 cursor-pointer hover:text-red-500'/>
                   <Image src={user?.image || '/avatar/default.jpg'} alt='User Avatar' width={55} height={55} className='rounded-xl border-2 border-col'/>
