@@ -7,10 +7,12 @@ import { cn } from '@/lib/utils'
 interface toastprops{
     position?: "tl" | "bc" | "bl" | "tr" | "tc" | "br",
     className?: string,
-    stacked?: boolean 
+    stacked?: boolean,
+    dangerstyle?: string,
+    successStyle?: string 
 }
 
-export const Toast = ({position, 
+export const Toast = ({position, dangerstyle, successStyle, 
   className, stacked=false}:toastprops) => {
 
 
@@ -87,13 +89,14 @@ export const Toast = ({position,
                 exit={"exit"}
                 custom={i}
                   className={cn('fixed w-80 p-2 rounded-md border-2 text-[14px] border-col bg-(--bg)',
-                    pos, className,
-                    t.type === "error" ? styles.error : t.type === "success" ? styles.success : ""
+                    pos, 
+                    className,
+                    t.type === "error" ? dangerstyle : t.type === "success" ? successStyle : ""
                   )}>
                   {t.message}
                   <X size={16}
                    onClick={() => removeToast(t.id ? t.id : "0")} 
-                   className='absolute top-1 cursor-pointer opacity-40 right-1'/>
+                   className='absolute top-2 cursor-pointer opacity-40 hover:opacity-100 right-2'/>
               </m.div>
           )
         }

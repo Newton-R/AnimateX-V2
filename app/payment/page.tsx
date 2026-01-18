@@ -13,6 +13,7 @@ import { space } from '@/utils/font'
 import { LoadingButton } from '@/components/ui/buttons/loadingButton'
 import { DropDown } from '@/components/ui/inputs/dropdown'
 import { countries } from '@/utils/countries'
+import { useToast } from '@/utils/useToast'
 
 const PaymentPage = () => {
   const [products, setProduct] = useState<ProductListResponse[] | undefined>()
@@ -23,47 +24,74 @@ const PaymentPage = () => {
   const router = useRouter()
   const { user } = useAuthStore()
   const [option, setOption] = useState(0)
+  const { addToast } = useToast()
 
     useEffect(() => {
       setProductLoading(true)
-        const fetchproducts = async () => {
+      const fetchproducts = async () => {
+          try{
             const data = await useGetProduct()
             setProduct(data)
+            addToast({
+              type: "success",
+              message: "Products fetched Successfully!"
+            })
             setProductLoading(false)
-        }
-        fetchproducts()
+          }catch(e){
+            addToast({
+              type: "error",
+              message: "Unable to fetch products"
+            })
+            setProductLoading(false)
+          }
+      }
+      fetchproducts()
     }, [])
 
-    const handleClick = async () => {
-      if(!products) return;
-      try{
-        const response = await useLifeTimePayment({email: "newton4life@gmail.com", productid: products[0].product_id})
-        if(response?.payment_link){
-          router.push(response.payment_link) 
-        }
-      }catch(e){
-        console.log("Error")
-      }
-    }
+    // const handleClick = async () => {
+    //   if(!products) return;
+    //   try{
+    //     const response = await useLifeTimePayment({email: "newton4life@gmail.com", productid: products[0].product_id})
+    //     if(response?.payment_link){
+    //       router.push(response.payment_link) 
+    //     }
+    //   }catch(e){
+    //     console.log("Error")
+    //   }
+    // }
 
 
     const handleSub = async () => {
       setIsLoading(true)
       if(!products) return;
-      if(!user) return;
+      if(!user){
+          addToast({
+            type: "error",
+            message: "User must be authenticated!"
+          })
+          setIsLoading(false)
+      }else{
       try{
         const response = await useMonthlyPayment({email: user.email, 
           productid: products[option].product_id, name: user.name, country:country})
         if(response?.payment_link){
           router.push(response.payment_link) 
+          addToast({
+          type: "success",
+          message: "Redirecting to payment page."
+        })
         }else{
           console.log("link not found")
         }
         console.log(response)
       }catch(e){
         console.log("Error")
+        addToast({
+          type: "error",
+          message: "Sorry unable to continue with payment"
+        })
         setIsLoading(false)
-      }
+      }}
     }
     
 
@@ -114,7 +142,7 @@ const PaymentPage = () => {
                     </div>
                     <div className='mt-2.5'>
                       <span className='mb-1 text-[14px]'>Country</span>
-                      <DropDown options={countries} className='w-full h-10' 
+                      <DropDown options={countries} defaultOption={{text: "Cameroon", value:"CN"}} className='w-full h-10' 
                       onChange={(choice) => setCountry(choice)}
                       smartDirection menuStyle='max-h-50 overflow-y-scroll overflow-x-hidden'/>
                      
