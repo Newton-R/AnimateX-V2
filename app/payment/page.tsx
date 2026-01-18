@@ -30,7 +30,6 @@ const PaymentPage = () => {
             const data = await useGetProduct()
             setProduct(data)
             setProductLoading(false)
-            console.log(data)
         }
         fetchproducts()
     }, [])
@@ -77,7 +76,7 @@ const PaymentPage = () => {
       </p>
 
       <div className='flex flex-col md:flex-row gap-8 md:gap-4 mb-15 w-full items-center justify-center'>
-        <PaymentCard type='free' onClick={() => setCheckOpen(true)} isloading={productloading}/>
+        <PaymentCard type='free' onClick={() => {router.push("/components/docs")}} isloading={productloading}/>
         <PaymentCard type='month' onClick={() => {
           setCheckOpen(true)
           setOption(1)
