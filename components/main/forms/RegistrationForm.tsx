@@ -62,9 +62,18 @@ export const RegistrationForm = ({style}:{style?: string}) => {
     setAuthid(id)
     try{
       await socialAuth(method);
+      addToast({
+        type: "success",
+        message: "Logged in successfully redirecting!"
+      })
+      setLoading(false);
       handleNavigation();
     }catch(error){
       console.error("Social auth error:", error);
+      addToast({
+        type: "error",
+        message: "Something went wrong :("
+      })
       setLoading(false);
     }  
   }

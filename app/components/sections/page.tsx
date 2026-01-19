@@ -1,8 +1,4 @@
-import { ComponentBlock } from '@/components/dashboard/componentblock'
-import React from 'react'
-import { Stagger3D } from '@/components/ui/sections/gallery/stagger3d'
-import { SampleCodeBlock } from '@/components/sub/samplecodeblock'
-import { ArrowDown, ArrowUp, Eye, SendHorizonal } from 'lucide-react'
+import { Eye, SendHorizonal } from 'lucide-react'
 import { SectionLinkBlock } from '@/components/sub/sectionlinkblock'
 import Link from 'next/link'
 import { FeatureSwoop } from '@/components/ui/sections/features/featureswoop'
@@ -58,17 +54,17 @@ const SectionPage = () => {
         }
       ]
     },
-    // {
-    //   heading: "Intergration",
-    //   description: "Show users the different external services your business partners with.",
-    //   components: [
-    //     {
-    //       title: "Tool Spread",
-    //       link: "/toolspread",
-    //       preview: null
-    //     }
-    //   ]
-    // }
+    {
+      heading: "About",
+      description: "Animated about sections.",
+      components: [
+        {
+          title: "Text Reveal",
+          link: "/textreveal",
+          preview: null
+        }
+      ]
+    }
   ]
 
   return (

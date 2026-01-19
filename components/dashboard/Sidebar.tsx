@@ -87,6 +87,11 @@ export const componentslist: components[] = [
                     text: "Morphing Tabs",
                     link: "/components/morphingtabs",
                     tag: "New"
+                },
+                 {
+                    text: "Tipped Tabs",
+                    link: "/components/tipped",
+                    tag: "New"
                 }
             ]
         },

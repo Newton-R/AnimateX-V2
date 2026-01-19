@@ -12,6 +12,7 @@ import { usePathname } from "next/navigation";
 import { motion as m, AnimatePresence} from 'motion/react'
 import { CopyButton } from "../ui/buttons/copy";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/utils/useToast";
 
 export const Navbar = () => {
   const { user, setUser, setIsPro, isPro, clearUser, setIsNotPro } = useAuthStore();
@@ -19,13 +20,20 @@ export const Navbar = () => {
   const { setToggle } = useNavToggle();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false)
+  const { addToast } = useToast()
 
   useEffect(() => {
     setIsLoading(true);
     const fetchUser = async () => {
-      const user = await getUserSession();
-      setUser(user.session?.user || null);
-      if (user) {
+      try{
+        const user = await getUserSession();
+        setUser(user.session?.user || null);
+        setIsLoading(false);
+        if (user.session?.user) {
+        addToast({
+          type: "success",
+          message: `Welcome back ${user.session?.user.name}`
+        })
         try {
           const ispro = await fetch(`/api/checkpro/${user.session?.user.id}`, {
             method: "GET",
@@ -40,8 +48,13 @@ export const Navbar = () => {
           console.log(e);
         }
       }
-      console.log(user);
-      setIsLoading(false);
+      
+      }catch(e){
+        addToast({
+          type: "error",
+          message: `Unable to fetch user`
+        })}
+        setIsLoading(false);
     };
     fetchUser();
   }, []);
