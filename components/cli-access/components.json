@@ -28,5 +28,13 @@
    "morphingtabs": {
     "access": "member",
     "dependencies": []
+  },
+  "textreveal": {
+    "access": "member",
+    "dependencies": []
+  },
+  "tippednavigation": {
+    "access": "member",
+    "dependencies": []
   }
 }

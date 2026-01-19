@@ -199,13 +199,7 @@ export function cn(...inputs: ClassValue[]) {
                         <h1 className={`${space.className} title mt-8`}>Installation</h1>
 
                       {
-                        isProComponent && !isPro?
-
-                        <div className='flex items-center flex-col w-full md:w-80 mx-auto text-center justify-center gap-1.5'>
-                            <Lock size={44} className='text-gray-500 dark:text-neutral-800'/>
-                            <p className='text-(--muted-text)'>This is a Pro members only component. Kindly subscribe to view installation.</p>
-                            <Link href={"/payment"} className='p-2 text-white bg-black rounded-md border-2 border-neutral-600 flex items-center px-4'>Go Pro</Link>
-                        </div> :
+                       
 
                         membersonly && !user ?
                         <div className='flex items-center flex-col w-full md:w-80 mx-auto text-center justify-center gap-1.5'>
@@ -214,6 +208,14 @@ export function cn(...inputs: ClassValue[]) {
                             <RegistrationForm style='rounded-md w-80'/>
                         </div>
                         :
+
+                         isProComponent && !isPro?
+
+                        <div className='flex items-center flex-col w-full md:w-80 mx-auto text-center justify-center gap-1.5'>
+                            <Lock size={44} className='text-gray-500 dark:text-neutral-800'/>
+                            <p className='text-(--muted-text)'>This is a Pro members only component. Kindly subscribe to view installation.</p>
+                            <Link href={"/payment"} className='p-2 text-white bg-black rounded-md border-2 border-neutral-600 flex items-center px-4'>Go Pro</Link>
+                        </div> :
 
                         external ?
                         <div className='flex items-center flex-col w-full md:w-80 py-8 mx-auto text-center justify-center gap-1.5'>

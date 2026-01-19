@@ -1,55 +1,281 @@
-"use client"
+"use client";
 import React, { useRef } from "react";
-import { motion as m, MotionValue, useScroll, useTransform} from 'motion/react'
+import {
+  motion as m,
+  MotionValue,
+  useScroll,
+  useTransform,
+} from "motion/react";
+import { cn } from "@/lib/utils";
 
-export const TextRevealSection = () => {
-    const ParentContainer = useRef(null)
-    const { scrollYProgress } = useScroll({target: ParentContainer, offset: ["start 0.7", "end center"]})
-    const dummytext = `
-     Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
-          fugit, vero quaerat quos enim, perspiciatis reiciendis optio quas
-          dicta impedit rerum pariatur, tempora suscipit! Pariatur, quod.
-          Cupiditate nulla voluptatibus repellat corporis at rerum
-          exercitationem quidem sapiente omnis maxime, doloribus temporibus
-          velit? Minus magni rem distinctio, saepe incidunt numquam aliquid
-          similique deserunt asperiores ipsa minima explicabo officiis est
-          perferendis quas mollitia ab. Dolorum eaque eos consequuntur atque
-          incidunt ipsam vel labore voluptas hic distinctio voluptatem nostrum
-          quas, aliquid culpa amet ipsum minus, porro fugit earum id officia
-          numquam? Unde provident iusto doloribus debitis minima totam eum
-          perferendis architecto impedit quia dolores similique perspiciatis,
-          amet saepe cumque itaque quaerat earum voluptates incidunt. Eligendi
-          illum voluptate deleniti magni sapiente tenetur non!
-    `
+interface text {
+  className?: string;
+  text: string;
+}
+
+export const TextRevealSection = ({ className, text }: text) => {
+  const ParentContainer = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ParentContainer,
+    offset: ["start 0.9", "start 0.15"],
+  });
+  const words = text.split(" ");
   return (
-    <section ref={ParentContainer} className="h-[400vh] relative w-full">
-      <div className="h-screen flex items-center justify-center sticky top-0">
-        <p className="text-white flex flex-wrap text-center items-center justify-center">
-             {
-            dummytext.split(" ").map((text, i) => 
-                        <TextSpan index={i} text={text} key={i} scrollYProgress={scrollYProgress} length={dummytext.split(" ").length}/>
-                    )
-            }
-        </p>
-      </div>
-    </section>
+    <p
+      ref={ParentContainer}
+      className={cn("flex flex-wrap text-center items-center justify-center", className)}
+    >
+      {words.map((word, i) => {
+        const start = i / words.length;
+        const end = start + 1 / words.length;
+        return (
+          <Word
+            key={i}
+            offset={{ start: start, end: end }}
+            value={word}
+            scrollProgress={scrollYProgress}
+          />
+        );
+      })}
+    </p>
+  );
+};
+
+const Word = ({
+  value,
+  scrollProgress,
+  offset,
+}: {
+  value: string;
+  offset: { start: number; end: number };
+  scrollProgress: MotionValue;
+}) => {
+  const character = value.split("");
+  const amount = offset.end - offset.start;
+  const step = amount / character.length;
+  return (
+    <span className="relative w-fit mr-[12px] flex">
+      {character.map((char, i) => {
+        const start = offset.start + step * i;
+        const end = offset.start + step * (i + 1);
+        return (
+          <Character key={i}
+            offset={{ start: start, end: end }}
+            scrollProgress={scrollProgress}
+          >
+            {char}
+          </Character>
+        );
+      })}
+    </span>
+  );
+};
+
+const Character = ({
+  children,
+  scrollProgress,
+  offset,
+}: {
+  children: React.ReactNode;
+  offset: { start: number; end: number };
+  scrollProgress: MotionValue;
+}) => {
+  const opacity = useTransform(
+    scrollProgress,
+    [offset.start, offset.end],
+    [0, 1]
+  );
+
+  return (
+    <span>
+      <span className="absolute opacity-20">{children}</span>
+      <m.span style={{ opacity }}>{children}</m.span>
+    </span>
   );
 };
 
 
-interface textspan{
-    text: string,
-    scrollYProgress: MotionValue,
-    length: number,
-    index: number
+export const codejs = `
+import { useRef } from "react";
+import {
+  motion as m,
+  useScroll,
+  useTransform,
+} from "motion/react";
+import { cn } from "@/lib/utils";
+
+export const TextRevealSection = ({ className, text }) => {
+  const ParentContainer = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ParentContainer,
+    offset: ["start 0.9", "start 0.15"],
+  });
+  const words = text.split(" ");
+  return (
+    <p
+      ref={ParentContainer}
+      className={cn("flex flex-wrap text-center items-center justify-center", className)}
+    >
+      {words.map((word, i) => {
+        const start = i / words.length;
+        const end = start + 1 / words.length;
+        return (
+          <Word
+            key={i}
+            offset={{ start: start, end: end }}
+            value={word}
+            scrollProgress={scrollYProgress}
+          />
+        );
+      })}
+    </p>
+  );
+};
+
+const Word = ({
+  value,
+  scrollProgress,
+  offset,
+}) => {
+  const character = value.split("");
+  const amount = offset.end - offset.start;
+  const step = amount / character.length;
+  return (
+    <span className="relative w-fit mr-[12px] flex">
+      {character.map((char, i) => {
+        const start = offset.start + step * i;
+        const end = offset.start + step * (i + 1);
+        return (
+          <Character
+            key={i}
+            offset={{ start: start, end: end }}
+            scrollProgress={scrollProgress}
+          >
+            {char}
+          </Character>
+        );
+      })}
+    </span>
+  );
+};
+
+const Character = ({
+  children,
+  scrollProgress,
+  offset,
+}) => {
+  const opacity = useTransform(
+    scrollProgress,
+    [offset.start, offset.end],
+    [0, 1]
+  );
+
+  return (
+    <span>
+      <span className="absolute opacity-20">{children}</span>
+      <m.span style={{ opacity }}>{children}</m.span>
+    </span>
+  );
+};
+
+`
+
+export const codets = `
+"use client";
+import React, { useRef } from "react";
+import {
+  motion as m,
+  MotionValue,
+  useScroll,
+  useTransform,
+} from "motion/react";
+import { cn } from "@/lib/utils";
+
+interface text {
+  className?: string;
+  text: string;
 }
 
+export const TextRevealSection = ({ className, text }: text) => {
+  const ParentContainer = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ParentContainer,
+    offset: ["start 0.9", "start 0.15"],
+  });
+  const words = text.split(" ");
+  return (
+    <p
+      ref={ParentContainer}
+      className={cn("flex flex-wrap text-center items-center justify-center", className)}
+    >
+      {words.map((word, i) => {
+        const start = i / words.length;
+        const end = start + 1 / words.length;
+        return (
+          <Word
+            key={i}
+            offset={{ start: start, end: end }}
+            value={word}
+            scrollProgress={scrollYProgress}
+          />
+        );
+      })}
+    </p>
+  );
+};
 
-const TextSpan = ({text, scrollYProgress, length, index}:textspan) => {
-    
-    const starting = index / length
-    const opacity = useTransform(scrollYProgress, [starting, 1], [0, 1])
-    return (
-        <m.span style={{opacity}} className="mr-[4px] bg-red-400">{text}</m.span>
-    )
-}
+const Word = ({
+  value,
+  scrollProgress,
+  offset,
+}: {
+  value: string;
+  offset: { start: number; end: number };
+  scrollProgress: MotionValue;
+}) => {
+  const character = value.split("");
+  const amount = offset.end - offset.start;
+  const step = amount / character.length;
+  return (
+    <span className="relative w-fit mr-[12px] flex">
+      {character.map((char, i) => {
+        const start = offset.start + step * i;
+        const end = offset.start + step * (i + 1);
+        return (
+          <Character
+            key={i}
+            offset={{ start: start, end: end }}
+            scrollProgress={scrollProgress}
+          >
+            {char}
+          </Character>
+        );
+      })}
+    </span>
+  );
+};
+
+const Character = ({
+  children,
+  scrollProgress,
+  offset,
+}: {
+  children: React.ReactNode;
+  offset: { start: number; end: number };
+  scrollProgress: MotionValue;
+}) => {
+  const opacity = useTransform(
+    scrollProgress,
+    [offset.start, offset.end],
+    [0, 1]
+  );
+
+  return (
+    <span>
+      <span className="absolute opacity-20">{children}</span>
+      <m.span style={{ opacity }}>{children}</m.span>
+    </span>
+  );
+};
+
+`
