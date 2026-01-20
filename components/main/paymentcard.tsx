@@ -7,7 +7,7 @@ export const PaymentCard = ({ type, onClick, isloading }: { type?: string, onCli
     type === "free"
       ? {
           price: "0",
-          duration: "Month",
+          duration: "Lifetime",
           status: "Free Forever",
           plan: "Basic",
           description: "Lifetime access to all free animatex components",
