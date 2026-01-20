@@ -7,7 +7,7 @@ export const PaymentCard = ({ type, onClick, isloading }: { type?: string, onCli
     type === "free"
       ? {
           price: "0",
-          duration: "Month",
+          duration: "Lifetime",
           status: "Free Forever",
           plan: "Basic",
           description: "Lifetime access to all free animatex components",
@@ -15,7 +15,7 @@ export const PaymentCard = ({ type, onClick, isloading }: { type?: string, onCli
         }
       : type === "month"
       ? {
-          price: "24",
+          price: "5.99",
           duration: "Month",
           status: "Monthly Subscription",
           plan: "Professional",
@@ -29,7 +29,7 @@ export const PaymentCard = ({ type, onClick, isloading }: { type?: string, onCli
           ],
         }
       : {
-          price: "120",
+          price: "59.99",
           duration: "Year",
           status: "Yearly Subscription",
           plan: "Legendary",
