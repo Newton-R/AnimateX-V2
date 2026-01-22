@@ -68,7 +68,7 @@ export const Navbar = () => {
         <Logo />
         <GithubLink
           type="label"
-          className="bg-gray-50 text-black p-1 flex rounded-xs border-none dark:text-white dark:bg-neutral-900"
+          className="bg-(--secondary) p-0.5 dark:text-gray-300 flex rounded-full px-2 text-[13px] text-black border border-col"
         />
       </div>
       <div className="flex gap-2 items-center">
