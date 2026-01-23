@@ -22,7 +22,6 @@ const CodeBlock = ({code = "npm i animatex-pro@latest"}:{code?: string}) => {
      <div className={('w-full md:max-w-80 h-11 mt-2 border flex items-center border-col bg-(--code-block) relative')}>
          
             <CopyButton 
-                animationVariant={2}
                 onClick={copyCode}
                 className='absolute top-2 right-2 bg-(--secondary-hover) clickable p-1 px-0 w-8 flex items-center justify-center rounded-md'/>
 

@@ -29,7 +29,8 @@ export const componentslist: components[] = [
             content: [
                 {
                     text: "Copy",
-                    link: "/components/copy"
+                    link: "/components/copy",
+                    tag: states[1]
                 },
                 {
                     text: "Aero Button",

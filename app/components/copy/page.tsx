@@ -24,28 +24,20 @@ const GlimmerPage = () => {
             description: "Controls the delay between ion transition."
           },
           {
-            prop: "animationVaraint",
-            default: "1",
-            description: "Switch between animations 1 or 2."
+            prop: "iconSize",
+            default: "18",
+            description: "Size of the button icons."
           }
+
         ]
       }
 
-    const variants = [
-      {
-        prop: "animationVaraint = 2",
-        component: <CopyButton animationVariant={2} text="Copy Page"/>
-      }
-    ]
+ 
 
     const sections = [
       {
         id: 0,
         title: "Preview"
-      },
-      {
-        id: 1,
-        title: "Variant 2"
       },
       {
         id:2,
@@ -69,7 +61,6 @@ const GlimmerPage = () => {
     codejs={CodeJs}
     codets={CodeTs}
     usecasecode={usecase}
-    variants={variants}
     props={component.props}
     features={component.features} 
     sections={sections}

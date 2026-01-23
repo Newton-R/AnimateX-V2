@@ -54,7 +54,7 @@ export const ComponentWall = () => {
   return (
      <div className='min-h-[300px] lg:h-120 lg:w-[48%] relative flex mt-20 lg:mt-0 w-full items-center justify-center'>
                <m.div variants={variantyoyo} animate="animate" 
-               className='absolute top-10 right-10 hidden md:flex '><CopyButton animationVariant={2} className="p-2 rounded-md blue-gradient hover:bg-blue-500 border border-blue-400"/></m.div>
+               className='absolute top-10 right-10 hidden md:flex '><CopyButton className="p-2 rounded-md blue-gradient hover:bg-blue-500 border border-blue-400"/></m.div>
                 <m.div variants={variantyoyo} custom={0.1} animate="animate" className="absolute top-1/2 left-10 hidden lg:flex">
                     <ThemeToggler/>
                 </m.div>

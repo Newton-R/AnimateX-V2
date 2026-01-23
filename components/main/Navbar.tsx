@@ -68,7 +68,7 @@ export const Navbar = () => {
         <Logo />
         <GithubLink
           type="label"
-          className="bg-gray-50 text-black p-1 flex rounded-xs border-none dark:text-white dark:bg-neutral-900"
+          className="bg-(--secondary) p-0.5 dark:text-gray-300 flex rounded-full px-2 text-[13px] text-black border border-col"
         />
       </div>
       <div className="flex gap-2 items-center">
@@ -126,7 +126,7 @@ export const Navbar = () => {
                       <p className='text-xs'>User key</p>
                       <div className="h-9 w-full flex items-center bg-gray-100 rounded-md border dark:bg-neutral-700 dark:border-neutral-600 border-gray-300">
                         <p className='text-[14px] overflow-hidden flex-1'>{user?.id}</p>
-                        <CopyButton onClick={() => {navigator.clipboard.writeText(user?.id || '')}} animationVariant={2} className='w-fit overflow-hidden px-2 h-full rounded-none rounded-r-md bg-gray-300 dark:bg-neutral-900'/>
+                        <CopyButton onClick={() => {navigator.clipboard.writeText(user?.id || '')}} className='w-fit overflow-hidden px-2 h-full rounded-none rounded-r-md bg-gray-300 dark:bg-neutral-900'/>
                       </div>
                         <button onClick={() => {
                           signout()
@@ -147,13 +147,6 @@ export const Navbar = () => {
             )}
           </div>
         )}
-
-        {/* {
-              !isAuthenticated ?
-              <RegistrationForm style='rounded-md p-2 px-4'/> :
-              <Image src={user?.image || '/avatar/default.jpg'} alt='User Avatar' width={35} height={35} className='rounded-xl border-2 border-col'/>
-            } */}
-        {/* <PrimaryButton text='Sign Up' type='link' className='p-2 rounded-full text-[14px] px-4'/> */}
       </div>
     </div>
   );

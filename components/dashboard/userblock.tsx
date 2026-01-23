@@ -64,7 +64,8 @@ export const UserBlock = () => {
                       <p className='text-xs'>User key</p>
                       <div className="h-9 w-full flex items-center bg-gray-100 rounded-md border dark:bg-neutral-700 dark:border-neutral-600 border-gray-300">
                         <p className='text-[14px] overflow-hidden flex-1'>{user?.id}</p>
-                        <CopyButton onClick={() => {navigator.clipboard.writeText(user?.id || '')}} animationVariant={2} className='w-fit overflow-hidden px-2 h-full rounded-none rounded-r-md bg-gray-300 dark:bg-neutral-900'/>
+                        <CopyButton onClick={() => {navigator.clipboard.writeText(user?.id || '')}} 
+                        className='w-fit overflow-hidden px-2 h-full rounded-none rounded-r-md bg-gray-300 dark:bg-neutral-900'/>
                       </div>
                         <button onClick={() => {
                           signout()

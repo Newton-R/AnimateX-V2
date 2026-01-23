@@ -25,7 +25,6 @@ const CodeBlock = ({code, language, type, className}:props) => {
           {
             type !== "maincode" &&
             <CopyButton 
-                animationVariant={2}
                 onClick={copyCode}
                 className='absolute top-4 right-4 bg-(--secondary-hover) clickable p-1 px-0 w-8 flex items-center justify-center rounded-md'/>
           }

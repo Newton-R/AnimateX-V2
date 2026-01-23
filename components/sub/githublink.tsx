@@ -24,7 +24,7 @@ const GithubLink = ({className, type="btn"}:{className?: string, type?:string}) 
     )}>
      {
        type !== "btn" ?
-       <span className='flex gap-1 items-center'><Github size={18}/>{stars}</span> :
+       <span className='flex gap-1 items-center'>{stars}<Github size={15}/></span> :
        <>
              {stars}
           <Star className='fill-yellow-400 text-yellow-400 mr-1' size={18}/>
