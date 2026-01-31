@@ -20,20 +20,21 @@ interface varcelprops{
 export const VercelNav = ({links, className, linkstyle, speed=0.3,
      dashstyle, hoverstyle}:varcelprops) => {
 
-    const [current, setcurrent] = useState(0)
-    const [selected, setSelected] = useState(0)
-    const [isHovered, setIsHovered] = useState(false)
+    const [current, setcurrent] = useState<number | null>(null)
+    const [selected, setSelected] = useState<number>(0)
+    const [isHovered, setIsHovered] = useState<boolean>(false)
     const transition = speed
    
 
   return (
-     <m.div className={cn('flex items-center border-b text-[12px] md:text-[16px] border-gray-200 dark:border-neutral-800 w-full md:w-fit', className)}>
-        <div 
-        onMouseEnter={() => setIsHovered(true)} 
-        onMouseLeave={() => {
-            setIsHovered(false)
-            setcurrent(-1)
-        }} className='flex items-center'>
+     <m.div 
+     onMouseEnter={() => setIsHovered(true)}
+     onMouseLeave={() => {
+        setIsHovered(false)
+        setcurrent(null)
+     }}
+     className={cn('flex items-center border-b text-[12px] md:text-[16px] border-gray-200 dark:border-neutral-800 w-full md:w-fit', className)}>
+        <div className='flex items-center'>
             {
                 links.map((item, i) => 
                 <m.a href={item.href} whileHover={"hovered"} key={i} 
@@ -50,7 +51,9 @@ export const VercelNav = ({links, className, linkstyle, speed=0.3,
                             isHovered && 
                             i === current &&
                                 <m.div layoutId='pop' 
-                                transition={{duration: transition}} exit={!isHovered ? {opacity: 0} : {}}
+                                animate = {{opacity: 1}}
+                                transition={{duration: transition}} 
+                                exit={{opacity: 0}}
                                 className={cn('absolute pointer-events-none h-full rounded-sm w-full top-0 bg-gray-200 dark:bg-neutral-800', hoverstyle)}/>
                             
                         }
