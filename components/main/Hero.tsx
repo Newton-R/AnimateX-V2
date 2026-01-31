@@ -58,7 +58,7 @@ export const Hero = () => {
 
     const tools = ["tools/typescript.svg", "tools/next2.svg", "boom/wind.svg", "boom/motion.svg", "boom/js.svg", "boom/react.svg"]
   return (
-   <div className="gradient w-full flex flex-col lg:flex-row lg:gap-2 p-2 gap-8 mt-24 h-screen md:px-8 items-center justify-between md:h-150">
+   <div className="gradient w-full flex flex-col lg:flex-row lg:gap-2 p-2 gap-8 mt-24 lg:mt-0 lg:pt-24 h-screen md:px-8 items-center justify-between md:h-150">
         <div className='lg:w-[50%] w-full text-center flex flex-col justify-center items-center gap-6 mb-[10px] lg:mb-0 lg:justify-start lg:items-start lg:text-left '>
             <div className='light-block w-fit'>Motion Powered, Tailwind v4 styled Components!🎉</div>
             <div className='text-5xl leading-12'>
